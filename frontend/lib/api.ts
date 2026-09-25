@@ -17,6 +17,7 @@ export type WalkthroughResponse = Schemas["WalkthroughResponse"];
 export type WalkthroughParagraph = Schemas["ParagraphOut"];
 export type KeyTerm = Schemas["KeyTerm"];
 export type ConceptMapData = Schemas["ConceptMapOut"];
+export type SpotOut = Schemas["SpotOut"];
 
 export const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000").replace(/\/$/, "");
 
@@ -112,4 +113,5 @@ export const api = {
   compareStyle: (text: string, profile: StyleProfile, signal?: AbortSignal) =>
     post<CompareResponse>("/style/compare", { text, profile }, signal),
   walkthrough: (text: string, signal?: AbortSignal) => post<WalkthroughResponse>("/walkthrough", { text }, signal),
+  spots: (text: string, signal?: AbortSignal) => post<Schemas["SpotsResponse"]>("/personalize/spots", { text }, signal),
 };

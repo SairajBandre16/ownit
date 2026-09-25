@@ -85,6 +85,10 @@ export function classifyInsertion(doc: PMNode, from: number, markType: MarkType)
 /**
  * Tags typed/pasted text with an origin. Programmatic edits (engine changes, "Make it yours"
  * insertions, document loads) set ORIGIN_META and are left alone.
+ *
+ * Pasted or dropped text (§9.2: "pasted text → ai") keeps the origin it already carries when
+ * it was copied inside the editor; text from elsewhere is tagged `ai`, because the tool can't
+ * know who wrote it (the score must never be inflated).
  */
 export const OriginTracker = Extension.create({
   name: "originTracker",
@@ -95,9 +99,11 @@ export const OriginTracker = Extension.create({
         appendTransaction(trs, _oldState, state) {
           const markType = state.schema.marks.origin;
           if (!markType) return null;
-          const ranges: [number, number][] = [];
+          const ranges: [number, number, boolean][] = [];
           trs.forEach((t, j) => {
             if (!t.docChanged || t.getMeta(ORIGIN_META)) return;
+            const ui = t.getMeta("uiEvent");
+            const pasted = ui === "paste" || ui === "drop";
             // mapping from this transaction's doc to the final state's doc
             const after = new Mapping();
             for (let k = j + 1; k < trs.length; k++) after.appendMapping(trs[k].mapping);
@@ -107,13 +113,20 @@ export const OriginTracker = Extension.create({
                 if (ne <= ns) return;
                 const from = after.map(rest.map(ns, -1), -1);
                 const to = after.map(rest.map(ne, 1), 1);
-                if (to > from) ranges.push([from, to]);
+                if (to > from) ranges.push([from, to, pasted]);
               });
             });
           });
           if (!ranges.length) return null;
           const tr = state.tr;
-          for (const [from, to] of ranges) {
+          for (const [from, to, pasted] of ranges) {
+            if (pasted) {
+              state.doc.nodesBetween(from, to, (node, pos) => {
+                if (!node.isText || markType.isInSet(node.marks)) return;
+                tr.addMark(Math.max(from, pos), Math.min(to, pos + node.nodeSize), markType.create({ origin: "ai" }));
+              });
+              continue;
+            }
             // classify by what is immediately before the inserted text
             const origin = classifyInsertion(state.doc, from, markType);
             tr.removeMark(from, to, markType);
@@ -134,7 +147,7 @@ export interface HighlightSpan {
   from: number; // ProseMirror positions
   to: number;
   id: string;
-  kind: "issue" | "protected" | "change" | "spot" | "engineering" | "heading" | "focus";
+  kind: "issue" | "protected" | "change" | "spot" | "anchor" | "engineering" | "heading" | "focus";
   category?: string;
   label?: string;
   rule?: string;
@@ -159,6 +172,8 @@ const CLASS: Record<HighlightSpan["kind"], string> = {
   spot: "spot-marker",
   heading: "mark-heading",
   focus: "mark-focus",
+  // invisible: marks where a "Make it yours" answer goes, so the point maps through edits
+  anchor: "spot-anchor",
 };
 
 function build(doc: PMNode, input: HighlightInput): DecorationSet {

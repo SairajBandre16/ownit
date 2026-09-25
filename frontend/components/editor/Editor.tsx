@@ -8,6 +8,9 @@ import { docText, offsetMapper } from "@/lib/offsets";
 import { cn } from "@/lib/utils";
 import { Highlights, OriginMark, OriginTracker, type HighlightSpan } from "./marks";
 
+// anchors are invisible insertion points, never hover targets
+const HL_SELECTOR = "[data-hl-id]:not([data-hl-kind=\"anchor\"])";
+
 /** A highlight in character offsets relative to `OffsetLayers.text`. */
 export interface OffsetSpan {
   start: number;
@@ -138,7 +141,7 @@ export function Editor({
     const el = wrapRef.current;
     if (!el || !renderHover) return;
     const over = (ev: MouseEvent) => {
-      const target = (ev.target as HTMLElement).closest<HTMLElement>("[data-hl-id]");
+      const target = (ev.target as HTMLElement).closest<HTMLElement>(HL_SELECTOR);
       if (!target) return;
       if (hideTimer.current) clearTimeout(hideTimer.current);
       const rect = target.getBoundingClientRect();
@@ -156,7 +159,7 @@ export function Editor({
       hideTimer.current = setTimeout(() => setHover(null), 220);
     };
     const click = (ev: MouseEvent) => {
-      const target = (ev.target as HTMLElement).closest<HTMLElement>("[data-hl-id]");
+      const target = (ev.target as HTMLElement).closest<HTMLElement>(HL_SELECTOR);
       if (target && onHighlightClick) onHighlightClick(target.dataset.hlId!, target.dataset.hlKind ?? "");
     };
     el.addEventListener("mouseover", over);

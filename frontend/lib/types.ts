@@ -1,5 +1,5 @@
 import type { JSONContent } from "@tiptap/core";
-import type { AnalyzeResponse, Change, ProtectedSpan, WalkthroughResponse } from "./api";
+import type { AnalyzeResponse, Change, ProtectedSpan, SpotOut, WalkthroughResponse } from "./api";
 
 export type StepId = "humanize" | "walkthrough" | "personalize" | "prove" | "export";
 export const STEPS: { id: StepId; n: number; label: string; short: string }[] = [
@@ -39,18 +39,14 @@ export interface WalkthroughState {
   ownDefs?: Record<string, string>;
 }
 
-export interface Spot {
-  id: string;
-  start: number;
-  end: number;
-  pattern: string;
-  prompt: string;
-  quote: string;
-}
+/** A generic spot from /personalize/spots (offsets refer to PersonalizeState.text). */
+export type Spot = SpotOut;
 
 export interface PersonalizeState {
+  /** text the spot offsets refer to */
   text: string;
   spots: Spot[];
+  /** spot id -> the exact text inserted for it */
   filled: Record<string, string>;
   skipped: Record<string, boolean>;
 }

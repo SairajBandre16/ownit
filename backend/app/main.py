@@ -17,6 +17,7 @@ from app.api import (
     routes_analyze,
     routes_health,
     routes_humanize,
+    routes_personalize,
     routes_style,
     routes_walkthrough,
 )
@@ -62,3 +63,4 @@ app.include_router(routes_analyze.router)
 app.include_router(routes_humanize.router)
 app.include_router(routes_style.router)
 app.include_router(routes_walkthrough.router)
+app.include_router(routes_personalize.router)

@@ -17,8 +17,8 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
 | P1 Analyze | done |
 | P2 Humanize v1 | done |
 | P3 Humanize v2 + Voice | done |
-| P4 Walkthrough | done (awaiting review) |
-| P5 Make it yours + Ownership | pending |
+| P4 Walkthrough | done |
+| P5 Make it yours + Ownership | done |
 | P6 Prove it | pending |
 | P7 Report Doctor | pending |
 | P8 Export | pending |
@@ -95,6 +95,20 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
   - Workspace shell: fixed a 174 px horizontal overflow on phones (grid column `min-w-0`).
 - [x] Frontend tests: 32 passing (new: `lib/walkthrough.test.ts`, `components/walkthrough/ParagraphCard.test.tsx`); eslint + tsc clean. Checked in Chromium via Playwright: desktop and 390 px mobile, marks persist after reload, no console errors.
 
+- [x] Committed as `487abef`.
+
+### P5 Make it yours + Ownership
+- [x] `resources/generic_patterns.json` (≈ 480 entries): abstract claims, unnamed sources, benefits without figures, vague quantifiers, size words without figures, vague times, quantitative cues for Results, first-person/evaluative markers for the Conclusion, example markers; one label + prompt + answer starter per rule.
+- [x] `personalize/generic_detector.py`: nine rules (§9.3): abstract_claim, vague_source, vague_benefit, results_no_number, vague_quantifier, vague_intensifier, vague_time, conclusion_no_voice, no_concrete_run. A phrase is only generic when the sentence (or, for claims/benefits/sizes/times, the next sentence) has no example, number, citation, name or dated year. Quotes, code, equations, headings and References are skipped. One spot per sentence (most specific rule wins), two per paragraph. Each spot has `insert_at` (end of its sentence) and a prompt that names the subject ("name one specific case of water scarcity …").
+- [x] `POST /personalize/spots` → `{spots[{id, start, end, insert_at, pattern, label, prompt, starter, quote}]}` (cached, word limit).
+- [x] Precision on the eval set: AI drafts 48 spots / 34 paragraphs, engineering excerpts 7 / 32, student-style text 1 / 31.
+- [x] Backend tests: 59 new in `tests/unit/test_personalize.py` (≥ 5 fire and ≥ 5 must-not-fire cases per rule, selection caps, offsets, endpoint). Total: 276 passing; ruff + mypy clean.
+- [x] Origin tracking (§9.2): pasted/dropped text from outside the editor is now `ai`; text copied inside the editor keeps its origin. New `components/editor/marks.test.ts` runs a real TipTap editor: paste → ai, typing inside AI or engine text → student_edit, typing after a finished sentence or in a new paragraph → student_insert, own text keeps its origin, accepted changes → engine, "Make it yours" answers → student_insert, deletions never create student text.
+- [x] `lib/ownership.ts`: Ownership Score = 0.45 × student chars (non-whitespace) + 0.20 × decisions/offered (incl. earlier runs) + 0.20 × understanding (mean of walkthrough "Got it" share, quiz, teach-back) + 0.15 × spots filled/found. Honest by design: steps not done count 0; a part drops out (weights rescaled) only when its step ran and had nothing to offer; a deleted answer no longer counts as filled.
+- [x] Make it yours step: spots highlighted in the editor (dashed) with hover prompts; spot cards with the prompt, a pre-filled answer box (Ctrl+Enter), Insert / Skip / "answer it after all"; answers are tidied into a sentence and inserted after the spot's sentence as `student_insert` via an invisible anchor decoration that maps through edits (fallback: re-locate by quote). "Check again" keeps filled spots. Spots are re-located after reloads/edits (`lib/personalize.ts`), stale ones say so.
+- [x] Ownership panel: score, "you wrote N %", origin share bar + legend, heatmap toggle (smooth colour transition), per-part bars with points and details, "How it's calculated" popover with the formula. The workspace keeps `doc.ownership` in sync for the document list.
+- [x] Frontend tests: 62 passing (new: ownership, personalize helpers, origin tracking, SpotCard); eslint + tsc clean. Checked in Chromium via Playwright: accept-all → engine chars, answered spot → student_insert chars and score 20 → 28, origins + filled spots persist after reload, no console errors, no horizontal overflow at 390 px.
+
 #### Next
-- Review P4, then P5 (Make it yours + Ownership) as in CLAUDE.md §12.
+- Review P5, then P6 (Prove it) as in CLAUDE.md §12.
 - Tooling note: in Git Bash on this machine, heredocs piped into Python turned `\b`/`\1` into control characters; edit regex lines with the editor, not shell heredocs.

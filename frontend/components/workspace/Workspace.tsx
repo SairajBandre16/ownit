@@ -12,6 +12,7 @@ import { WalkthroughStep } from "@/components/steps/WalkthroughStep";
 import { getDoc } from "@/lib/db";
 import { useGate } from "@/lib/gate";
 import { jsonText } from "@/lib/offsets";
+import { computeOwnership } from "@/lib/ownership";
 import { flushSave, useWorkspace } from "@/lib/store";
 import type { StepId } from "@/lib/types";
 
@@ -40,6 +41,16 @@ export function Workspace({ docId }: { docId: string }) {
       setDoc(null);
     };
   }, [docId, setDoc, setText]);
+
+  // keep the cached Ownership Score (shown in the document list) in step with the text
+  const text = useWorkspace((s) => s.text);
+  useEffect(() => {
+    if (!doc) return;
+    const b = computeOwnership(doc, text);
+    const cur = doc.ownership;
+    if (!cur || cur.score !== b.score || Math.abs(cur.studentShare - b.studentShare) > 0.001)
+      patchDoc({ ownership: { score: b.score, studentShare: b.studentShare } });
+  }, [doc, text, patchDoc]);
 
   if (missing) {
     return (
