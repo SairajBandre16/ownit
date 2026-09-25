@@ -281,8 +281,30 @@ def _sentences_in_range(doc: Doc, start: int, end: int) -> list[Span]:
         while len(span) and span[-1].is_space:
             span = span[:-1]
         if len(span):
-            out.append(span)
+            out.extend(_split_after_units(doc, span))
     return _merge_fragments(doc, out)
+
+
+# "… at a load current of 0.8 A. At light loads …": spaCy reads "A." as an initial
+UNIT_STOP_RE = re.compile(r"\d\s?(?:[A-Za-zΩµ°]{1,3}|%)\.(?=\s+[A-Z][a-z])")
+
+
+def _split_after_units(doc: Doc, span: Span) -> list[Span]:
+    parts: list[Span] = []
+    start = span.start_char
+    for m in UNIT_STOP_RE.finditer(span.text):
+        cut = span.start_char + m.end()
+        piece = doc.char_span(start, cut, alignment_mode="contract")
+        if piece is None or not len(piece):
+            continue
+        parts.append(piece)
+        start = cut
+        while start < span.end_char and doc.text[start].isspace():
+            start += 1
+    rest = doc.char_span(start, span.end_char, alignment_mode="contract")
+    if rest is not None and len(rest):
+        parts.append(rest)
+    return parts or [span]
 
 
 def _merge_fragments(doc: Doc, spans: list[Span]) -> list[Span]:
@@ -320,7 +342,26 @@ def _merge_fragments(doc: Doc, spans: list[Span]) -> list[Span]:
                 or len([t for t in sp if not t.is_punct]) == 0
             )
             if joins:
-                merged[-1] = doc[prev.start : sp.end]
+                cut = _reference_number_end(sp)
+                if cut is not None and cut < len(sp):
+                    # "… shown in Fig." + "7. It can be seen …": only "7." belongs to the
+                    # previous sentence; a new sentence starts after it
+                    merged[-1] = doc[prev.start : sp.start + cut]
+                    merged.append(sp[cut:])
+                else:
+                    merged[-1] = doc[prev.start : sp.end]
                 continue
         merged.append(sp)
     return merged
+
+
+def _reference_number_end(sp: Span) -> int | None:
+    """If a fragment starts with a figure/equation number that ends a sentence ("7. It …"),
+    the token index just after that full stop."""
+    if not len(sp) or not sp[0].like_num:
+        return None
+    if sp[0].text.endswith(".") and len(sp) > 1 and sp[1].is_title:
+        return 1
+    if len(sp) > 2 and sp[1].text == "." and sp[2].is_title:
+        return 2
+    return None

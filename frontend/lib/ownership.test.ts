@@ -71,7 +71,7 @@ describe("computeOwnership", () => {
       humanize: humanize(10, 5), // 50 % decided
       personalize: { text: "", spots: [spot("s1"), spot("s2")], filled: { s1: "Mine." }, skipped: {} }, // 1 of 2 still present
       assess: {
-        quiz: { questions: [], answers: {}, results: [], total: 90 },
+        quiz: { text: "", seed: 0, questions: [], answers: {}, results: [], total: 90 },
         teachback: { explanation: "", coverage: 60, covered: [], missed: [], similarity: 0 },
       },
       walkthrough: {
@@ -118,7 +118,7 @@ describe("computeOwnership", () => {
       humanize: humanize(2, 2),
       personalize: { text: "", spots: [spot("s")], filled: { s: "x" }, skipped: {} },
       assess: {
-        quiz: { questions: [], answers: {}, results: [], total: 100 },
+        quiz: { text: "", seed: 0, questions: [], answers: {}, results: [], total: 100 },
         teachback: { explanation: "", coverage: 100, covered: [], missed: [], similarity: 1 },
       },
       walkthrough: {

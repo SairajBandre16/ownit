@@ -31,7 +31,7 @@ describe("understanding gate", () => {
       doc({
         walkthrough: walkthrough(4, 5),
         assess: {
-          quiz: { questions: [], answers: {}, results: [], total: 70 },
+          quiz: { text: "", seed: 0, questions: [], answers: {}, results: [], total: 70 },
           teachback: { explanation: "", coverage: 60, covered: [], missed: [], similarity: 0.5 },
         },
       }),
@@ -45,7 +45,7 @@ describe("understanding gate", () => {
       doc({
         walkthrough: walkthrough(5, 5),
         assess: {
-          quiz: { questions: [], answers: {}, results: [], total: 69 },
+          quiz: { text: "", seed: 0, questions: [], answers: {}, results: [], total: 69 },
           teachback: { explanation: "", coverage: 90, covered: [], missed: [], similarity: 0.5 },
         },
       }),
@@ -60,7 +60,7 @@ describe("understanding gate", () => {
       doc({
         walkthrough: walkthrough(3, 5),
         assess: {
-          quiz: { questions: [], answers: {}, results: [], total: 100 },
+          quiz: { text: "", seed: 0, questions: [], answers: {}, results: [], total: 100 },
           teachback: { explanation: "", coverage: 100, covered: [], missed: [], similarity: 1 },
         },
       }),

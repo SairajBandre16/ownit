@@ -123,6 +123,74 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/assess/generate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Assess Generate */
+        post: operations["assess_generate_assess_generate_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/assess/grade": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Assess Grade */
+        post: operations["assess_grade_assess_grade_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/assess/viva/next": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Assess Viva Next */
+        post: operations["assess_viva_next_assess_viva_next_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/teachback": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Teachback Route */
+        post: operations["teachback_route_teachback_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -154,6 +222,16 @@ export interface components {
             protected: components["schemas"]["ProtectedSpan"][];
             /** Languagetool */
             languagetool: boolean;
+        };
+        /** AnswerIn */
+        AnswerIn: {
+            /** Id */
+            id: string;
+            /**
+             * Answer
+             * @default
+             */
+            answer: string;
         };
         /** Change */
         Change: {
@@ -229,10 +307,52 @@ export interface components {
             /** Y */
             y: number;
         };
+        /** ConceptSource */
+        ConceptSource: {
+            /** Concept */
+            concept: string;
+            span: components["schemas"]["Span"];
+        };
         /** FingerprintRequest */
         FingerprintRequest: {
             /** Samples */
             samples: string[];
+        };
+        /** GenerateRequest */
+        GenerateRequest: {
+            /** Text */
+            text: string;
+            /**
+             * Confusing Paragraphs
+             * @default []
+             */
+            confusing_paragraphs: string[];
+            /**
+             * Seed
+             * @default 0
+             */
+            seed: number;
+        };
+        /** GenerateResponse */
+        GenerateResponse: {
+            /** Questions */
+            questions: components["schemas"]["QuestionOut"][];
+        };
+        /** GradeRequest */
+        GradeRequest: {
+            /** Questions */
+            questions: components["schemas"]["QuestionOut"][];
+            /** Answers */
+            answers: components["schemas"]["AnswerIn"][];
+            /** Text */
+            text?: string | null;
+        };
+        /** GradeResponse */
+        GradeResponse: {
+            /** Results */
+            results: components["schemas"]["ResultOut"][];
+            /** Total */
+            total: number;
         };
         /** HTTPValidationError */
         HTTPValidationError: {
@@ -387,6 +507,57 @@ export interface components {
             /** Text */
             text: string;
         };
+        /** QuestionOut */
+        QuestionOut: {
+            /** Id */
+            id: string;
+            /**
+             * Type
+             * @enum {string}
+             */
+            type: "cloze" | "mcq" | "tf" | "viva";
+            /** Prompt */
+            prompt: string;
+            /** Options */
+            options?: string[] | null;
+            /** Answer Key */
+            answer_key: string;
+            /**
+             * Accepted
+             * @default []
+             */
+            accepted: string[];
+            source_span: components["schemas"]["Span"];
+            /** Concepts */
+            concepts: string[];
+            /**
+             * Explanation
+             * @default
+             */
+            explanation: string;
+            /** Level */
+            level?: number | null;
+            /** Difficulty */
+            difficulty?: string | null;
+            /** Kind */
+            kind?: string | null;
+        };
+        /** ResultOut */
+        ResultOut: {
+            /** Id */
+            id: string;
+            /** Correct */
+            correct: boolean | null;
+            /** Score */
+            score: number;
+            /** Feedback */
+            feedback: string;
+            /** Missed Concepts */
+            missed_concepts: string[];
+            /** Covered Concepts */
+            covered_concepts: string[];
+            source_span: components["schemas"]["Span"];
+        };
         /** Section */
         Section: {
             /** Start */
@@ -397,6 +568,13 @@ export interface components {
             name: string;
             /** Heading */
             heading: string;
+        };
+        /** Span */
+        Span: {
+            /** Start */
+            start: number;
+            /** End */
+            end: number;
         };
         /** SpotOut */
         SpotOut: {
@@ -472,6 +650,32 @@ export interface components {
             /** Correctness */
             correctness: number | null;
         };
+        /** TeachbackRequest */
+        TeachbackRequest: {
+            /** Text */
+            text: string;
+            /** Explanation */
+            explanation: string;
+        };
+        /** TeachbackResponse */
+        TeachbackResponse: {
+            /** Coverage */
+            coverage: number;
+            /** Covered */
+            covered: string[];
+            /** Missed */
+            missed: string[];
+            /** Similarity */
+            similarity: number;
+            /** Score */
+            score: number;
+            /** Feedback */
+            feedback: string;
+            /** Copied */
+            copied: boolean;
+            /** Missed Sources */
+            missed_sources: components["schemas"]["ConceptSource"][];
+        };
         /** TextRequest */
         TextRequest: {
             /** Text */
@@ -485,6 +689,52 @@ export interface components {
             msg: string;
             /** Error Type */
             type: string;
+        };
+        /** VivaNextRequest */
+        VivaNextRequest: {
+            /** Text */
+            text: string;
+            /**
+             * History
+             * @default []
+             */
+            history: components["schemas"]["VivaTurnIn"][];
+        };
+        /** VivaNextResponse */
+        VivaNextResponse: {
+            /** Done */
+            done: boolean;
+            /** Index */
+            index: number;
+            /** Total */
+            total: number;
+            question?: components["schemas"]["QuestionOut"] | null;
+            /** Difficulty */
+            difficulty?: string | null;
+            /**
+             * Target Concepts
+             * @default []
+             */
+            target_concepts: string[];
+        };
+        /** VivaTurnIn */
+        VivaTurnIn: {
+            /** Question */
+            question: string;
+            /**
+             * Answer
+             * @default
+             */
+            answer: string;
+            /**
+             * Score
+             * @default 0
+             */
+            score: number;
+            /** Id */
+            id?: string | null;
+            /** Missed Concepts */
+            missed_concepts?: string[] | null;
         };
         /** WalkthroughResponse */
         WalkthroughResponse: {
@@ -706,6 +956,138 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["SpotsResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    assess_generate_assess_generate_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["GenerateRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GenerateResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    assess_grade_assess_grade_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["GradeRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["GradeResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    assess_viva_next_assess_viva_next_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["VivaNextRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VivaNextResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    teachback_route_teachback_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TeachbackRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TeachbackResponse"];
                 };
             };
             /** @description Validation Error */

@@ -19,7 +19,7 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
 | P3 Humanize v2 + Voice | done |
 | P4 Walkthrough | done |
 | P5 Make it yours + Ownership | done |
-| P6 Prove it | pending |
+| P6 Prove it | done |
 | P7 Report Doctor | pending |
 | P8 Export | pending |
 | P9 Deck, Progress, Learn, Polish, Deploy | pending |
@@ -109,6 +109,24 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
 - [x] Ownership panel: score, "you wrote N %", origin share bar + legend, heatmap toggle (smooth colour transition), per-part bars with points and details, "How it's calculated" popover with the formula. The workspace keeps `doc.ownership` in sync for the document list.
 - [x] Frontend tests: 62 passing (new: ownership, personalize helpers, origin tracking, SpotCard); eslint + tsc clean. Checked in Chromium via Playwright: accept-all → engine chars, answered spot → student_insert chars and score 20 → 28, origins + filled spots persist after reload, no console errors, no horizontal overflow at 390 px.
 
+- [x] Committed as `7748a74`.
+
+### P6 Prove it
+- [x] `resources/question_templates.json`: viva ladder (Define → Explain how → Explain why → Compare and evaluate), templates per kind, effect/choice verbs, causal markers, comparison markers, 60 true/false flip pairs.
+- [x] `assess/keysent.py`: TextRank over sentence vectors + definition sentences ("X is a/an …", "X refers to …", "X is defined as …"); skips title/headings/References and cut-off fragments; strips stock openers ("Moreover, it is important to note that …") so questions are asked about the content; confusing-paragraph flag.
+- [x] Generators: `cloze.py` (best keyphrase occurring once, outside citations/numbers; an abbreviation next to its expansion is blanked too), `mcq.py` (3 distractors of the same kind: abbreviation ↔ abbreviation, entity ↔ same entity, noun phrase ↔ similar length; most similar first, then WordNet sister terms; never from the question's sentence), `true_false.py` (flip direction/comparison words, swap numbers, negate the main verb with do-support, swap two terms as a last resort; a "false" statement never matches a document sentence), `viva.py` (definition/abbreviation, effect, method, choice, causal why-questions with do-support, result value, comparison, evaluate; article-, case- and number-aware concept naming; hedged, pronoun-subject and empty questions are skipped).
+- [x] Viva Simulator adaptivity: score ≥ 70 → one level up on a new concept, < 40 → definition question for the missed concept, otherwise same level; 10 questions; never repeats. The bank is cached per document.
+- [x] Grading (`grade.py`, `concepts.py`): cloze accepts lemma matches, typos (Levenshtein ≤ 2 on words > 5 letters) and abbreviation ↔ expansion; open answers score 0.7 × concept coverage (lemma, WordNet synonym, vector ≥ 0.7; multi-word concepts need their head) + 0.3 × similarity (content-word vectors, rescaled 0.60 → 0.90 so unrelated answers get 0); answers that mostly copy the source are capped at 50; feedback names the missed concepts.
+- [x] Teach-back (`teachback.py`): expected concepts = the concept map's central concepts (as written in the body); similarity to a summary of the most central sentences; missed concepts come with the sentence where each appears.
+- [x] Endpoints: `POST /assess/generate` (`seed` for a new quiz, confusing paragraph texts get extra questions), `POST /assess/grade`, `POST /assess/viva/next`, `POST /teachback`. Latency on a 2,035-word document: generate 1.9 s, teach-back 0.5 s, viva next < 0.1 s once the bank is built.
+- [x] Segmentation fixes found on the way: "… shown in Fig. 7. It can be seen …" is two sentences again; "… 0.8 A. At light loads …" splits after a unit symbol.
+- [x] Acceptance: 30-question spot-check on unseen eval paragraphs, first pass 27/30 grammatical, the three failures fixed and added as tests, second pass 30/30 (`tests/eval/results/questions-spotcheck.md`). Grading sanity: good viva answer 58-80+, vague 1-15, empty 0, copied capped at 50; good teach-back 82, vague 37.
+- [x] Backend tests: 64 new in `tests/unit/test_assess.py` (definition detection, openers, cloze/MCQ/TF incl. must-not-fire cases, why-question conversion, every template generator, bank well-formedness, ladder up/down/stop/no-repeat, grading, teach-back, endpoints, word limit). Total: 339 passing; ruff + mypy clean.
+- [x] Frontend Prove it step: tabs Quiz / Teach-back / Viva Simulator. Quiz: cloze with inline input, MCQ radio options, true/false; check answers → per-question result + feedback with the source sentence; pass mark vs the gate; Try again / New quiz; stale-text warning. Teach-back: explanation box with word count, coverage % vs gate, covered and missed concepts with the sentence to reread, copy warning. Insight panel: understanding gate (walkthrough/quiz/teach-back vs thresholds, switch to turn the gate off) + Ownership panel.
+- [x] Viva Simulator page `/viva/[docId]`: full-screen dark "exam hall", difficulty ladder, big serif questions, optional 60-second countdown ring (auto-submits), Ctrl+Enter submit, "I don't know", feedback with score, covered/missed concepts and the sentence from the report, Enter for the next question, session summary (average, per level, concepts to revise). Sessions saved in IndexedDB (`assess.viva`, `assess.vivaHistory`).
+- [x] Frontend tests: 74 passing (new: assess helpers, QuestionCard, a full VivaSimulator session with the API mocked incl. timer auto-submit); eslint + tsc clean.
+- [ ] Not done: live browser check of the new screens. The dev servers were stopped by the system (low memory), and API types were generated from a dumped OpenAPI file instead of the running server.
+
 #### Next
-- Review P5, then P6 (Prove it) as in CLAUDE.md §12.
+- Review P6, then P7 (Report Doctor) as in CLAUDE.md §12.
 - Tooling note: in Git Bash on this machine, heredocs piped into Python turned `\b`/`\1` into control characters; edit regex lines with the editor, not shell heredocs.

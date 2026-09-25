@@ -1,0 +1,154 @@
+{
+  "_version": "1.0",
+  "_note": "Question generation (CLAUDE.md §9.4). Viva templates are filled from the dependency parse of a source sentence; {X} is a concept, {subj}/{obj} noun phrases, {clause} a main clause turned into a question, {value} a number with its unit. Levels form the Viva Simulator ladder: 1 define → 2 how → 3 why → 4 compare/evaluate.",
+  "levels": {
+    "1": "Define",
+    "2": "Explain how",
+    "3": "Explain why",
+    "4": "Compare and evaluate"
+  },
+  "templates": {
+    "definition": {
+      "level": 1,
+      "prompts": ["What is {X}?", "Explain {X} in your own words.", "What does {X} mean in your report?"]
+    },
+    "abbreviation": {
+      "level": 1,
+      "prompts": ["What does {X} stand for, and what does it do in your project?"]
+    },
+    "effect": {
+      "level": 2,
+      "prompts": ["How does {subj} affect {obj}?", "Explain how {subj} changes {obj}."]
+    },
+    "method": {
+      "level": 2,
+      "prompts": ["How did you {verb} {obj}?"]
+    },
+    "choice": {
+      "level": 3,
+      "prompts": ["Why did you choose {X}?", "Why was {X} used here and not an alternative?"]
+    },
+    "causal": {
+      "level": 3,
+      "prompts": ["{clause}?"]
+    },
+    "result_value": {
+      "level": 3,
+      "prompts": ["What does the value {value} tell you about {subj}?", "What does the value {value} tell you?"]
+    },
+    "comparison": {
+      "level": 4,
+      "prompts": ["What is the difference between {A} and {B}?", "Compare {A} and {B}. Which suits this project better, and why?"]
+    },
+    "evaluate": {
+      "level": 4,
+      "prompts": [
+        "What are the limitations of {X} in this project?",
+        "If you repeated this work, what would you change about {X}, and why?"
+      ]
+    }
+  },
+  "effect_verbs": [
+    "affect",
+    "increase",
+    "decrease",
+    "reduce",
+    "improve",
+    "cause",
+    "influence",
+    "raise",
+    "lower",
+    "change",
+    "determine",
+    "control",
+    "limit",
+    "boost",
+    "degrade",
+    "enhance",
+    "weaken",
+    "strengthen",
+    "prevent",
+    "minimize",
+    "minimise",
+    "maximize",
+    "maximise",
+    "regulate",
+    "drive",
+    "produce",
+    "generate",
+    "heat",
+    "cool",
+    "damage"
+  ],
+  "choice_verbs": ["use", "choose", "select", "adopt", "employ", "prefer", "pick", "opt"],
+  "method_skip_verbs": ["be", "have", "do", "show", "find", "see", "note", "observe", "give", "use", "choose", "select"],
+  "causal_marks": ["because"],
+  "causal_preps": ["due to", "owing to", "because of", "as a result of"],
+  "result_connectors": ["therefore", "as a result", "consequently", "thus", "hence", "for this reason"],
+  "comparison_markers": [
+    "compared with",
+    "compared to",
+    "in comparison with",
+    "in contrast to",
+    "whereas",
+    "unlike",
+    "versus",
+    "vs",
+    "than",
+    "rather than"
+  ],
+  "flips": {
+    "increase": "decrease",
+    "increases": "decreases",
+    "increased": "decreased",
+    "increasing": "decreasing",
+    "decrease": "increase",
+    "decreases": "increases",
+    "decreased": "increased",
+    "decreasing": "increasing",
+    "higher": "lower",
+    "lower": "higher",
+    "highest": "lowest",
+    "lowest": "highest",
+    "more": "less",
+    "less": "more",
+    "greater": "smaller",
+    "smaller": "greater",
+    "larger": "smaller",
+    "rises": "falls",
+    "rose": "fell",
+    "rise": "fall",
+    "falls": "rises",
+    "fell": "rose",
+    "faster": "slower",
+    "slower": "faster",
+    "above": "below",
+    "below": "above",
+    "maximum": "minimum",
+    "minimum": "maximum",
+    "improves": "worsens",
+    "improved": "worsened",
+    "reduces": "increases",
+    "reduced": "increased",
+    "stronger": "weaker",
+    "weaker": "stronger",
+    "better": "worse",
+    "worse": "better",
+    "heavier": "lighter",
+    "lighter": "heavier",
+    "hotter": "colder",
+    "colder": "hotter",
+    "directly": "inversely",
+    "inversely": "directly",
+    "series": "parallel",
+    "parallel": "series",
+    "before": "after",
+    "after": "before",
+    "positive": "negative",
+    "negative": "positive",
+    "linear": "non-linear",
+    "stable": "unstable",
+    "efficient": "inefficient",
+    "accurate": "inaccurate"
+  }
+}

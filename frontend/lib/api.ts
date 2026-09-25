@@ -18,6 +18,11 @@ export type WalkthroughParagraph = Schemas["ParagraphOut"];
 export type KeyTerm = Schemas["KeyTerm"];
 export type ConceptMapData = Schemas["ConceptMapOut"];
 export type SpotOut = Schemas["SpotOut"];
+export type QuestionOut = Schemas["QuestionOut"];
+export type ResultOut = Schemas["ResultOut"];
+export type GradeResponse = Schemas["GradeResponse"];
+export type VivaNextResponse = Schemas["VivaNextResponse"];
+export type TeachbackResponse = Schemas["TeachbackResponse"];
 
 export const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000").replace(/\/$/, "");
 
@@ -114,4 +119,10 @@ export const api = {
     post<CompareResponse>("/style/compare", { text, profile }, signal),
   walkthrough: (text: string, signal?: AbortSignal) => post<WalkthroughResponse>("/walkthrough", { text }, signal),
   spots: (text: string, signal?: AbortSignal) => post<Schemas["SpotsResponse"]>("/personalize/spots", { text }, signal),
+  generateQuestions: (text: string, confusing_paragraphs: string[], seed = 0) =>
+    post<Schemas["GenerateResponse"]>("/assess/generate", { text, confusing_paragraphs, seed }),
+  grade: (questions: QuestionOut[], answers: { id: string; answer: string }[], text?: string) =>
+    post<GradeResponse>("/assess/grade", { questions, answers, text }),
+  vivaNext: (text: string, history: Schemas["VivaTurnIn"][]) => post<VivaNextResponse>("/assess/viva/next", { text, history }),
+  teachback: (text: string, explanation: string) => post<TeachbackResponse>("/teachback", { text, explanation }),
 };

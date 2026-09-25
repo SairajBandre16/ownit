@@ -1,5 +1,5 @@
 import type { JSONContent } from "@tiptap/core";
-import type { AnalyzeResponse, Change, ProtectedSpan, SpotOut, WalkthroughResponse } from "./api";
+import type { AnalyzeResponse, Change, ProtectedSpan, QuestionOut, ResultOut, SpotOut, WalkthroughResponse } from "./api";
 
 export type StepId = "humanize" | "walkthrough" | "personalize" | "prove" | "export";
 export const STEPS: { id: StepId; n: number; label: string; short: string }[] = [
@@ -52,35 +52,60 @@ export interface PersonalizeState {
 }
 
 export interface QuizResult {
-  questions: unknown[];
+  /** text the questions were generated from */
+  text: string;
+  seed: number;
+  questions: QuestionOut[];
   answers: Record<string, string>;
-  results: unknown[] | null;
-  total: number | null; // 0-100
+  results: ResultOut[] | null;
+  total: number | null; // 0-100, set once graded
 }
 
 export interface TeachbackResult {
   explanation: string;
-  coverage: number;
+  coverage: number; // 0-100
   covered: string[];
   missed: string[];
-  similarity: number;
+  similarity: number; // 0-1
+  score?: number;
+  feedback?: string;
+  copied?: boolean;
+  /** where each missed concept appears in the text (offsets into `text`) */
+  missedSources?: { concept: string; start: number; end: number }[];
+  text?: string;
 }
 
 export interface VivaTurn {
+  id?: string;
   question: string;
   difficulty: string;
+  level?: number;
   target_concepts: string[];
   answer: string;
   score: number;
   feedback: string;
   missed_concepts: string[];
+  covered_concepts?: string[];
+  /** the sentence the question came from (the model answer) */
+  model_answer?: string;
   source_span?: { start: number; end: number } | null;
+  seconds?: number;
+}
+
+export interface VivaSession {
+  turns: VivaTurn[];
+  startedAt: number;
+  finishedAt?: number;
+  timed: boolean;
 }
 
 export interface AssessState {
   quiz?: QuizResult;
   teachback?: TeachbackResult;
-  viva?: { turns: VivaTurn[]; finishedAt?: number };
+  /** the latest Viva Simulator session */
+  viva?: VivaSession;
+  /** earlier sessions, newest last (kept short) */
+  vivaHistory?: { finishedAt: number; average: number; questions: number }[];
 }
 
 export interface DocSettings {
