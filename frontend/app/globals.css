@@ -1,0 +1,288 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ---------------------------------------------------------------------------
+   OwnIt design tokens — "a modern engineering notebook"
+   paper / ink / rule lines, one signal-orange accent, semantic highlight hues.
+--------------------------------------------------------------------------- */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
+  --font-heading: var(--font-serif);
+  --font-display: var(--font-serif);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-rule: var(--rule);
+  --color-signal: var(--signal);
+  --color-signal-ink: var(--signal-ink);
+
+  --color-clarity: var(--hl-clarity);
+  --color-rhythm: var(--hl-rhythm);
+  --color-vocabulary: var(--hl-vocabulary);
+  --color-voice: var(--hl-voice);
+  --color-grammar: var(--hl-grammar);
+  --color-engineering: var(--hl-engineering);
+
+  --color-own-ai: var(--own-ai);
+  --color-own-engine: var(--own-engine);
+  --color-own-edit: var(--own-edit);
+  --color-own-insert: var(--own-insert);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+:root {
+  --paper: #f7f5f0;
+  --ink: #1a1a1a;
+  --rule: #e4e0d8;
+  --signal: #ff5a1f;
+  /* orange that passes AA as text on paper */
+  --signal-ink: #c2410c;
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: #fbfaf7;
+  --card-foreground: var(--ink);
+  --popover: #fffefb;
+  --popover-foreground: var(--ink);
+  --primary: var(--signal);
+  --primary-foreground: #1a1a1a;
+  --secondary: #eeebe4;
+  --secondary-foreground: var(--ink);
+  --muted: #eeebe4;
+  --muted-foreground: #5f5f5f;
+  --accent: #efe9df;
+  --accent-foreground: var(--ink);
+  --destructive: #c62828;
+  --border: var(--rule);
+  --input: #d9d4ca;
+  --ring: var(--signal);
+  --radius: 0.5rem;
+
+  --chart-1: #ff5a1f;
+  --chart-2: #0284c7;
+  --chart-3: #7c3aed;
+  --chart-4: #0d9488;
+  --chart-5: #d97706;
+
+  --hl-clarity: #d97706;
+  --hl-rhythm: #0284c7;
+  --hl-vocabulary: #7c3aed;
+  --hl-voice: #0d9488;
+  --hl-grammar: #dc2626;
+  --hl-engineering: #b45309;
+
+  --own-ai: #9ca3af;
+  --own-engine: #3b82f6;
+  --own-edit: #22c55e;
+  --own-insert: #15803d;
+
+  --grid-line: rgba(26, 26, 26, 0.06);
+}
+
+.dark {
+  --paper: #111214;
+  --ink: #edebe6;
+  --rule: #2a2b2f;
+  --signal-ink: #ff7a45;
+
+  --background: #111214;
+  --foreground: #edebe6;
+  --card: #17181b;
+  --card-foreground: #edebe6;
+  --popover: #1b1c20;
+  --popover-foreground: #edebe6;
+  --primary: var(--signal);
+  --primary-foreground: #111214;
+  --secondary: #1f2024;
+  --secondary-foreground: #edebe6;
+  --muted: #1f2024;
+  --muted-foreground: #a3a09a;
+  --accent: #24252a;
+  --accent-foreground: #edebe6;
+  --destructive: #f87171;
+  --border: #2a2b2f;
+  --input: #34353a;
+  --ring: var(--signal);
+
+  --hl-clarity: #fbbf24;
+  --hl-rhythm: #38bdf8;
+  --hl-vocabulary: #a78bfa;
+  --hl-voice: #2dd4bf;
+  --hl-grammar: #f87171;
+  --hl-engineering: #f59e0b;
+
+  --own-ai: #6b7280;
+  --own-engine: #60a5fa;
+  --own-edit: #4ade80;
+  --own-insert: #16a34a;
+
+  --grid-line: rgba(237, 235, 230, 0.05);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv11";
+  }
+  html {
+    @apply font-sans;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif), Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  .grid-paper {
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  .rule-lines {
+    background-image: linear-gradient(transparent calc(100% - 1px), var(--rule) 1px);
+    background-size: 100% 2rem;
+  }
+  .tabular {
+    font-family: var(--font-jetbrains), ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ---------------- editor marks ---------------- */
+.ownit-editor .ProseMirror {
+  outline: none;
+  min-height: 24rem;
+  line-height: 1.8;
+  font-size: 1.0625rem;
+}
+.ownit-editor .ProseMirror p {
+  margin: 0 0 0.6em;
+}
+.ownit-editor .ProseMirror p:has(> br.ProseMirror-trailingBreak:only-child) {
+  margin: 0;
+  line-height: 0.6;
+}
+.ownit-editor .ProseMirror h1,
+.ownit-editor .ProseMirror h2,
+.ownit-editor .ProseMirror h3 {
+  margin: 1.2em 0 0.5em;
+}
+
+.mark-issue {
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  text-decoration-skip-ink: none;
+  cursor: help;
+  border-radius: 2px;
+}
+.mark-issue[data-category="clarity"] { text-decoration-color: var(--hl-clarity); background: color-mix(in oklab, var(--hl-clarity) 10%, transparent); }
+.mark-issue[data-category="rhythm"] { text-decoration-color: var(--hl-rhythm); background: color-mix(in oklab, var(--hl-rhythm) 10%, transparent); }
+.mark-issue[data-category="vocabulary"] { text-decoration-color: var(--hl-vocabulary); background: color-mix(in oklab, var(--hl-vocabulary) 10%, transparent); }
+.mark-issue[data-category="voice"] { text-decoration-color: var(--hl-voice); background: color-mix(in oklab, var(--hl-voice) 10%, transparent); }
+.mark-issue[data-category="correctness"],
+.mark-issue[data-category="grammar"] { text-decoration-color: var(--hl-grammar); text-decoration-style: wavy; }
+.mark-issue[data-category="engineering"] { text-decoration-color: var(--hl-engineering); text-decoration-style: dashed; background: color-mix(in oklab, var(--hl-engineering) 8%, transparent); }
+.mark-issue[data-active="true"] { outline: 2px solid var(--signal); outline-offset: 1px; }
+/* sentence-level issues: quieter, so word-level highlights stay readable */
+.mark-issue[data-rule="monotone_run"],
+.mark-issue[data-rule="repeated_opener"],
+.mark-issue[data-rule="long_sentence"],
+.mark-issue[data-rule="passive"],
+.mark-issue[data-rule="tense_outlier"] {
+  text-decoration-thickness: 1px;
+  text-decoration-style: dotted;
+  background: transparent;
+}
+.mark-heading {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.6em;
+  line-height: 1.2;
+  text-decoration: none !important;
+  background: none !important;
+  border: 0 !important;
+}
+.mark-focus { background: color-mix(in oklab, var(--signal) 10%, transparent); border-radius: 3px; }
+
+.mark-protected {
+  border-bottom: 1px dotted var(--muted-foreground);
+  background: color-mix(in oklab, var(--muted-foreground) 8%, transparent);
+  font-feature-settings: "tnum";
+}
+
+.mark-change {
+  background: color-mix(in oklab, var(--own-engine) 16%, transparent);
+  border-bottom: 2px solid var(--own-engine);
+  border-radius: 2px;
+}
+.mark-caret {
+  display: inline-block;
+  width: 0;
+  border-left: 2px solid var(--own-engine);
+  margin: 0 1px;
+  height: 1.1em;
+  vertical-align: text-bottom;
+}
+
+.ownit-editor .mark-origin { transition: background-color 400ms ease, box-shadow 400ms ease; }
+.heatmap-on .mark-origin[data-origin="ai"] { background: color-mix(in oklab, var(--own-ai) 22%, transparent); }
+.heatmap-on .mark-origin[data-origin="engine"] { background: color-mix(in oklab, var(--own-engine) 24%, transparent); }
+.heatmap-on .mark-origin[data-origin="student_edit"] { background: color-mix(in oklab, var(--own-edit) 28%, transparent); }
+.heatmap-on .mark-origin[data-origin="student_insert"] { background: color-mix(in oklab, var(--own-insert) 38%, transparent); }
+
+.spot-marker {
+  background: color-mix(in oklab, var(--signal) 14%, transparent);
+  border-bottom: 2px dashed var(--signal);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

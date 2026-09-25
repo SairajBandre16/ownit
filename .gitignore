@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# Backend data (downloaded / built)
+backend/data/*
+!backend/data/.gitkeep
+backend/tests/eval/results/*.tmp
+
+# Node
+node_modules/
+.next/
+frontend/test-results/
+frontend/playwright-report/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log

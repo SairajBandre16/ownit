@@ -1,0 +1,22 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      OWNIT_LANGUAGETOOL_URL: http://languagetool:8010
+      OWNIT_CORS_ORIGINS: http://localhost:3000,http://127.0.0.1:3000
+    volumes:
+      # Built LM files persist here (python scripts/build_lm.py inside the container)
+      - ./backend/data/lm:/app/data/lm
+    depends_on:
+      - languagetool
+
+  languagetool:
+    image: erikvl87/languagetool
+    ports:
+      - "8010:8010"
+    environment:
+      Java_Xms: 512m
+      Java_Xmx: 1g

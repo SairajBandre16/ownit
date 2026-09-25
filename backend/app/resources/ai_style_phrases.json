@@ -1,0 +1,2822 @@
+[
+ {
+  "phrase": "{delve} into",
+  "replacement": "{examine}",
+  "note": "Formal filler verb; say what you actually did: examine, study, analyse."
+ },
+ {
+  "phrase": "{delve} deeper into",
+  "replacement": "{examine}",
+  "note": "Formal filler verb."
+ },
+ {
+  "phrase": "in today's fast-paced world",
+  "replacement": "today",
+  "note": "Empty scene-setting opener."
+ },
+ {
+  "phrase": "in today's world",
+  "replacement": "today",
+  "note": "Empty scene-setting opener."
+ },
+ {
+  "phrase": "in today's digital age",
+  "replacement": "today",
+  "note": "Empty scene-setting opener."
+ },
+ {
+  "phrase": "in today's modern world",
+  "replacement": "today",
+  "note": "Empty scene-setting opener."
+ },
+ {
+  "phrase": "in the modern era",
+  "replacement": "today",
+  "note": "Empty scene-setting opener."
+ },
+ {
+  "phrase": "in the digital age",
+  "replacement": "today",
+  "note": "Empty scene-setting opener."
+ },
+ {
+  "phrase": "in an era of",
+  "replacement": "in a time of",
+  "note": "Grand framing that adds little."
+ },
+ {
+  "phrase": "in an increasingly interconnected world",
+  "replacement": null,
+  "note": "Grand framing; start with your actual point."
+ },
+ {
+  "phrase": "in an ever-changing world",
+  "replacement": null,
+  "note": "Grand framing; start with your actual point."
+ },
+ {
+  "phrase": "it is important to note that",
+  "replacement": "",
+  "note": "Stock signpost; the sentence is stronger without it."
+ },
+ {
+  "phrase": "it is important to highlight that",
+  "replacement": "",
+  "note": "Stock signpost."
+ },
+ {
+  "phrase": "it is important to mention that",
+  "replacement": "",
+  "note": "Stock signpost."
+ },
+ {
+  "phrase": "it is important to remember that",
+  "replacement": "",
+  "note": "Stock signpost."
+ },
+ {
+  "phrase": "it is important to understand that",
+  "replacement": "",
+  "note": "Stock signpost."
+ },
+ {
+  "phrase": "it is crucial to note that",
+  "replacement": "",
+  "note": "Stock signpost."
+ },
+ {
+  "phrase": "it is essential to note that",
+  "replacement": "",
+  "note": "Stock signpost."
+ },
+ {
+  "phrase": "it is worth highlighting that",
+  "replacement": "",
+  "note": "Stock signpost."
+ },
+ {
+  "phrase": "it's important to note that",
+  "replacement": "",
+  "note": "Stock signpost."
+ },
+ {
+  "phrase": "it's worth noting that",
+  "replacement": "",
+  "note": "Stock signpost."
+ },
+ {
+  "phrase": "{play} a crucial role in",
+  "replacement": "{be} central to",
+  "note": "Vague; say what the role actually is."
+ },
+ {
+  "phrase": "{play} a crucial role",
+  "replacement": "{matter}",
+  "note": "Vague; say what the role actually is."
+ },
+ {
+  "phrase": "{play} a vital role in",
+  "replacement": "{be} central to",
+  "note": "Vague; say what the role actually is."
+ },
+ {
+  "phrase": "{play} a vital role",
+  "replacement": "{matter}",
+  "note": "Vague claim."
+ },
+ {
+  "phrase": "{play} a pivotal role in",
+  "replacement": "{be} central to",
+  "note": "Vague claim."
+ },
+ {
+  "phrase": "{play} a pivotal role",
+  "replacement": "{matter}",
+  "note": "Vague claim."
+ },
+ {
+  "phrase": "{play} a key role in",
+  "replacement": "{be} central to",
+  "note": "Vague claim."
+ },
+ {
+  "phrase": "{play} a significant role in",
+  "replacement": "{affect}",
+  "note": "Vague claim."
+ },
+ {
+  "phrase": "{play} an important role in",
+  "replacement": "{affect}",
+  "note": "Vague claim."
+ },
+ {
+  "phrase": "{play} an essential role in",
+  "replacement": "{be} essential to",
+  "note": "Vague claim."
+ },
+ {
+  "phrase": "{play} an integral role in",
+  "replacement": "{be} central to",
+  "note": "Vague claim."
+ },
+ {
+  "phrase": "{play} an instrumental role in",
+  "replacement": "{help}",
+  "note": "Vague claim."
+ },
+ {
+  "phrase": "a testament to",
+  "replacement": "evidence of",
+  "note": "Ornamental phrasing."
+ },
+ {
+  "phrase": "stands as a testament to",
+  "replacement": "shows",
+  "note": "Ornamental phrasing."
+ },
+ {
+  "phrase": "serves as a testament to",
+  "replacement": "shows",
+  "note": "Ornamental phrasing."
+ },
+ {
+  "phrase": "is a testament to",
+  "replacement": "shows",
+  "note": "Ornamental phrasing."
+ },
+ {
+  "phrase": "{navigate} the complexities of",
+  "replacement": "{handle}",
+  "note": "Abstract metaphor."
+ },
+ {
+  "phrase": "{navigate} the complexities",
+  "replacement": "{handle} the difficulties",
+  "note": "Abstract metaphor."
+ },
+ {
+  "phrase": "{navigate} the challenges of",
+  "replacement": "{handle}",
+  "note": "Abstract metaphor."
+ },
+ {
+  "phrase": "{navigate} the intricacies of",
+  "replacement": "{handle}",
+  "note": "Abstract metaphor."
+ },
+ {
+  "phrase": "{navigate} the landscape of",
+  "replacement": "{work} in",
+  "note": "Abstract metaphor."
+ },
+ {
+  "phrase": "in the realm of",
+  "replacement": "in",
+  "note": "Ornamental; \"in\" is enough."
+ },
+ {
+  "phrase": "within the realm of",
+  "replacement": "in",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "in the world of",
+  "replacement": "in",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "in the domain of",
+  "replacement": "in",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "in the sphere of",
+  "replacement": "in",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "in the landscape of",
+  "replacement": "in",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "seamlessly integrate",
+  "replacement": "integrate",
+  "note": "Marketing adverb."
+ },
+ {
+  "phrase": "seamlessly integrates",
+  "replacement": "integrates",
+  "note": "Marketing adverb."
+ },
+ {
+  "phrase": "seamlessly integrated",
+  "replacement": "integrated",
+  "note": "Marketing adverb."
+ },
+ {
+  "phrase": "seamless integration",
+  "replacement": "integration",
+  "note": "Marketing adjective."
+ },
+ {
+  "phrase": "seamlessly",
+  "replacement": null,
+  "note": "Marketing adverb; usually not measurable."
+ },
+ {
+  "phrase": "ever-evolving landscape",
+  "replacement": "changing field",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "ever-changing landscape",
+  "replacement": "changing field",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "rapidly evolving landscape",
+  "replacement": "fast-changing field",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "evolving landscape",
+  "replacement": "changing field",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "the landscape of",
+  "replacement": null,
+  "note": "Metaphor; name the field directly."
+ },
+ {
+  "phrase": "{harness} the power of",
+  "replacement": "{use}",
+  "note": "Marketing phrasing."
+ },
+ {
+  "phrase": "{harness} the potential of",
+  "replacement": "{use}",
+  "note": "Marketing phrasing."
+ },
+ {
+  "phrase": "{leverage} the power of",
+  "replacement": "{use}",
+  "note": "Marketing phrasing."
+ },
+ {
+  "phrase": "{unlock} the power of",
+  "replacement": "{use}",
+  "note": "Marketing phrasing."
+ },
+ {
+  "phrase": "{unleash} the power of",
+  "replacement": "{use}",
+  "note": "Marketing phrasing."
+ },
+ {
+  "phrase": "{tap} into the potential of",
+  "replacement": "{use}",
+  "note": "Marketing phrasing."
+ },
+ {
+  "phrase": "a myriad of",
+  "replacement": "many",
+  "note": "Ornamental quantifier."
+ },
+ {
+  "phrase": "myriad",
+  "replacement": "many",
+  "note": "Ornamental quantifier."
+ },
+ {
+  "phrase": "a plethora of",
+  "replacement": "many",
+  "note": "Ornamental quantifier."
+ },
+ {
+  "phrase": "a multitude of",
+  "replacement": "many",
+  "note": "Ornamental quantifier."
+ },
+ {
+  "phrase": "a wealth of",
+  "replacement": "much",
+  "note": "Ornamental quantifier."
+ },
+ {
+  "phrase": "a host of",
+  "replacement": "many",
+  "note": "Ornamental quantifier."
+ },
+ {
+  "phrase": "an array of",
+  "replacement": "many",
+  "note": "Ornamental quantifier."
+ },
+ {
+  "phrase": "a vast array of",
+  "replacement": "many",
+  "note": "Ornamental quantifier."
+ },
+ {
+  "phrase": "a diverse array of",
+  "replacement": "many",
+  "note": "Ornamental quantifier."
+ },
+ {
+  "phrase": "a wide array of",
+  "replacement": "many",
+  "note": "Ornamental quantifier."
+ },
+ {
+  "phrase": "a rich tapestry of",
+  "replacement": "a mix of",
+  "note": "Ornamental metaphor."
+ },
+ {
+  "phrase": "a tapestry of",
+  "replacement": "a mix of",
+  "note": "Ornamental metaphor."
+ },
+ {
+  "phrase": "the intricate tapestry of",
+  "replacement": null,
+  "note": "Ornamental metaphor."
+ },
+ {
+  "phrase": "{pave} the way for",
+  "replacement": "{enable}",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{pave} the way to",
+  "replacement": "{lead} to",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{pave} the path for",
+  "replacement": "{enable}",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{lay} the groundwork for",
+  "replacement": "{prepare} for",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{lay} the foundation for",
+  "replacement": "{support}",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{set} the stage for",
+  "replacement": "{prepare} for",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{unlock} the potential of",
+  "replacement": "{improve}",
+  "note": "Marketing phrasing."
+ },
+ {
+  "phrase": "{unlock} the full potential of",
+  "replacement": "{improve}",
+  "note": "Marketing phrasing."
+ },
+ {
+  "phrase": "{unlock} new possibilities",
+  "replacement": "{allow} new uses",
+  "note": "Marketing phrasing."
+ },
+ {
+  "phrase": "{unlock} new opportunities",
+  "replacement": "{create} opportunities",
+  "note": "Marketing phrasing."
+ },
+ {
+  "phrase": "{realize} the full potential of",
+  "replacement": "{make} full use of",
+  "note": "Marketing phrasing."
+ },
+ {
+  "phrase": "in conclusion, it is evident that",
+  "replacement": "in conclusion,",
+  "note": "Double signpost."
+ },
+ {
+  "phrase": "in conclusion, it is clear that",
+  "replacement": "in conclusion,",
+  "note": "Double signpost."
+ },
+ {
+  "phrase": "in conclusion, it can be said that",
+  "replacement": "in conclusion,",
+  "note": "Double signpost."
+ },
+ {
+  "phrase": "to conclude, it is evident that",
+  "replacement": "to conclude,",
+  "note": "Double signpost."
+ },
+ {
+  "phrase": "in summary, it is evident that",
+  "replacement": "in summary,",
+  "note": "Double signpost."
+ },
+ {
+  "phrase": "all in all",
+  "replacement": "overall",
+  "note": "Informal summary phrase."
+ },
+ {
+  "phrase": "multifaceted",
+  "replacement": "complex",
+  "note": "Vague adjective; say which facets."
+ },
+ {
+  "phrase": "multi-faceted",
+  "replacement": "complex",
+  "note": "Vague adjective."
+ },
+ {
+  "phrase": "nuanced",
+  "replacement": "subtle",
+  "note": "Often vague; say what the nuance is."
+ },
+ {
+  "phrase": "holistic",
+  "replacement": "complete",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "holistic approach",
+  "replacement": "complete approach",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "a holistic view",
+  "replacement": "a complete view",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "synergy",
+  "replacement": "cooperation",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "synergies",
+  "replacement": "benefits",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "synergistic",
+  "replacement": "combined",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "paradigm shift",
+  "replacement": "major change",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "game-changer",
+  "replacement": "major advance",
+  "note": "Hype."
+ },
+ {
+  "phrase": "game changer",
+  "replacement": "major advance",
+  "note": "Hype."
+ },
+ {
+  "phrase": "game-changing",
+  "replacement": "major",
+  "note": "Hype."
+ },
+ {
+  "phrase": "groundbreaking",
+  "replacement": "new",
+  "note": "Hype; let results show importance."
+ },
+ {
+  "phrase": "revolutionary",
+  "replacement": "new",
+  "note": "Hype."
+ },
+ {
+  "phrase": "revolutionize",
+  "replacement": "transform",
+  "note": "Hype."
+ },
+ {
+  "phrase": "revolutionized",
+  "replacement": "transformed",
+  "note": "Hype."
+ },
+ {
+  "phrase": "revolutionizing",
+  "replacement": "transforming",
+  "note": "Hype."
+ },
+ {
+  "phrase": "cutting-edge",
+  "replacement": "modern",
+  "note": "Hype."
+ },
+ {
+  "phrase": "state-of-the-art",
+  "replacement": "modern",
+  "note": "Acceptable in engineering if you cite what the state of the art is."
+ },
+ {
+  "phrase": "next-generation",
+  "replacement": "new",
+  "note": "Hype."
+ },
+ {
+  "phrase": "unprecedented",
+  "replacement": null,
+  "note": "Big claim; add evidence or remove."
+ },
+ {
+  "phrase": "transformative",
+  "replacement": "major",
+  "note": "Hype."
+ },
+ {
+  "phrase": "transformative potential",
+  "replacement": "potential",
+  "note": "Hype."
+ },
+ {
+  "phrase": "robust framework",
+  "replacement": "framework",
+  "note": "Filler adjective."
+ },
+ {
+  "phrase": "comprehensive overview",
+  "replacement": "overview",
+  "note": "Filler adjective."
+ },
+ {
+  "phrase": "comprehensive understanding",
+  "replacement": "understanding",
+  "note": "Filler adjective."
+ },
+ {
+  "phrase": "comprehensive analysis",
+  "replacement": "analysis",
+  "note": "Filler adjective."
+ },
+ {
+  "phrase": "a comprehensive guide",
+  "replacement": "a guide",
+  "note": "Filler adjective."
+ },
+ {
+  "phrase": "deep dive",
+  "replacement": "close look",
+  "note": "Informal buzzword."
+ },
+ {
+  "phrase": "take a deep dive into",
+  "replacement": "examine",
+  "note": "Informal buzzword."
+ },
+ {
+  "phrase": "{embark} on a journey",
+  "replacement": "{begin}",
+  "note": "Ornamental metaphor."
+ },
+ {
+  "phrase": "journey",
+  "replacement": null,
+  "note": "Metaphor; often means \"process\"."
+ },
+ {
+  "phrase": "{shed} light on",
+  "replacement": "{explain}",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{shed} new light on",
+  "replacement": "{clarify}",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{cast} light on",
+  "replacement": "{explain}",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{foster} a culture of",
+  "replacement": "{encourage}",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{foster} innovation",
+  "replacement": "{encourage} innovation",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{foster} collaboration",
+  "replacement": "{encourage} collaboration",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{foster} growth",
+  "replacement": "{support} growth",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{drive} innovation",
+  "replacement": "{lead} to new ideas",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{spearhead}",
+  "replacement": "{lead}",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{bolster}",
+  "replacement": "{strengthen}",
+  "note": "Ornamental verb."
+ },
+ {
+  "phrase": "{underscore}",
+  "replacement": "{show}",
+  "note": "Ornamental verb."
+ },
+ {
+  "phrase": "{underscore} the importance of",
+  "replacement": "{show} why",
+  "note": "Ornamental verb."
+ },
+ {
+  "phrase": "{highlight} the importance of",
+  "replacement": "{show} why",
+  "note": "Signpost phrase."
+ },
+ {
+  "phrase": "{emphasize} the importance of",
+  "replacement": "{stress}",
+  "note": "Signpost phrase."
+ },
+ {
+  "phrase": "{underline} the importance of",
+  "replacement": "{show} why",
+  "note": "Signpost phrase."
+ },
+ {
+  "phrase": "{showcase}",
+  "replacement": "{show}",
+  "note": "Marketing verb."
+ },
+ {
+  "phrase": "{empower}",
+  "replacement": "{enable}",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{empower} users to",
+  "replacement": "{let} users",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{optimize}",
+  "replacement": null,
+  "note": "Say what was optimised and by how much."
+ },
+ {
+  "phrase": "{revolutionize} the way",
+  "replacement": "{change} how",
+  "note": "Hype."
+ },
+ {
+  "phrase": "{transform} the way",
+  "replacement": "{change} how",
+  "note": "Hype."
+ },
+ {
+  "phrase": "{reshape} the way",
+  "replacement": "{change} how",
+  "note": "Hype."
+ },
+ {
+  "phrase": "{redefine} the way",
+  "replacement": "{change} how",
+  "note": "Hype."
+ },
+ {
+  "phrase": "the way we live",
+  "replacement": "daily life",
+  "note": "Grand framing."
+ },
+ {
+  "phrase": "the way we live and work",
+  "replacement": "daily life and work",
+  "note": "Grand framing."
+ },
+ {
+  "phrase": "{cater} to the needs of",
+  "replacement": "{serve}",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "{meet} the ever-growing demand",
+  "replacement": "{meet} growing demand",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "ever-growing",
+  "replacement": "growing",
+  "note": "Ornamental intensifier."
+ },
+ {
+  "phrase": "ever-increasing",
+  "replacement": "growing",
+  "note": "Ornamental intensifier."
+ },
+ {
+  "phrase": "ever-expanding",
+  "replacement": "growing",
+  "note": "Ornamental intensifier."
+ },
+ {
+  "phrase": "ever-present",
+  "replacement": "constant",
+  "note": "Ornamental intensifier."
+ },
+ {
+  "phrase": "continues to evolve",
+  "replacement": "changes",
+  "note": "Vague."
+ },
+ {
+  "phrase": "{continue} to grow",
+  "replacement": "{grow}",
+  "note": "Vague."
+ },
+ {
+  "phrase": "it is no secret that",
+  "replacement": "",
+  "note": "Filler opener."
+ },
+ {
+  "phrase": "it goes without saying",
+  "replacement": "",
+  "note": "Filler opener."
+ },
+ {
+  "phrase": "one cannot overstate",
+  "replacement": "",
+  "note": "Hyperbole."
+ },
+ {
+  "phrase": "cannot be overstated",
+  "replacement": "is large",
+  "note": "Hyperbole; quantify instead."
+ },
+ {
+  "phrase": "cannot be understated",
+  "replacement": "matters",
+  "note": "Hyperbole (and often misused)."
+ },
+ {
+  "phrase": "the importance of this cannot be overstated",
+  "replacement": "this matters",
+  "note": "Hyperbole."
+ },
+ {
+  "phrase": "more than ever before",
+  "replacement": "now more than before",
+  "note": "Hyperbole."
+ },
+ {
+  "phrase": "now more than ever",
+  "replacement": "especially now",
+  "note": "Hyperbole."
+ },
+ {
+  "phrase": "at the forefront of",
+  "replacement": "leading",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{be} at the forefront of",
+  "replacement": "{lead}",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{stay} ahead of the curve",
+  "replacement": "{keep} up",
+  "note": "Cliché."
+ },
+ {
+  "phrase": "{remain} at the cutting edge",
+  "replacement": "{stay} current",
+  "note": "Cliché."
+ },
+ {
+  "phrase": "the cornerstone of",
+  "replacement": "the basis of",
+  "note": "Ornamental metaphor."
+ },
+ {
+  "phrase": "a cornerstone of",
+  "replacement": "a basis of",
+  "note": "Ornamental metaphor."
+ },
+ {
+  "phrase": "{serve} as a cornerstone",
+  "replacement": "{be} a basis",
+  "note": "Ornamental metaphor."
+ },
+ {
+  "phrase": "{serve} as a catalyst for",
+  "replacement": "{cause}",
+  "note": "Ornamental metaphor."
+ },
+ {
+  "phrase": "a catalyst for",
+  "replacement": "a cause of",
+  "note": "Ornamental metaphor."
+ },
+ {
+  "phrase": "{act} as a catalyst",
+  "replacement": "{trigger} change",
+  "note": "Ornamental metaphor."
+ },
+ {
+  "phrase": "the backbone of",
+  "replacement": "the basis of",
+  "note": "Ornamental metaphor."
+ },
+ {
+  "phrase": "{serve} as the backbone of",
+  "replacement": "{support}",
+  "note": "Ornamental metaphor."
+ },
+ {
+  "phrase": "the linchpin of",
+  "replacement": "the key part of",
+  "note": "Ornamental metaphor."
+ },
+ {
+  "phrase": "the bedrock of",
+  "replacement": "the basis of",
+  "note": "Ornamental metaphor."
+ },
+ {
+  "phrase": "at the heart of",
+  "replacement": "central to",
+  "note": "Ornamental metaphor."
+ },
+ {
+  "phrase": "at its core",
+  "replacement": null,
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "the crux of",
+  "replacement": "the core of",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "key takeaway",
+  "replacement": "main point",
+  "note": "Informal buzzword."
+ },
+ {
+  "phrase": "key takeaways",
+  "replacement": "main points",
+  "note": "Informal buzzword."
+ },
+ {
+  "phrase": "{dive} into",
+  "replacement": "{examine}",
+  "note": "Informal verb."
+ },
+ {
+  "phrase": "{dive} deeper",
+  "replacement": "{look} closer",
+  "note": "Informal verb."
+ },
+ {
+  "phrase": "{explore} the intricacies of",
+  "replacement": "{examine}",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "the intricacies of",
+  "replacement": "the details of",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "intricate",
+  "replacement": "complex",
+  "note": "Ornamental adjective."
+ },
+ {
+  "phrase": "intricately",
+  "replacement": "closely",
+  "note": "Ornamental adverb."
+ },
+ {
+  "phrase": "meticulous",
+  "replacement": "careful",
+  "note": "Ornamental adjective."
+ },
+ {
+  "phrase": "meticulously",
+  "replacement": "carefully",
+  "note": "Ornamental adverb."
+ },
+ {
+  "phrase": "meticulously crafted",
+  "replacement": "carefully designed",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "crucial",
+  "replacement": "important",
+  "note": "Overused intensity adjective."
+ },
+ {
+  "phrase": "pivotal",
+  "replacement": "key",
+  "note": "Overused intensity adjective."
+ },
+ {
+  "phrase": "paramount",
+  "replacement": "essential",
+  "note": "Overused intensity adjective."
+ },
+ {
+  "phrase": "vital",
+  "replacement": "essential",
+  "note": "Overused intensity adjective."
+ },
+ {
+  "phrase": "indispensable",
+  "replacement": "essential",
+  "note": "Overused intensity adjective."
+ },
+ {
+  "phrase": "invaluable",
+  "replacement": "very useful",
+  "note": "Overused intensity adjective."
+ },
+ {
+  "phrase": "profound",
+  "replacement": "deep",
+  "note": "Overused intensity adjective."
+ },
+ {
+  "phrase": "profoundly",
+  "replacement": "deeply",
+  "note": "Overused intensity adverb."
+ },
+ {
+  "phrase": "remarkable",
+  "replacement": "notable",
+  "note": "Overused intensity adjective."
+ },
+ {
+  "phrase": "remarkably",
+  "replacement": "notably",
+  "note": "Overused intensity adverb."
+ },
+ {
+  "phrase": "notably",
+  "replacement": null,
+  "note": "Signpost; keep only if contrasting."
+ },
+ {
+  "phrase": "noteworthy",
+  "replacement": "notable",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "commendable",
+  "replacement": "good",
+  "note": "Evaluative filler."
+ },
+ {
+  "phrase": "unparalleled",
+  "replacement": null,
+  "note": "Big claim; add evidence or remove."
+ },
+ {
+  "phrase": "unmatched",
+  "replacement": null,
+  "note": "Big claim; add evidence or remove."
+ },
+ {
+  "phrase": "unrivaled",
+  "replacement": null,
+  "note": "Big claim; add evidence or remove."
+ },
+ {
+  "phrase": "second to none",
+  "replacement": null,
+  "note": "Big claim; add evidence or remove."
+ },
+ {
+  "phrase": "vibrant",
+  "replacement": "lively",
+  "note": "Ornamental adjective."
+ },
+ {
+  "phrase": "bustling",
+  "replacement": "busy",
+  "note": "Ornamental adjective."
+ },
+ {
+  "phrase": "dynamic landscape",
+  "replacement": "changing field",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{thrive}",
+  "replacement": "{do} well",
+  "note": "Vague."
+ },
+ {
+  "phrase": "thriving",
+  "replacement": "growing",
+  "note": "Vague."
+ },
+ {
+  "phrase": "{flourish}",
+  "replacement": "{grow}",
+  "note": "Vague."
+ },
+ {
+  "phrase": "{burgeon}",
+  "replacement": "{grow}",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "burgeoning",
+  "replacement": "growing",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{garner}",
+  "replacement": "{gain}",
+  "note": "Ornamental verb."
+ },
+ {
+  "phrase": "{garner} attention",
+  "replacement": "{attract} attention",
+  "note": "Ornamental verb."
+ },
+ {
+  "phrase": "{endeavor} to",
+  "replacement": "{try} to",
+  "note": "Formal verb."
+ },
+ {
+  "phrase": "{strive} to",
+  "replacement": "{aim} to",
+  "note": "Formal verb."
+ },
+ {
+  "phrase": "{strive} for",
+  "replacement": "{aim} for",
+  "note": "Formal verb."
+ },
+ {
+  "phrase": "{aim} to shed light on",
+  "replacement": "{aim} to explain",
+  "note": "Cliché."
+ },
+ {
+  "phrase": "{seek} to",
+  "replacement": "{aim} to",
+  "note": "Formal verb."
+ },
+ {
+  "phrase": "{commence}",
+  "replacement": "{start}",
+  "note": "Formal verb."
+ },
+ {
+  "phrase": "{embark} on",
+  "replacement": "{start}",
+  "note": "Ornamental verb."
+ },
+ {
+  "phrase": "{embark} upon",
+  "replacement": "{start}",
+  "note": "Ornamental verb."
+ },
+ {
+  "phrase": "{embrace}",
+  "replacement": "{adopt}",
+  "note": "Ornamental verb."
+ },
+ {
+  "phrase": "{embrace} change",
+  "replacement": "{adapt}",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{envision}",
+  "replacement": "{imagine}",
+  "note": "Ornamental verb."
+ },
+ {
+  "phrase": "{envisage}",
+  "replacement": "{expect}",
+  "note": "Ornamental verb."
+ },
+ {
+  "phrase": "{utilize}",
+  "replacement": "{use}",
+  "note": "Formal verb; \"use\" is clearer."
+ },
+ {
+  "phrase": "{leverage}",
+  "replacement": "{use}",
+  "note": "Buzzword verb."
+ },
+ {
+  "phrase": "{facilitate}",
+  "replacement": "{help}",
+  "note": "Formal verb."
+ },
+ {
+  "phrase": "{enhance}",
+  "replacement": "{improve}",
+  "note": "Overused verb."
+ },
+ {
+  "phrase": "{ameliorate}",
+  "replacement": "{improve}",
+  "note": "Formal verb."
+ },
+ {
+  "phrase": "{bolster} efficiency",
+  "replacement": "{improve} efficiency",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{boast}",
+  "replacement": "{have}",
+  "note": "Marketing verb."
+ },
+ {
+  "phrase": "{boast} an impressive",
+  "replacement": "{have} a large",
+  "note": "Marketing phrasing."
+ },
+ {
+  "phrase": "impressive",
+  "replacement": null,
+  "note": "Evaluative; show the number instead."
+ },
+ {
+  "phrase": "{resonate} with",
+  "replacement": "{appeal} to",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{ensure} seamless",
+  "replacement": "{ensure} smooth",
+  "note": "Marketing phrasing."
+ },
+ {
+  "phrase": "{ensure} optimal",
+  "replacement": "{ensure} good",
+  "note": "Vague."
+ },
+ {
+  "phrase": "optimal performance",
+  "replacement": "good performance",
+  "note": "Vague unless you define the optimum."
+ },
+ {
+  "phrase": "enhanced performance",
+  "replacement": "better performance",
+  "note": "Vague; quantify."
+ },
+ {
+  "phrase": "improved efficiency",
+  "replacement": "higher efficiency",
+  "note": "Quantify if you can."
+ },
+ {
+  "phrase": "{offer} a glimpse into",
+  "replacement": "{show}",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "a glimpse into",
+  "replacement": "a look at",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "a deeper understanding of",
+  "replacement": "a better understanding of",
+  "note": "Filler."
+ },
+ {
+  "phrase": "a better understanding of",
+  "replacement": null,
+  "note": "Say what is understood."
+ },
+ {
+  "phrase": "gain insights into",
+  "replacement": "learn about",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{gain} valuable insights",
+  "replacement": "{learn}",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{provide} valuable insights into",
+  "replacement": "{show}",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{provide} valuable insights",
+  "replacement": "{help}",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{offer} valuable insights",
+  "replacement": "{help}",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "valuable insights",
+  "replacement": "useful findings",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "actionable insights",
+  "replacement": "useful findings",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "insights into",
+  "replacement": "findings on",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{provide} a comprehensive",
+  "replacement": "{give} a full",
+  "note": "Filler adjective."
+ },
+ {
+  "phrase": "{offer} a comprehensive",
+  "replacement": "{give} a full",
+  "note": "Filler adjective."
+ },
+ {
+  "phrase": "{serve} as a reminder",
+  "replacement": "{remind} us",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{serve} as a",
+  "replacement": "{be} a",
+  "note": "Wordy linking verb."
+ },
+ {
+  "phrase": "{serve} as an",
+  "replacement": "{be} an",
+  "note": "Wordy linking verb."
+ },
+ {
+  "phrase": "{stand} as a",
+  "replacement": "{be} a",
+  "note": "Wordy linking verb."
+ },
+ {
+  "phrase": "{prove} to be",
+  "replacement": "{be}",
+  "note": "Wordy linking verb."
+ },
+ {
+  "phrase": "{remain} a critical",
+  "replacement": "{remain} an important",
+  "note": "Intensity filler."
+ },
+ {
+  "phrase": "{remain} crucial",
+  "replacement": "{remain} important",
+  "note": "Intensity filler."
+ },
+ {
+  "phrase": "{hold} immense potential",
+  "replacement": "{be} promising",
+  "note": "Hype."
+ },
+ {
+  "phrase": "{hold} great promise",
+  "replacement": "{be} promising",
+  "note": "Hype."
+ },
+ {
+  "phrase": "immense potential",
+  "replacement": "great potential",
+  "note": "Hype."
+ },
+ {
+  "phrase": "immense",
+  "replacement": "large",
+  "note": "Ornamental intensity."
+ },
+ {
+  "phrase": "tremendous",
+  "replacement": "large",
+  "note": "Ornamental intensity."
+ },
+ {
+  "phrase": "tremendously",
+  "replacement": "greatly",
+  "note": "Ornamental intensity."
+ },
+ {
+  "phrase": "significantly",
+  "replacement": null,
+  "note": "In reports, \"significantly\" implies a statistical test. Add the test or say \"clearly\"."
+ },
+ {
+  "phrase": "a significant impact",
+  "replacement": "a large effect",
+  "note": "Vague; quantify."
+ },
+ {
+  "phrase": "a profound impact",
+  "replacement": "a large effect",
+  "note": "Vague; quantify."
+ },
+ {
+  "phrase": "a lasting impact",
+  "replacement": "a long-term effect",
+  "note": "Vague."
+ },
+ {
+  "phrase": "far-reaching implications",
+  "replacement": "wide effects",
+  "note": "Hype."
+ },
+ {
+  "phrase": "far-reaching",
+  "replacement": "wide",
+  "note": "Hype."
+ },
+ {
+  "phrase": "{have} far-reaching consequences",
+  "replacement": "{affect} many areas",
+  "note": "Hype."
+ },
+ {
+  "phrase": "{open} up new avenues",
+  "replacement": "{create} new options",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "new avenues for",
+  "replacement": "new options for",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "avenues for future research",
+  "replacement": "directions for future work",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{pave} new avenues",
+  "replacement": "{create} new options",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{bridge} the gap between",
+  "replacement": "{connect}",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{bridge} the gap",
+  "replacement": "{close} the gap",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{strike} a balance between",
+  "replacement": "{balance}",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{strike} the right balance",
+  "replacement": "{balance}",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "a delicate balance",
+  "replacement": "a balance",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{tackle} the challenge of",
+  "replacement": "{address}",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{address} the challenges of",
+  "replacement": "{address}",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "{overcome} the challenges",
+  "replacement": "{solve} the problems",
+  "note": "Vague."
+ },
+ {
+  "phrase": "{face} numerous challenges",
+  "replacement": "{face} several problems",
+  "note": "Vague."
+ },
+ {
+  "phrase": "numerous challenges",
+  "replacement": "several problems",
+  "note": "Vague; name them."
+ },
+ {
+  "phrase": "various challenges",
+  "replacement": "several problems",
+  "note": "Vague; name them."
+ },
+ {
+  "phrase": "challenges and opportunities",
+  "replacement": "problems and benefits",
+  "note": "Stock pairing."
+ },
+ {
+  "phrase": "opportunities and challenges",
+  "replacement": "benefits and problems",
+  "note": "Stock pairing."
+ },
+ {
+  "phrase": "both advantages and disadvantages",
+  "replacement": "advantages and disadvantages",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "the pros and cons",
+  "replacement": "the advantages and disadvantages",
+  "note": "Informal."
+ },
+ {
+  "phrase": "{reap} the benefits of",
+  "replacement": "{benefit} from",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{reap} the benefits",
+  "replacement": "{benefit}",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{yield} significant benefits",
+  "replacement": "{help}",
+  "note": "Vague."
+ },
+ {
+  "phrase": "a wide range of applications",
+  "replacement": "many applications",
+  "note": "Vague; name one."
+ },
+ {
+  "phrase": "a broad spectrum of",
+  "replacement": "many",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "a diverse range of",
+  "replacement": "many",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "a diverse set of",
+  "replacement": "many",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "across various industries",
+  "replacement": "in many industries",
+  "note": "Vague; name one."
+ },
+ {
+  "phrase": "across various domains",
+  "replacement": "in many fields",
+  "note": "Vague; name one."
+ },
+ {
+  "phrase": "various industries",
+  "replacement": "many industries",
+  "note": "Vague; name one."
+ },
+ {
+  "phrase": "various sectors",
+  "replacement": "many sectors",
+  "note": "Vague; name one."
+ },
+ {
+  "phrase": "various fields",
+  "replacement": "many fields",
+  "note": "Vague; name one."
+ },
+ {
+  "phrase": "various applications",
+  "replacement": "many applications",
+  "note": "Vague; name one."
+ },
+ {
+  "phrase": "real-world applications",
+  "replacement": "practical uses",
+  "note": "Stock phrase."
+ },
+ {
+  "phrase": "real-world scenarios",
+  "replacement": "practical cases",
+  "note": "Stock phrase."
+ },
+ {
+  "phrase": "real-world",
+  "replacement": "practical",
+  "note": "Stock phrase."
+ },
+ {
+  "phrase": "in real-world scenarios",
+  "replacement": "in practice",
+  "note": "Stock phrase."
+ },
+ {
+  "phrase": "in various scenarios",
+  "replacement": "in many cases",
+  "note": "Vague."
+ },
+ {
+  "phrase": "in this regard",
+  "replacement": "here",
+  "note": "Formal filler."
+ },
+ {
+  "phrase": "in this context",
+  "replacement": "here",
+  "note": "Formal filler."
+ },
+ {
+  "phrase": "in this vein",
+  "replacement": "similarly",
+  "note": "Ornamental transition."
+ },
+ {
+  "phrase": "with this in mind",
+  "replacement": "so",
+  "note": "Filler transition."
+ },
+ {
+  "phrase": "having said that",
+  "replacement": "however",
+  "note": "Filler transition."
+ },
+ {
+  "phrase": "that being said",
+  "replacement": "however",
+  "note": "Filler transition."
+ },
+ {
+  "phrase": "that said",
+  "replacement": "however",
+  "note": "Filler transition."
+ },
+ {
+  "phrase": "with that being said",
+  "replacement": "however",
+  "note": "Filler transition."
+ },
+ {
+  "phrase": "moreover",
+  "replacement": null,
+  "note": "Heavy transition; often unnecessary."
+ },
+ {
+  "phrase": "furthermore",
+  "replacement": null,
+  "note": "Heavy transition; often unnecessary."
+ },
+ {
+  "phrase": "additionally",
+  "replacement": null,
+  "note": "Heavy transition; often unnecessary."
+ },
+ {
+  "phrase": "in addition",
+  "replacement": null,
+  "note": "Heavy transition; often unnecessary."
+ },
+ {
+  "phrase": "ultimately",
+  "replacement": null,
+  "note": "Filler adverb unless contrasting."
+ },
+ {
+  "phrase": "essentially",
+  "replacement": null,
+  "note": "Filler adverb."
+ },
+ {
+  "phrase": "fundamentally",
+  "replacement": null,
+  "note": "Filler adverb."
+ },
+ {
+  "phrase": "undoubtedly",
+  "replacement": null,
+  "note": "Overconfident adverb; add evidence."
+ },
+ {
+  "phrase": "undeniably",
+  "replacement": null,
+  "note": "Overconfident adverb; add evidence."
+ },
+ {
+  "phrase": "indisputably",
+  "replacement": null,
+  "note": "Overconfident adverb; add evidence."
+ },
+ {
+  "phrase": "unequivocally",
+  "replacement": null,
+  "note": "Overconfident adverb; add evidence."
+ },
+ {
+  "phrase": "without a doubt",
+  "replacement": null,
+  "note": "Overconfident; add evidence."
+ },
+ {
+  "phrase": "it is undeniable that",
+  "replacement": "",
+  "note": "Overconfident opener."
+ },
+ {
+  "phrase": "it is evident that",
+  "replacement": "",
+  "note": "Signpost; the claim should show itself."
+ },
+ {
+  "phrase": "it becomes evident that",
+  "replacement": "",
+  "note": "Signpost."
+ },
+ {
+  "phrase": "it becomes clear that",
+  "replacement": "",
+  "note": "Signpost."
+ },
+ {
+  "phrase": "this highlights the need for",
+  "replacement": "so we need",
+  "note": "Stock phrase."
+ },
+ {
+  "phrase": "this underscores the need for",
+  "replacement": "so we need",
+  "note": "Stock phrase."
+ },
+ {
+  "phrase": "this underscores the importance of",
+  "replacement": "this shows why",
+  "note": "Stock phrase."
+ },
+ {
+  "phrase": "this highlights the importance of",
+  "replacement": "this shows why",
+  "note": "Stock phrase."
+ },
+ {
+  "phrase": "this demonstrates the importance of",
+  "replacement": "this shows why",
+  "note": "Stock phrase."
+ },
+ {
+  "phrase": "this sheds light on",
+  "replacement": "this explains",
+  "note": "Cliché."
+ },
+ {
+  "phrase": "this paves the way for",
+  "replacement": "this enables",
+  "note": "Cliché."
+ },
+ {
+  "phrase": "by doing so",
+  "replacement": "this way",
+  "note": "Filler."
+ },
+ {
+  "phrase": "in doing so",
+  "replacement": "this way",
+  "note": "Filler."
+ },
+ {
+  "phrase": "as such",
+  "replacement": null,
+  "note": "Often misused."
+ },
+ {
+  "phrase": "thus, it can be concluded that",
+  "replacement": "thus,",
+  "note": "Double signpost."
+ },
+ {
+  "phrase": "therefore, it can be concluded that",
+  "replacement": "therefore,",
+  "note": "Double signpost."
+ },
+ {
+  "phrase": "it can be concluded that",
+  "replacement": "",
+  "note": "Signpost."
+ },
+ {
+  "phrase": "it can be inferred that",
+  "replacement": "",
+  "note": "Signpost."
+ },
+ {
+  "phrase": "overall, it is clear that",
+  "replacement": "overall,",
+  "note": "Double signpost."
+ },
+ {
+  "phrase": "in essence",
+  "replacement": "in short",
+  "note": "Filler."
+ },
+ {
+  "phrase": "in a nutshell",
+  "replacement": "in short",
+  "note": "Informal."
+ },
+ {
+  "phrase": "a key aspect of",
+  "replacement": "part of",
+  "note": "Vague."
+ },
+ {
+  "phrase": "a crucial aspect of",
+  "replacement": "an important part of",
+  "note": "Vague."
+ },
+ {
+  "phrase": "an essential aspect of",
+  "replacement": "an essential part of",
+  "note": "Vague."
+ },
+ {
+  "phrase": "an important aspect of",
+  "replacement": "an important part of",
+  "note": "Vague."
+ },
+ {
+  "phrase": "a critical component of",
+  "replacement": "a key part of",
+  "note": "Vague."
+ },
+ {
+  "phrase": "an integral part of",
+  "replacement": "part of",
+  "note": "Filler adjective."
+ },
+ {
+  "phrase": "an integral component of",
+  "replacement": "a part of",
+  "note": "Filler adjective."
+ },
+ {
+  "phrase": "key component",
+  "replacement": "main part",
+  "note": "Vague."
+ },
+ {
+  "phrase": "key factor",
+  "replacement": "main factor",
+  "note": "Vague."
+ },
+ {
+  "phrase": "a key factor in",
+  "replacement": "a main cause of",
+  "note": "Vague."
+ },
+ {
+  "phrase": "key role",
+  "replacement": "main role",
+  "note": "Vague."
+ },
+ {
+  "phrase": "{be} poised to",
+  "replacement": "{be} likely to",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "poised to",
+  "replacement": "likely to",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{stand} poised to",
+  "replacement": "{be} likely to",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{look} to the future",
+  "replacement": "{look} ahead",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "as we move forward",
+  "replacement": "from now on",
+  "note": "Filler."
+ },
+ {
+  "phrase": "moving forward",
+  "replacement": "from now on",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "going forward",
+  "replacement": "from now on",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "in the years to come",
+  "replacement": "in future",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "in the coming years",
+  "replacement": "in future",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "for years to come",
+  "replacement": "for many years",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{shape} the future of",
+  "replacement": "{influence}",
+  "note": "Grand framing."
+ },
+ {
+  "phrase": "{hold} the key to",
+  "replacement": "{be} essential for",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "the key to success",
+  "replacement": "what makes it work",
+  "note": "Cliché."
+ },
+ {
+  "phrase": "a double-edged sword",
+  "replacement": "both useful and risky",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "a powerful tool",
+  "replacement": "a useful tool",
+  "note": "Hype adjective."
+ },
+ {
+  "phrase": "powerful tool",
+  "replacement": "useful tool",
+  "note": "Hype adjective."
+ },
+ {
+  "phrase": "a valuable tool",
+  "replacement": "a useful tool",
+  "note": "Filler adjective."
+ },
+ {
+  "phrase": "a valuable resource",
+  "replacement": "a useful resource",
+  "note": "Filler adjective."
+ },
+ {
+  "phrase": "an invaluable resource",
+  "replacement": "a very useful resource",
+  "note": "Filler adjective."
+ },
+ {
+  "phrase": "a vital tool",
+  "replacement": "an essential tool",
+  "note": "Filler adjective."
+ },
+ {
+  "phrase": "{revolutionize} industries",
+  "replacement": "{change} industries",
+  "note": "Hype."
+ },
+ {
+  "phrase": "{transform} industries",
+  "replacement": "{change} industries",
+  "note": "Hype."
+ },
+ {
+  "phrase": "{transform} lives",
+  "replacement": "{help} people",
+  "note": "Hype."
+ },
+ {
+  "phrase": "{change} the game",
+  "replacement": "{change} practice",
+  "note": "Cliché."
+ },
+ {
+  "phrase": "{take} center stage",
+  "replacement": "{become} central",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{take} centre stage",
+  "replacement": "{become} central",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{come} into play",
+  "replacement": "{matter}",
+  "note": "Cliché."
+ },
+ {
+  "phrase": "{come} to the forefront",
+  "replacement": "{become} important",
+  "note": "Cliché."
+ },
+ {
+  "phrase": "{rise} to prominence",
+  "replacement": "{become} common",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{gain} traction",
+  "replacement": "{spread}",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{gain} momentum",
+  "replacement": "{grow}",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{gain} popularity",
+  "replacement": "{become} popular",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "{gain} significant attention",
+  "replacement": "{attract} attention",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "{attract} significant attention",
+  "replacement": "{attract} attention",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "{receive} considerable attention",
+  "replacement": "{be} widely studied",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "widespread adoption",
+  "replacement": "wide use",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{witness} a surge in",
+  "replacement": "{see} a rise in",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "a surge in",
+  "replacement": "a rise in",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{witness} significant growth",
+  "replacement": "{grow}",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{witness}",
+  "replacement": "{see}",
+  "note": "Ornamental verb."
+ },
+ {
+  "phrase": "{usher} in",
+  "replacement": "{bring}",
+  "note": "Ornamental verb."
+ },
+ {
+  "phrase": "{usher} in a new era",
+  "replacement": "{start} a new period",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "a new era of",
+  "replacement": "a new period of",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{mark} a significant milestone",
+  "replacement": "{be} an important step",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "a significant milestone",
+  "replacement": "an important step",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "a major milestone",
+  "replacement": "an important step",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{mark} a turning point",
+  "replacement": "{be} a turning point",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{represent} a significant step forward",
+  "replacement": "{be} an improvement",
+  "note": "Hype."
+ },
+ {
+  "phrase": "a significant step forward",
+  "replacement": "an improvement",
+  "note": "Hype."
+ },
+ {
+  "phrase": "a step in the right direction",
+  "replacement": "an improvement",
+  "note": "Cliché."
+ },
+ {
+  "phrase": "{push} the boundaries of",
+  "replacement": "{extend}",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{push} the envelope",
+  "replacement": "{extend} limits",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{break} new ground",
+  "replacement": "{do} something new",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{raise} the bar",
+  "replacement": "{set} a higher standard",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "the sky is the limit",
+  "replacement": null,
+  "note": "Cliché; remove."
+ },
+ {
+  "phrase": "endless possibilities",
+  "replacement": "many options",
+  "note": "Hype."
+ },
+ {
+  "phrase": "limitless possibilities",
+  "replacement": "many options",
+  "note": "Hype."
+ },
+ {
+  "phrase": "boundless",
+  "replacement": "large",
+  "note": "Hype."
+ },
+ {
+  "phrase": "{open} the door to",
+  "replacement": "{allow}",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{open} doors to",
+  "replacement": "{allow}",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "{fuel} the growth of",
+  "replacement": "{drive}",
+  "note": "Metaphor."
+ },
+ {
+  "phrase": "{fuel} innovation",
+  "replacement": "{encourage} new ideas",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{stimulate} innovation",
+  "replacement": "{encourage} new ideas",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{spark} innovation",
+  "replacement": "{encourage} new ideas",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{spark} interest",
+  "replacement": "{interest}",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{skyrocket}",
+  "replacement": "{rise} sharply",
+  "note": "Hype verb."
+ },
+ {
+  "phrase": "{soar}",
+  "replacement": "{rise}",
+  "note": "Hype verb."
+ },
+ {
+  "phrase": "{plummet}",
+  "replacement": "{fall} sharply",
+  "note": "Hype verb."
+ },
+ {
+  "phrase": "dramatically",
+  "replacement": "sharply",
+  "note": "Hype adverb; quantify instead."
+ },
+ {
+  "phrase": "drastically",
+  "replacement": "sharply",
+  "note": "Hype adverb; quantify instead."
+ },
+ {
+  "phrase": "exponentially",
+  "replacement": null,
+  "note": "Usually not literally exponential; quantify."
+ },
+ {
+  "phrase": "{increase} exponentially",
+  "replacement": null,
+  "note": "Usually not literally exponential."
+ },
+ {
+  "phrase": "{grow} exponentially",
+  "replacement": null,
+  "note": "Usually not literally exponential."
+ },
+ {
+  "phrase": "exponential growth",
+  "replacement": null,
+  "note": "Usually not literally exponential."
+ },
+ {
+  "phrase": "an ever-increasing number of",
+  "replacement": "more and more",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "an increasing number of",
+  "replacement": "more",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "a growing number of",
+  "replacement": "more",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "a growing body of",
+  "replacement": "more",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "a growing body of research",
+  "replacement": "more studies",
+  "note": "Vague; cite them."
+ },
+ {
+  "phrase": "a growing body of evidence",
+  "replacement": "more evidence",
+  "note": "Vague; cite it."
+ },
+ {
+  "phrase": "research has shown that",
+  "replacement": null,
+  "note": "Cite the research."
+ },
+ {
+  "phrase": "studies have shown that",
+  "replacement": null,
+  "note": "Cite the studies."
+ },
+ {
+  "phrase": "experts agree that",
+  "replacement": null,
+  "note": "Cite the experts."
+ },
+ {
+  "phrase": "many experts believe",
+  "replacement": null,
+  "note": "Cite them or remove."
+ },
+ {
+  "phrase": "it is widely recognized that",
+  "replacement": "",
+  "note": "Vague appeal; cite a source."
+ },
+ {
+  "phrase": "it is widely acknowledged that",
+  "replacement": "",
+  "note": "Vague appeal; cite a source."
+ },
+ {
+  "phrase": "it is widely accepted that",
+  "replacement": "",
+  "note": "Vague appeal; cite a source."
+ },
+ {
+  "phrase": "it is commonly believed that",
+  "replacement": "",
+  "note": "Vague appeal; cite a source."
+ },
+ {
+  "phrase": "is widely regarded as",
+  "replacement": "is often called",
+  "note": "Vague appeal; cite a source."
+ },
+ {
+  "phrase": "{be} widely considered",
+  "replacement": "{be} often seen as",
+  "note": "Vague appeal."
+ },
+ {
+  "phrase": "is often referred to as",
+  "replacement": "is called",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "commonly referred to as",
+  "replacement": "called",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "{refer} to as",
+  "replacement": "{call}",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "a wide variety of",
+  "replacement": "many",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "first and foremost",
+  "replacement": "first",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "last but not least",
+  "replacement": "finally",
+  "note": "Cliché."
+ },
+ {
+  "phrase": "not only ... but also",
+  "replacement": null,
+  "note": "Heavy construction; check if both halves are needed."
+ },
+ {
+  "phrase": "whether it be",
+  "replacement": "whether",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "in the grand scheme of things",
+  "replacement": "overall",
+  "note": "Cliché."
+ },
+ {
+  "phrase": "at the end of the day",
+  "replacement": "ultimately",
+  "note": "Cliché."
+ },
+ {
+  "phrase": "when it comes to",
+  "replacement": "for",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "when it comes down to it",
+  "replacement": "ultimately",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "in terms of the",
+  "replacement": "for the",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "it is essential for",
+  "replacement": null,
+  "note": "Say who must do what."
+ },
+ {
+  "phrase": "it is imperative that",
+  "replacement": "we must ensure that",
+  "note": "Overstated."
+ },
+ {
+  "phrase": "it is imperative to",
+  "replacement": "we must",
+  "note": "Overstated."
+ },
+ {
+  "phrase": "it is paramount that",
+  "replacement": "it is essential that",
+  "note": "Overstated."
+ },
+ {
+  "phrase": "it is vital that",
+  "replacement": "it is essential that",
+  "note": "Overstated."
+ },
+ {
+  "phrase": "it is critical that",
+  "replacement": "it is essential that",
+  "note": "Overstated."
+ },
+ {
+  "phrase": "it is crucial that",
+  "replacement": "it is important that",
+  "note": "Overstated."
+ },
+ {
+  "phrase": "it is crucial to",
+  "replacement": "we must",
+  "note": "Overstated."
+ },
+ {
+  "phrase": "it is vital to",
+  "replacement": "we must",
+  "note": "Overstated."
+ },
+ {
+  "phrase": "{serve} a crucial purpose",
+  "replacement": "{matter}",
+  "note": "Vague."
+ },
+ {
+  "phrase": "{serve} a vital function",
+  "replacement": "{matter}",
+  "note": "Vague."
+ },
+ {
+  "phrase": "{fulfill} a crucial role",
+  "replacement": "{matter}",
+  "note": "Vague."
+ },
+ {
+  "phrase": "{contribute} significantly to",
+  "replacement": "{help}",
+  "note": "Vague; quantify."
+ },
+ {
+  "phrase": "{contribute} greatly to",
+  "replacement": "{help}",
+  "note": "Vague; quantify."
+ },
+ {
+  "phrase": "{contribute} immensely to",
+  "replacement": "{help}",
+  "note": "Vague; quantify."
+ },
+ {
+  "phrase": "impactful",
+  "replacement": "effective",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{empower} individuals",
+  "replacement": "{help} people",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "stakeholders",
+  "replacement": "people involved",
+  "note": "Jargon; name them."
+ },
+ {
+  "phrase": "end-users",
+  "replacement": "users",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "end users",
+  "replacement": "users",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "user-friendly",
+  "replacement": "easy to use",
+  "note": "Stock adjective."
+ },
+ {
+  "phrase": "user-centric",
+  "replacement": "user-focused",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "data-driven",
+  "replacement": "data-based",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "data-driven insights",
+  "replacement": "findings from data",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "data-driven decision-making",
+  "replacement": "decisions based on data",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{make} informed decisions",
+  "replacement": "{decide} with evidence",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "informed decisions",
+  "replacement": "evidence-based decisions",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{enable} informed decision-making",
+  "replacement": "{help} decisions",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "decision-making processes",
+  "replacement": "decisions",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "problem-solving skills",
+  "replacement": "problem solving",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "critical thinking skills",
+  "replacement": "critical thinking",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "best practices",
+  "replacement": "good practice",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{adhere} to best practices",
+  "replacement": "{follow} good practice",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "in accordance with best practices",
+  "replacement": "following good practice",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "robust",
+  "replacement": null,
+  "note": "Filler adjective; in engineering say what it withstands."
+ },
+ {
+  "phrase": "robustness",
+  "replacement": null,
+  "note": "Filler; say what it withstands."
+ },
+ {
+  "phrase": "scalable",
+  "replacement": null,
+  "note": "Say how far it scales."
+ },
+ {
+  "phrase": "scalability",
+  "replacement": null,
+  "note": "Say how far it scales."
+ },
+ {
+  "phrase": "efficient and effective",
+  "replacement": "effective",
+  "note": "Stock pairing."
+ },
+ {
+  "phrase": "effective and efficient",
+  "replacement": "effective",
+  "note": "Stock pairing."
+ },
+ {
+  "phrase": "safe and secure",
+  "replacement": "secure",
+  "note": "Stock pairing."
+ },
+ {
+  "phrase": "fast and efficient",
+  "replacement": "fast",
+  "note": "Stock pairing."
+ },
+ {
+  "phrase": "accurate and reliable",
+  "replacement": "reliable",
+  "note": "Stock pairing."
+ },
+ {
+  "phrase": "reliable and efficient",
+  "replacement": "reliable",
+  "note": "Stock pairing."
+ },
+ {
+  "phrase": "cost-effective and efficient",
+  "replacement": "cost-effective",
+  "note": "Stock pairing."
+ },
+ {
+  "phrase": "innovative solutions",
+  "replacement": "new solutions",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "innovative approach",
+  "replacement": "new approach",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "novel approach",
+  "replacement": "new approach",
+  "note": "Buzzword; fine if you explain what's new."
+ },
+ {
+  "phrase": "an innovative",
+  "replacement": "a new",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "innovative",
+  "replacement": "new",
+  "note": "Buzzword."
+ },
+ {
+  "phrase": "{elevate} the user experience",
+  "replacement": "{improve} usability",
+  "note": "Marketing phrasing."
+ },
+ {
+  "phrase": "enhanced user experience",
+  "replacement": "better usability",
+  "note": "Marketing phrasing."
+ },
+ {
+  "phrase": "the digital landscape",
+  "replacement": "digital technology",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "the technological landscape",
+  "replacement": "technology",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "the industrial landscape",
+  "replacement": "industry",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "the engineering landscape",
+  "replacement": "engineering",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "the global landscape",
+  "replacement": "the world",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "the competitive landscape",
+  "replacement": "the market",
+  "note": "Cliché metaphor."
+ },
+ {
+  "phrase": "in the ever-evolving field of",
+  "replacement": "in",
+  "note": "Cliché."
+ },
+ {
+  "phrase": "in the rapidly evolving field of",
+  "replacement": "in",
+  "note": "Cliché."
+ },
+ {
+  "phrase": "in the dynamic field of",
+  "replacement": "in",
+  "note": "Cliché."
+ },
+ {
+  "phrase": "the rapidly evolving field of",
+  "replacement": "the field of",
+  "note": "Cliché."
+ },
+ {
+  "phrase": "the fascinating world of",
+  "replacement": null,
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "the exciting world of",
+  "replacement": null,
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "the fascinating field of",
+  "replacement": "the field of",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "fascinating",
+  "replacement": "interesting",
+  "note": "Evaluative filler."
+ },
+ {
+  "phrase": "captivating",
+  "replacement": "interesting",
+  "note": "Evaluative filler."
+ },
+ {
+  "phrase": "intriguing",
+  "replacement": "interesting",
+  "note": "Evaluative filler."
+ },
+ {
+  "phrase": "awe-inspiring",
+  "replacement": "impressive",
+  "note": "Evaluative filler."
+ },
+ {
+  "phrase": "{stand} out as",
+  "replacement": "{be}",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{emerge} as a",
+  "replacement": "{become} a",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{emerge} as",
+  "replacement": "{become}",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "{remain} a topic of",
+  "replacement": "{be} a topic of",
+  "note": "Filler."
+ },
+ {
+  "phrase": "a topic of great interest",
+  "replacement": "an active topic",
+  "note": "Filler."
+ },
+ {
+  "phrase": "a hot topic",
+  "replacement": "an active topic",
+  "note": "Informal."
+ },
+ {
+  "phrase": "a subject of intense debate",
+  "replacement": "debated",
+  "note": "Filler."
+ },
+ {
+  "phrase": "{spark} debate",
+  "replacement": "{cause} debate",
+  "note": "Ornamental."
+ },
+ {
+  "phrase": "the ongoing debate",
+  "replacement": "the debate",
+  "note": "Filler."
+ },
+ {
+  "phrase": "{warrant} further investigation",
+  "replacement": "{need} more study",
+  "note": "Formal filler."
+ },
+ {
+  "phrase": "{warrant} further research",
+  "replacement": "{need} more study",
+  "note": "Formal filler."
+ },
+ {
+  "phrase": "further research is needed",
+  "replacement": "more work is needed",
+  "note": "Stock closing; say what research."
+ },
+ {
+  "phrase": "further research is required",
+  "replacement": "more work is needed",
+  "note": "Stock closing; say what research."
+ },
+ {
+  "phrase": "future research should",
+  "replacement": "future work should",
+  "note": "Stock closing."
+ },
+ {
+  "phrase": "in the context of",
+  "replacement": "in",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "within the context of",
+  "replacement": "in",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "within the framework of",
+  "replacement": "in",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "within the scope of",
+  "replacement": "in",
+  "note": "Wordy."
+ },
+ {
+  "phrase": "{play} a role in",
+  "replacement": "{affect}",
+  "note": "Vague; say what the role is."
+ }
+]

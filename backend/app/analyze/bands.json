@@ -1,0 +1,39 @@
+{
+  "_note": "Piecewise-linear 'good bands': each band is a list of [metric_value, score] points (x ascending). Values outside the range clamp to the end points. Sub-score = weighted mean of its metric scores. Overall = weighted mean of sub-scores.",
+  "overall_weights": {
+    "clarity": 0.25,
+    "rhythm": 0.2,
+    "vocabulary": 0.2,
+    "voice": 0.2,
+    "correctness": 0.15
+  },
+  "default_target_grade": 12,
+  "subscores": {
+    "clarity": {
+      "grade_excess": {"weight": 0.35, "band": [[0, 100], [2, 85], [4, 65], [6, 45], [9, 15], [12, 0]]},
+      "long_sentence_pct": {"weight": 0.25, "band": [[0, 100], [10, 85], [20, 65], [35, 35], [60, 0]]},
+      "nominalizations_per_100w": {"weight": 0.2, "band": [[0, 100], [3, 95], [5, 80], [8, 50], [12, 20], [16, 0]]},
+      "wordy_per_100w": {"weight": 0.2, "band": [[0, 100], [0.5, 90], [1, 75], [2, 50], [4, 10], [5, 0]]}
+    },
+    "rhythm": {
+      "sentence_length_sd": {"weight": 0.45, "band": [[0, 0], [2, 15], [4, 45], [6, 80], [8, 100], [14, 100], [18, 80], [25, 50]]},
+      "opener_entropy": {"weight": 0.35, "band": [[0, 0], [0.5, 30], [0.7, 65], [0.85, 95], [1, 100]]},
+      "monotone_runs_per_10s": {"weight": 0.2, "band": [[0, 100], [0.5, 85], [1, 65], [2, 35], [4, 0]]}
+    },
+    "vocabulary": {
+      "mtld": {"weight": 0.3, "band": [[0, 0], [30, 20], [50, 50], [70, 80], [90, 100]]},
+      "repeats_per_100w": {"weight": 0.2, "band": [[0, 100], [1, 90], [2, 70], [4, 40], [7, 0]]},
+      "stock_per_100w": {"weight": 0.35, "band": [[0, 100], [0.5, 80], [1, 60], [2, 30], [3, 0]]},
+      "cliche_per_100w": {"weight": 0.15, "band": [[0, 100], [0.3, 80], [0.7, 55], [1.5, 20], [2.5, 0]]}
+    },
+    "voice": {
+      "passive_ratio": {"weight": 0.3, "band": [[0, 100], [0.15, 95], [0.25, 80], [0.4, 55], [0.6, 25], [0.8, 0]]},
+      "hedges_per_100w": {"weight": 0.2, "band": [[0, 100], [1, 90], [2, 70], [4, 35], [6, 0]]},
+      "fillers_per_100w": {"weight": 0.25, "band": [[0, 100], [0.5, 90], [1, 75], [2, 45], [4, 0]]},
+      "weak_verbs_per_100w": {"weight": 0.25, "band": [[0, 100], [0.5, 85], [1, 65], [2, 35], [3, 0]]}
+    },
+    "correctness": {
+      "lt_errors_per_100w": {"weight": 1.0, "band": [[0, 100], [0.5, 90], [1, 78], [2, 55], [4, 25], [6, 0]]}
+    }
+  }
+}

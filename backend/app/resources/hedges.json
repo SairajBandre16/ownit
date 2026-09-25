@@ -1,0 +1,1474 @@
+{
+ "_version": "1.0",
+ "_note": "strength 0 = only counts when stacked with another hedge; 1 = mild; 2 = strong hedge.",
+ "hedges": [
+  {
+   "phrase": "might",
+   "strength": 2
+  },
+  {
+   "phrase": "may",
+   "strength": 0
+  },
+  {
+   "phrase": "could",
+   "strength": 0
+  },
+  {
+   "phrase": "would",
+   "strength": 0
+  },
+  {
+   "phrase": "should",
+   "strength": 0
+  },
+  {
+   "phrase": "can possibly",
+   "strength": 0
+  },
+  {
+   "phrase": "might possibly",
+   "strength": 2
+  },
+  {
+   "phrase": "may possibly",
+   "strength": 2
+  },
+  {
+   "phrase": "could possibly",
+   "strength": 2
+  },
+  {
+   "phrase": "might perhaps",
+   "strength": 2
+  },
+  {
+   "phrase": "may perhaps",
+   "strength": 2
+  },
+  {
+   "phrase": "could perhaps",
+   "strength": 2
+  },
+  {
+   "phrase": "might potentially",
+   "strength": 2
+  },
+  {
+   "phrase": "may potentially",
+   "strength": 2
+  },
+  {
+   "phrase": "could potentially",
+   "strength": 2
+  },
+  {
+   "phrase": "might conceivably",
+   "strength": 2
+  },
+  {
+   "phrase": "could conceivably",
+   "strength": 2
+  },
+  {
+   "phrase": "may conceivably",
+   "strength": 2
+  },
+  {
+   "phrase": "might arguably",
+   "strength": 2
+  },
+  {
+   "phrase": "would seem",
+   "strength": 2
+  },
+  {
+   "phrase": "would appear",
+   "strength": 2
+  },
+  {
+   "phrase": "would suggest",
+   "strength": 2
+  },
+  {
+   "phrase": "might suggest",
+   "strength": 2
+  },
+  {
+   "phrase": "may suggest",
+   "strength": 2
+  },
+  {
+   "phrase": "could suggest",
+   "strength": 2
+  },
+  {
+   "phrase": "might indicate",
+   "strength": 2
+  },
+  {
+   "phrase": "may indicate",
+   "strength": 2
+  },
+  {
+   "phrase": "could indicate",
+   "strength": 2
+  },
+  {
+   "phrase": "might imply",
+   "strength": 2
+  },
+  {
+   "phrase": "may imply",
+   "strength": 2
+  },
+  {
+   "phrase": "could imply",
+   "strength": 2
+  },
+  {
+   "phrase": "might be",
+   "strength": 2
+  },
+  {
+   "phrase": "may be",
+   "strength": 2
+  },
+  {
+   "phrase": "could be",
+   "strength": 2
+  },
+  {
+   "phrase": "might have",
+   "strength": 2
+  },
+  {
+   "phrase": "may have",
+   "strength": 2
+  },
+  {
+   "phrase": "could have",
+   "strength": 2
+  },
+  {
+   "phrase": "perhaps",
+   "strength": 1
+  },
+  {
+   "phrase": "possibly",
+   "strength": 1
+  },
+  {
+   "phrase": "probably",
+   "strength": 1
+  },
+  {
+   "phrase": "presumably",
+   "strength": 1
+  },
+  {
+   "phrase": "apparently",
+   "strength": 1
+  },
+  {
+   "phrase": "seemingly",
+   "strength": 1
+  },
+  {
+   "phrase": "supposedly",
+   "strength": 1
+  },
+  {
+   "phrase": "allegedly",
+   "strength": 1
+  },
+  {
+   "phrase": "arguably",
+   "strength": 1
+  },
+  {
+   "phrase": "conceivably",
+   "strength": 1
+  },
+  {
+   "phrase": "potentially",
+   "strength": 1
+  },
+  {
+   "phrase": "plausibly",
+   "strength": 1
+  },
+  {
+   "phrase": "likely",
+   "strength": 1
+  },
+  {
+   "phrase": "unlikely",
+   "strength": 1
+  },
+  {
+   "phrase": "maybe",
+   "strength": 1
+  },
+  {
+   "phrase": "somewhat",
+   "strength": 1
+  },
+  {
+   "phrase": "relatively",
+   "strength": 1
+  },
+  {
+   "phrase": "comparatively",
+   "strength": 1
+  },
+  {
+   "phrase": "fairly",
+   "strength": 1
+  },
+  {
+   "phrase": "rather",
+   "strength": 1
+  },
+  {
+   "phrase": "slightly",
+   "strength": 1
+  },
+  {
+   "phrase": "partly",
+   "strength": 1
+  },
+  {
+   "phrase": "partially",
+   "strength": 1
+  },
+  {
+   "phrase": "largely",
+   "strength": 1
+  },
+  {
+   "phrase": "mainly",
+   "strength": 1
+  },
+  {
+   "phrase": "mostly",
+   "strength": 1
+  },
+  {
+   "phrase": "generally",
+   "strength": 0
+  },
+  {
+   "phrase": "typically",
+   "strength": 0
+  },
+  {
+   "phrase": "usually",
+   "strength": 0
+  },
+  {
+   "phrase": "often",
+   "strength": 0
+  },
+  {
+   "phrase": "sometimes",
+   "strength": 0
+  },
+  {
+   "phrase": "occasionally",
+   "strength": 1
+  },
+  {
+   "phrase": "frequently",
+   "strength": 1
+  },
+  {
+   "phrase": "commonly",
+   "strength": 1
+  },
+  {
+   "phrase": "normally",
+   "strength": 0
+  },
+  {
+   "phrase": "ordinarily",
+   "strength": 1
+  },
+  {
+   "phrase": "reasonably",
+   "strength": 1
+  },
+  {
+   "phrase": "roughly",
+   "strength": 0
+  },
+  {
+   "phrase": "approximately",
+   "strength": 0
+  },
+  {
+   "phrase": "nearly",
+   "strength": 0
+  },
+  {
+   "phrase": "almost",
+   "strength": 1
+  },
+  {
+   "phrase": "virtually",
+   "strength": 1
+  },
+  {
+   "phrase": "practically",
+   "strength": 1
+  },
+  {
+   "phrase": "essentially",
+   "strength": 1
+  },
+  {
+   "phrase": "basically",
+   "strength": 1
+  },
+  {
+   "phrase": "broadly",
+   "strength": 1
+  },
+  {
+   "phrase": "loosely",
+   "strength": 1
+  },
+  {
+   "phrase": "to some extent",
+   "strength": 1
+  },
+  {
+   "phrase": "to a certain extent",
+   "strength": 1
+  },
+  {
+   "phrase": "to some degree",
+   "strength": 1
+  },
+  {
+   "phrase": "to a certain degree",
+   "strength": 1
+  },
+  {
+   "phrase": "to a large extent",
+   "strength": 1
+  },
+  {
+   "phrase": "to a great extent",
+   "strength": 1
+  },
+  {
+   "phrase": "to a lesser extent",
+   "strength": 1
+  },
+  {
+   "phrase": "in part",
+   "strength": 1
+  },
+  {
+   "phrase": "in some respects",
+   "strength": 1
+  },
+  {
+   "phrase": "in some ways",
+   "strength": 1
+  },
+  {
+   "phrase": "in a way",
+   "strength": 1
+  },
+  {
+   "phrase": "in a sense",
+   "strength": 1
+  },
+  {
+   "phrase": "in some sense",
+   "strength": 1
+  },
+  {
+   "phrase": "in certain cases",
+   "strength": 1
+  },
+  {
+   "phrase": "in some cases",
+   "strength": 1
+  },
+  {
+   "phrase": "in many cases",
+   "strength": 1
+  },
+  {
+   "phrase": "in most cases",
+   "strength": 1
+  },
+  {
+   "phrase": "under certain conditions",
+   "strength": 1
+  },
+  {
+   "phrase": "under some conditions",
+   "strength": 1
+  },
+  {
+   "phrase": "in certain circumstances",
+   "strength": 1
+  },
+  {
+   "phrase": "in some circumstances",
+   "strength": 1
+  },
+  {
+   "phrase": "more or less",
+   "strength": 1
+  },
+  {
+   "phrase": "kind of",
+   "strength": 1
+  },
+  {
+   "phrase": "sort of",
+   "strength": 1
+  },
+  {
+   "phrase": "by and large",
+   "strength": 1
+  },
+  {
+   "phrase": "on the whole",
+   "strength": 1
+  },
+  {
+   "phrase": "as a rule",
+   "strength": 1
+  },
+  {
+   "phrase": "for the most part",
+   "strength": 1
+  },
+  {
+   "phrase": "in general",
+   "strength": 1
+  },
+  {
+   "phrase": "in principle",
+   "strength": 1
+  },
+  {
+   "phrase": "in theory",
+   "strength": 1
+  },
+  {
+   "phrase": "theoretically",
+   "strength": 1
+  },
+  {
+   "phrase": "hypothetically",
+   "strength": 1
+  },
+  {
+   "phrase": "ideally",
+   "strength": 1
+  },
+  {
+   "phrase": "tentatively",
+   "strength": 1
+  },
+  {
+   "phrase": "provisionally",
+   "strength": 1
+  },
+  {
+   "phrase": "speculatively",
+   "strength": 1
+  },
+  {
+   "phrase": "ostensibly",
+   "strength": 1
+  },
+  {
+   "phrase": "evidently",
+   "strength": 1
+  },
+  {
+   "phrase": "reportedly",
+   "strength": 1
+  },
+  {
+   "phrase": "purportedly",
+   "strength": 1
+  },
+  {
+   "phrase": "putatively",
+   "strength": 1
+  },
+  {
+   "phrase": "seem",
+   "strength": 1
+  },
+  {
+   "phrase": "seems",
+   "strength": 1
+  },
+  {
+   "phrase": "seemed",
+   "strength": 1
+  },
+  {
+   "phrase": "appear",
+   "strength": 1
+  },
+  {
+   "phrase": "appears",
+   "strength": 1
+  },
+  {
+   "phrase": "appeared",
+   "strength": 1
+  },
+  {
+   "phrase": "suggest",
+   "strength": 1
+  },
+  {
+   "phrase": "suggests",
+   "strength": 1
+  },
+  {
+   "phrase": "suggested",
+   "strength": 1
+  },
+  {
+   "phrase": "indicate",
+   "strength": 1
+  },
+  {
+   "phrase": "indicates",
+   "strength": 1
+  },
+  {
+   "phrase": "indicated",
+   "strength": 1
+  },
+  {
+   "phrase": "imply",
+   "strength": 1
+  },
+  {
+   "phrase": "implies",
+   "strength": 1
+  },
+  {
+   "phrase": "implied",
+   "strength": 1
+  },
+  {
+   "phrase": "tend",
+   "strength": 1
+  },
+  {
+   "phrase": "tends",
+   "strength": 1
+  },
+  {
+   "phrase": "tended",
+   "strength": 1
+  },
+  {
+   "phrase": "assume",
+   "strength": 1
+  },
+  {
+   "phrase": "assumes",
+   "strength": 1
+  },
+  {
+   "phrase": "assumed",
+   "strength": 1
+  },
+  {
+   "phrase": "suppose",
+   "strength": 1
+  },
+  {
+   "phrase": "supposes",
+   "strength": 1
+  },
+  {
+   "phrase": "supposed",
+   "strength": 1
+  },
+  {
+   "phrase": "presume",
+   "strength": 1
+  },
+  {
+   "phrase": "presumes",
+   "strength": 1
+  },
+  {
+   "phrase": "presumed",
+   "strength": 1
+  },
+  {
+   "phrase": "believe",
+   "strength": 1
+  },
+  {
+   "phrase": "believes",
+   "strength": 1
+  },
+  {
+   "phrase": "believed",
+   "strength": 1
+  },
+  {
+   "phrase": "think",
+   "strength": 1
+  },
+  {
+   "phrase": "thinks",
+   "strength": 1
+  },
+  {
+   "phrase": "thought",
+   "strength": 1
+  },
+  {
+   "phrase": "feel",
+   "strength": 1
+  },
+  {
+   "phrase": "feels",
+   "strength": 1
+  },
+  {
+   "phrase": "felt",
+   "strength": 1
+  },
+  {
+   "phrase": "guess",
+   "strength": 1
+  },
+  {
+   "phrase": "guesses",
+   "strength": 1
+  },
+  {
+   "phrase": "guessed",
+   "strength": 1
+  },
+  {
+   "phrase": "speculate",
+   "strength": 1
+  },
+  {
+   "phrase": "speculates",
+   "strength": 1
+  },
+  {
+   "phrase": "speculated",
+   "strength": 1
+  },
+  {
+   "phrase": "estimate",
+   "strength": 0
+  },
+  {
+   "phrase": "estimates",
+   "strength": 0
+  },
+  {
+   "phrase": "estimated",
+   "strength": 0
+  },
+  {
+   "phrase": "expect",
+   "strength": 1
+  },
+  {
+   "phrase": "expects",
+   "strength": 1
+  },
+  {
+   "phrase": "expected",
+   "strength": 0
+  },
+  {
+   "phrase": "hypothesize",
+   "strength": 1
+  },
+  {
+   "phrase": "hypothesizes",
+   "strength": 1
+  },
+  {
+   "phrase": "hypothesized",
+   "strength": 1
+  },
+  {
+   "phrase": "postulate",
+   "strength": 1
+  },
+  {
+   "phrase": "postulates",
+   "strength": 1
+  },
+  {
+   "phrase": "postulated",
+   "strength": 1
+  },
+  {
+   "phrase": "propose",
+   "strength": 1
+  },
+  {
+   "phrase": "proposes",
+   "strength": 1
+  },
+  {
+   "phrase": "proposed",
+   "strength": 1
+  },
+  {
+   "phrase": "doubt",
+   "strength": 1
+  },
+  {
+   "phrase": "doubts",
+   "strength": 1
+  },
+  {
+   "phrase": "doubted",
+   "strength": 1
+  },
+  {
+   "phrase": "suspect",
+   "strength": 1
+  },
+  {
+   "phrase": "suspects",
+   "strength": 1
+  },
+  {
+   "phrase": "suspected",
+   "strength": 1
+  },
+  {
+   "phrase": "hope",
+   "strength": 1
+  },
+  {
+   "phrase": "hopes",
+   "strength": 1
+  },
+  {
+   "phrase": "hoped",
+   "strength": 1
+  },
+  {
+   "phrase": "infer",
+   "strength": 1
+  },
+  {
+   "phrase": "infers",
+   "strength": 1
+  },
+  {
+   "phrase": "inferred",
+   "strength": 1
+  },
+  {
+   "phrase": "it could be argued that",
+   "strength": 2
+  },
+  {
+   "phrase": "it can be argued that",
+   "strength": 2
+  },
+  {
+   "phrase": "it may be argued that",
+   "strength": 2
+  },
+  {
+   "phrase": "it might be argued that",
+   "strength": 2
+  },
+  {
+   "phrase": "it could be said that",
+   "strength": 2
+  },
+  {
+   "phrase": "it might be said that",
+   "strength": 2
+  },
+  {
+   "phrase": "it may be said that",
+   "strength": 2
+  },
+  {
+   "phrase": "one could argue that",
+   "strength": 2
+  },
+  {
+   "phrase": "one might argue that",
+   "strength": 2
+  },
+  {
+   "phrase": "one may argue that",
+   "strength": 2
+  },
+  {
+   "phrase": "some might argue that",
+   "strength": 2
+  },
+  {
+   "phrase": "some may argue that",
+   "strength": 2
+  },
+  {
+   "phrase": "some would argue that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is possible that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is probable that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is likely that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is unlikely that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is conceivable that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is plausible that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is thought that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is believed that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is assumed that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is suggested that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is hypothesized that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is hoped that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is expected that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is estimated that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is presumed that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is supposed that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is speculated that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is claimed that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is said that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is reported that",
+   "strength": 2
+  },
+  {
+   "phrase": "it is felt that",
+   "strength": 2
+  },
+  {
+   "phrase": "it appears that",
+   "strength": 2
+  },
+  {
+   "phrase": "it seems that",
+   "strength": 2
+  },
+  {
+   "phrase": "it would appear that",
+   "strength": 2
+  },
+  {
+   "phrase": "it would seem that",
+   "strength": 2
+  },
+  {
+   "phrase": "it seems likely that",
+   "strength": 2
+  },
+  {
+   "phrase": "it seems possible that",
+   "strength": 2
+  },
+  {
+   "phrase": "it seems probable that",
+   "strength": 2
+  },
+  {
+   "phrase": "it seems reasonable to",
+   "strength": 2
+  },
+  {
+   "phrase": "it seems as though",
+   "strength": 2
+  },
+  {
+   "phrase": "it looks as if",
+   "strength": 2
+  },
+  {
+   "phrase": "it looks like",
+   "strength": 2
+  },
+  {
+   "phrase": "there is a possibility that",
+   "strength": 2
+  },
+  {
+   "phrase": "there is a chance that",
+   "strength": 2
+  },
+  {
+   "phrase": "there is some evidence that",
+   "strength": 2
+  },
+  {
+   "phrase": "there is a tendency to",
+   "strength": 2
+  },
+  {
+   "phrase": "there is a likelihood that",
+   "strength": 2
+  },
+  {
+   "phrase": "there may be",
+   "strength": 2
+  },
+  {
+   "phrase": "there might be",
+   "strength": 2
+  },
+  {
+   "phrase": "there could be",
+   "strength": 2
+  },
+  {
+   "phrase": "there appears to be",
+   "strength": 2
+  },
+  {
+   "phrase": "there seems to be",
+   "strength": 2
+  },
+  {
+   "phrase": "there is reason to believe",
+   "strength": 2
+  },
+  {
+   "phrase": "this may be because",
+   "strength": 2
+  },
+  {
+   "phrase": "this might be because",
+   "strength": 2
+  },
+  {
+   "phrase": "this could be because",
+   "strength": 2
+  },
+  {
+   "phrase": "this may be due to",
+   "strength": 2
+  },
+  {
+   "phrase": "this might be due to",
+   "strength": 2
+  },
+  {
+   "phrase": "this could be due to",
+   "strength": 2
+  },
+  {
+   "phrase": "this may suggest",
+   "strength": 2
+  },
+  {
+   "phrase": "this might suggest",
+   "strength": 2
+  },
+  {
+   "phrase": "this could suggest",
+   "strength": 2
+  },
+  {
+   "phrase": "this may indicate",
+   "strength": 2
+  },
+  {
+   "phrase": "this might indicate",
+   "strength": 2
+  },
+  {
+   "phrase": "this could indicate",
+   "strength": 2
+  },
+  {
+   "phrase": "this suggests that",
+   "strength": 2
+  },
+  {
+   "phrase": "this indicates that",
+   "strength": 2
+  },
+  {
+   "phrase": "this implies that",
+   "strength": 2
+  },
+  {
+   "phrase": "to the best of our knowledge",
+   "strength": 2
+  },
+  {
+   "phrase": "to the best of my knowledge",
+   "strength": 2
+  },
+  {
+   "phrase": "as far as we know",
+   "strength": 2
+  },
+  {
+   "phrase": "as far as i know",
+   "strength": 2
+  },
+  {
+   "phrase": "as far as we can tell",
+   "strength": 2
+  },
+  {
+   "phrase": "as far as can be determined",
+   "strength": 2
+  },
+  {
+   "phrase": "in my opinion",
+   "strength": 2
+  },
+  {
+   "phrase": "in our opinion",
+   "strength": 2
+  },
+  {
+   "phrase": "in my view",
+   "strength": 2
+  },
+  {
+   "phrase": "in our view",
+   "strength": 2
+  },
+  {
+   "phrase": "from my perspective",
+   "strength": 2
+  },
+  {
+   "phrase": "from our perspective",
+   "strength": 2
+  },
+  {
+   "phrase": "i believe",
+   "strength": 2
+  },
+  {
+   "phrase": "we believe",
+   "strength": 2
+  },
+  {
+   "phrase": "i think",
+   "strength": 2
+  },
+  {
+   "phrase": "we think",
+   "strength": 2
+  },
+  {
+   "phrase": "i feel",
+   "strength": 2
+  },
+  {
+   "phrase": "we feel",
+   "strength": 2
+  },
+  {
+   "phrase": "i suppose",
+   "strength": 2
+  },
+  {
+   "phrase": "we suppose",
+   "strength": 2
+  },
+  {
+   "phrase": "i assume",
+   "strength": 2
+  },
+  {
+   "phrase": "we assume",
+   "strength": 2
+  },
+  {
+   "phrase": "i guess",
+   "strength": 2
+  },
+  {
+   "phrase": "we guess",
+   "strength": 2
+  },
+  {
+   "phrase": "i suspect",
+   "strength": 2
+  },
+  {
+   "phrase": "we suspect",
+   "strength": 2
+  },
+  {
+   "phrase": "our results suggest",
+   "strength": 2
+  },
+  {
+   "phrase": "the results suggest",
+   "strength": 2
+  },
+  {
+   "phrase": "the data suggest",
+   "strength": 2
+  },
+  {
+   "phrase": "the data suggests",
+   "strength": 2
+  },
+  {
+   "phrase": "the findings suggest",
+   "strength": 2
+  },
+  {
+   "phrase": "the evidence suggests",
+   "strength": 2
+  },
+  {
+   "phrase": "may be attributed to",
+   "strength": 2
+  },
+  {
+   "phrase": "might be attributed to",
+   "strength": 2
+  },
+  {
+   "phrase": "could be attributed to",
+   "strength": 2
+  },
+  {
+   "phrase": "can be attributed to",
+   "strength": 2
+  },
+  {
+   "phrase": "is likely to",
+   "strength": 2
+  },
+  {
+   "phrase": "are likely to",
+   "strength": 2
+  },
+  {
+   "phrase": "was likely to",
+   "strength": 2
+  },
+  {
+   "phrase": "were likely to",
+   "strength": 2
+  },
+  {
+   "phrase": "is unlikely to",
+   "strength": 2
+  },
+  {
+   "phrase": "are unlikely to",
+   "strength": 2
+  },
+  {
+   "phrase": "is thought to",
+   "strength": 2
+  },
+  {
+   "phrase": "are thought to",
+   "strength": 2
+  },
+  {
+   "phrase": "is believed to",
+   "strength": 2
+  },
+  {
+   "phrase": "are believed to",
+   "strength": 2
+  },
+  {
+   "phrase": "is assumed to",
+   "strength": 2
+  },
+  {
+   "phrase": "are assumed to",
+   "strength": 2
+  },
+  {
+   "phrase": "is expected to",
+   "strength": 2
+  },
+  {
+   "phrase": "are expected to",
+   "strength": 2
+  },
+  {
+   "phrase": "is said to",
+   "strength": 2
+  },
+  {
+   "phrase": "are said to",
+   "strength": 2
+  },
+  {
+   "phrase": "is considered to",
+   "strength": 2
+  },
+  {
+   "phrase": "are considered to",
+   "strength": 2
+  },
+  {
+   "phrase": "is known to",
+   "strength": 2
+  },
+  {
+   "phrase": "are known to",
+   "strength": 2
+  },
+  {
+   "phrase": "is presumed to",
+   "strength": 2
+  },
+  {
+   "phrase": "are presumed to",
+   "strength": 2
+  },
+  {
+   "phrase": "tends to",
+   "strength": 2
+  },
+  {
+   "phrase": "tend to",
+   "strength": 2
+  },
+  {
+   "phrase": "tended to",
+   "strength": 2
+  },
+  {
+   "phrase": "seems to",
+   "strength": 2
+  },
+  {
+   "phrase": "seem to",
+   "strength": 2
+  },
+  {
+   "phrase": "seemed to",
+   "strength": 2
+  },
+  {
+   "phrase": "appears to",
+   "strength": 2
+  },
+  {
+   "phrase": "appear to",
+   "strength": 2
+  },
+  {
+   "phrase": "appeared to",
+   "strength": 2
+  },
+  {
+   "phrase": "has the potential to",
+   "strength": 2
+  },
+  {
+   "phrase": "have the potential to",
+   "strength": 2
+  },
+  {
+   "phrase": "to some extent,",
+   "strength": 2
+  },
+  {
+   "phrase": "within certain limits",
+   "strength": 2
+  },
+  {
+   "phrase": "within limits",
+   "strength": 2
+  },
+  {
+   "phrase": "with some reservations",
+   "strength": 2
+  },
+  {
+   "phrase": "with some caution",
+   "strength": 2
+  },
+  {
+   "phrase": "with caution",
+   "strength": 2
+  },
+  {
+   "phrase": "with care",
+   "strength": 2
+  },
+  {
+   "phrase": "not necessarily",
+   "strength": 2
+  },
+  {
+   "phrase": "not always",
+   "strength": 2
+  },
+  {
+   "phrase": "not entirely",
+   "strength": 2
+  },
+  {
+   "phrase": "not completely",
+   "strength": 2
+  },
+  {
+   "phrase": "not fully",
+   "strength": 2
+  },
+  {
+   "phrase": "not quite",
+   "strength": 2
+  },
+  {
+   "phrase": "not exactly",
+   "strength": 2
+  },
+  {
+   "phrase": "not particularly",
+   "strength": 2
+  },
+  {
+   "phrase": "not very",
+   "strength": 2
+  },
+  {
+   "phrase": "somewhat unclear",
+   "strength": 2
+  },
+  {
+   "phrase": "not clear",
+   "strength": 2
+  },
+  {
+   "phrase": "unclear",
+   "strength": 2
+  },
+  {
+   "phrase": "uncertain",
+   "strength": 2
+  },
+  {
+   "phrase": "unsure",
+   "strength": 2
+  },
+  {
+   "phrase": "questionable",
+   "strength": 2
+  },
+  {
+   "phrase": "debatable",
+   "strength": 2
+  },
+  {
+   "phrase": "arguable",
+   "strength": 2
+  },
+  {
+   "phrase": "inconclusive",
+   "strength": 2
+  },
+  {
+   "phrase": "ambiguous",
+   "strength": 2
+  },
+  {
+   "phrase": "tentative",
+   "strength": 2
+  },
+  {
+   "phrase": "preliminary",
+   "strength": 2
+  },
+  {
+   "phrase": "provisional",
+   "strength": 2
+  },
+  {
+   "phrase": "approximate",
+   "strength": 2
+  },
+  {
+   "phrase": "indicative",
+   "strength": 2
+  },
+  {
+   "phrase": "suggestive",
+   "strength": 2
+  }
+ ]
+}

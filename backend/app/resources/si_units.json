@@ -1,0 +1,1686 @@
+{
+ "_version": "1.0",
+ "_note": "SI and common engineering units. 'miscased' maps frequent wrong spellings to the correct symbol (null = ambiguous, not auto-fixed). 'plurals' are invalid plural symbols.",
+ "units": [
+  {
+   "symbol": "m",
+   "name": "metre",
+   "quantity": "length",
+   "system": "SI"
+  },
+  {
+   "symbol": "km",
+   "name": "kilometre",
+   "quantity": "length",
+   "system": "SI"
+  },
+  {
+   "symbol": "cm",
+   "name": "centimetre",
+   "quantity": "length",
+   "system": "SI"
+  },
+  {
+   "symbol": "dm",
+   "name": "decimetre",
+   "quantity": "length",
+   "system": "SI"
+  },
+  {
+   "symbol": "mm",
+   "name": "millimetre",
+   "quantity": "length",
+   "system": "SI"
+  },
+  {
+   "symbol": "µm",
+   "name": "micrometre",
+   "quantity": "length",
+   "system": "SI"
+  },
+  {
+   "symbol": "nm",
+   "name": "nanometre",
+   "quantity": "length",
+   "system": "SI"
+  },
+  {
+   "symbol": "pm",
+   "name": "picometre",
+   "quantity": "length",
+   "system": "SI"
+  },
+  {
+   "symbol": "um",
+   "name": "micrometre (ASCII 'u')",
+   "quantity": "length",
+   "system": "SI"
+  },
+  {
+   "symbol": "g",
+   "name": "gram",
+   "quantity": "mass",
+   "system": "SI"
+  },
+  {
+   "symbol": "kg",
+   "name": "kilogram",
+   "quantity": "mass",
+   "system": "SI"
+  },
+  {
+   "symbol": "mg",
+   "name": "milligram",
+   "quantity": "mass",
+   "system": "SI"
+  },
+  {
+   "symbol": "µg",
+   "name": "microgram",
+   "quantity": "mass",
+   "system": "SI"
+  },
+  {
+   "symbol": "ng",
+   "name": "nanogram",
+   "quantity": "mass",
+   "system": "SI"
+  },
+  {
+   "symbol": "ug",
+   "name": "microgram (ASCII 'u')",
+   "quantity": "mass",
+   "system": "SI"
+  },
+  {
+   "symbol": "s",
+   "name": "second",
+   "quantity": "time",
+   "system": "SI"
+  },
+  {
+   "symbol": "ms",
+   "name": "millisecond",
+   "quantity": "time",
+   "system": "SI"
+  },
+  {
+   "symbol": "µs",
+   "name": "microsecond",
+   "quantity": "time",
+   "system": "SI"
+  },
+  {
+   "symbol": "ns",
+   "name": "nanosecond",
+   "quantity": "time",
+   "system": "SI"
+  },
+  {
+   "symbol": "ps",
+   "name": "picosecond",
+   "quantity": "time",
+   "system": "SI"
+  },
+  {
+   "symbol": "us",
+   "name": "microsecond (ASCII 'u')",
+   "quantity": "time",
+   "system": "SI"
+  },
+  {
+   "symbol": "A",
+   "name": "ampere",
+   "quantity": "current",
+   "system": "SI"
+  },
+  {
+   "symbol": "kA",
+   "name": "kiloampere",
+   "quantity": "current",
+   "system": "SI"
+  },
+  {
+   "symbol": "MA",
+   "name": "megaampere",
+   "quantity": "current",
+   "system": "SI"
+  },
+  {
+   "symbol": "mA",
+   "name": "milliampere",
+   "quantity": "current",
+   "system": "SI"
+  },
+  {
+   "symbol": "µA",
+   "name": "microampere",
+   "quantity": "current",
+   "system": "SI"
+  },
+  {
+   "symbol": "nA",
+   "name": "nanoampere",
+   "quantity": "current",
+   "system": "SI"
+  },
+  {
+   "symbol": "pA",
+   "name": "picoampere",
+   "quantity": "current",
+   "system": "SI"
+  },
+  {
+   "symbol": "uA",
+   "name": "microampere (ASCII 'u')",
+   "quantity": "current",
+   "system": "SI"
+  },
+  {
+   "symbol": "K",
+   "name": "kelvin",
+   "quantity": "temperature",
+   "system": "SI"
+  },
+  {
+   "symbol": "mK",
+   "name": "millikelvin",
+   "quantity": "temperature",
+   "system": "SI"
+  },
+  {
+   "symbol": "mol",
+   "name": "mole",
+   "quantity": "amount",
+   "system": "SI"
+  },
+  {
+   "symbol": "mmol",
+   "name": "millimole",
+   "quantity": "amount",
+   "system": "SI"
+  },
+  {
+   "symbol": "µmol",
+   "name": "micromole",
+   "quantity": "amount",
+   "system": "SI"
+  },
+  {
+   "symbol": "umol",
+   "name": "micromole (ASCII 'u')",
+   "quantity": "amount",
+   "system": "SI"
+  },
+  {
+   "symbol": "cd",
+   "name": "candela",
+   "quantity": "luminous intensity",
+   "system": "SI"
+  },
+  {
+   "symbol": "N",
+   "name": "newton",
+   "quantity": "force",
+   "system": "SI"
+  },
+  {
+   "symbol": "kN",
+   "name": "kilonewton",
+   "quantity": "force",
+   "system": "SI"
+  },
+  {
+   "symbol": "MN",
+   "name": "meganewton",
+   "quantity": "force",
+   "system": "SI"
+  },
+  {
+   "symbol": "GN",
+   "name": "giganewton",
+   "quantity": "force",
+   "system": "SI"
+  },
+  {
+   "symbol": "mN",
+   "name": "millinewton",
+   "quantity": "force",
+   "system": "SI"
+  },
+  {
+   "symbol": "µN",
+   "name": "micronewton",
+   "quantity": "force",
+   "system": "SI"
+  },
+  {
+   "symbol": "uN",
+   "name": "micronewton (ASCII 'u')",
+   "quantity": "force",
+   "system": "SI"
+  },
+  {
+   "symbol": "Pa",
+   "name": "pascal",
+   "quantity": "pressure",
+   "system": "SI"
+  },
+  {
+   "symbol": "kPa",
+   "name": "kilopascal",
+   "quantity": "pressure",
+   "system": "SI"
+  },
+  {
+   "symbol": "MPa",
+   "name": "megapascal",
+   "quantity": "pressure",
+   "system": "SI"
+  },
+  {
+   "symbol": "GPa",
+   "name": "gigapascal",
+   "quantity": "pressure",
+   "system": "SI"
+  },
+  {
+   "symbol": "J",
+   "name": "joule",
+   "quantity": "energy",
+   "system": "SI"
+  },
+  {
+   "symbol": "kJ",
+   "name": "kilojoule",
+   "quantity": "energy",
+   "system": "SI"
+  },
+  {
+   "symbol": "MJ",
+   "name": "megajoule",
+   "quantity": "energy",
+   "system": "SI"
+  },
+  {
+   "symbol": "GJ",
+   "name": "gigajoule",
+   "quantity": "energy",
+   "system": "SI"
+  },
+  {
+   "symbol": "TJ",
+   "name": "terajoule",
+   "quantity": "energy",
+   "system": "SI"
+  },
+  {
+   "symbol": "mJ",
+   "name": "millijoule",
+   "quantity": "energy",
+   "system": "SI"
+  },
+  {
+   "symbol": "µJ",
+   "name": "microjoule",
+   "quantity": "energy",
+   "system": "SI"
+  },
+  {
+   "symbol": "nJ",
+   "name": "nanojoule",
+   "quantity": "energy",
+   "system": "SI"
+  },
+  {
+   "symbol": "uJ",
+   "name": "microjoule (ASCII 'u')",
+   "quantity": "energy",
+   "system": "SI"
+  },
+  {
+   "symbol": "W",
+   "name": "watt",
+   "quantity": "power",
+   "system": "SI"
+  },
+  {
+   "symbol": "kW",
+   "name": "kilowatt",
+   "quantity": "power",
+   "system": "SI"
+  },
+  {
+   "symbol": "MW",
+   "name": "megawatt",
+   "quantity": "power",
+   "system": "SI"
+  },
+  {
+   "symbol": "GW",
+   "name": "gigawatt",
+   "quantity": "power",
+   "system": "SI"
+  },
+  {
+   "symbol": "TW",
+   "name": "terawatt",
+   "quantity": "power",
+   "system": "SI"
+  },
+  {
+   "symbol": "mW",
+   "name": "milliwatt",
+   "quantity": "power",
+   "system": "SI"
+  },
+  {
+   "symbol": "µW",
+   "name": "microwatt",
+   "quantity": "power",
+   "system": "SI"
+  },
+  {
+   "symbol": "nW",
+   "name": "nanowatt",
+   "quantity": "power",
+   "system": "SI"
+  },
+  {
+   "symbol": "pW",
+   "name": "picowatt",
+   "quantity": "power",
+   "system": "SI"
+  },
+  {
+   "symbol": "uW",
+   "name": "microwatt (ASCII 'u')",
+   "quantity": "power",
+   "system": "SI"
+  },
+  {
+   "symbol": "V",
+   "name": "volt",
+   "quantity": "voltage",
+   "system": "SI"
+  },
+  {
+   "symbol": "kV",
+   "name": "kilovolt",
+   "quantity": "voltage",
+   "system": "SI"
+  },
+  {
+   "symbol": "MV",
+   "name": "megavolt",
+   "quantity": "voltage",
+   "system": "SI"
+  },
+  {
+   "symbol": "GV",
+   "name": "gigavolt",
+   "quantity": "voltage",
+   "system": "SI"
+  },
+  {
+   "symbol": "mV",
+   "name": "millivolt",
+   "quantity": "voltage",
+   "system": "SI"
+  },
+  {
+   "symbol": "µV",
+   "name": "microvolt",
+   "quantity": "voltage",
+   "system": "SI"
+  },
+  {
+   "symbol": "nV",
+   "name": "nanovolt",
+   "quantity": "voltage",
+   "system": "SI"
+  },
+  {
+   "symbol": "uV",
+   "name": "microvolt (ASCII 'u')",
+   "quantity": "voltage",
+   "system": "SI"
+  },
+  {
+   "symbol": "Ω",
+   "name": "ohm",
+   "quantity": "resistance",
+   "system": "SI"
+  },
+  {
+   "symbol": "kΩ",
+   "name": "kiloohm",
+   "quantity": "resistance",
+   "system": "SI"
+  },
+  {
+   "symbol": "MΩ",
+   "name": "megaohm",
+   "quantity": "resistance",
+   "system": "SI"
+  },
+  {
+   "symbol": "GΩ",
+   "name": "gigaohm",
+   "quantity": "resistance",
+   "system": "SI"
+  },
+  {
+   "symbol": "mΩ",
+   "name": "milliohm",
+   "quantity": "resistance",
+   "system": "SI"
+  },
+  {
+   "symbol": "µΩ",
+   "name": "microohm",
+   "quantity": "resistance",
+   "system": "SI"
+  },
+  {
+   "symbol": "uΩ",
+   "name": "microohm (ASCII 'u')",
+   "quantity": "resistance",
+   "system": "SI"
+  },
+  {
+   "symbol": "S",
+   "name": "siemens",
+   "quantity": "conductance",
+   "system": "SI"
+  },
+  {
+   "symbol": "kS",
+   "name": "kilosiemens",
+   "quantity": "conductance",
+   "system": "SI"
+  },
+  {
+   "symbol": "mS",
+   "name": "millisiemens",
+   "quantity": "conductance",
+   "system": "SI"
+  },
+  {
+   "symbol": "µS",
+   "name": "microsiemens",
+   "quantity": "conductance",
+   "system": "SI"
+  },
+  {
+   "symbol": "nS",
+   "name": "nanosiemens",
+   "quantity": "conductance",
+   "system": "SI"
+  },
+  {
+   "symbol": "uS",
+   "name": "microsiemens (ASCII 'u')",
+   "quantity": "conductance",
+   "system": "SI"
+  },
+  {
+   "symbol": "F",
+   "name": "farad",
+   "quantity": "capacitance",
+   "system": "SI"
+  },
+  {
+   "symbol": "kF",
+   "name": "kilofarad",
+   "quantity": "capacitance",
+   "system": "SI"
+  },
+  {
+   "symbol": "mF",
+   "name": "millifarad",
+   "quantity": "capacitance",
+   "system": "SI"
+  },
+  {
+   "symbol": "µF",
+   "name": "microfarad",
+   "quantity": "capacitance",
+   "system": "SI"
+  },
+  {
+   "symbol": "nF",
+   "name": "nanofarad",
+   "quantity": "capacitance",
+   "system": "SI"
+  },
+  {
+   "symbol": "pF",
+   "name": "picofarad",
+   "quantity": "capacitance",
+   "system": "SI"
+  },
+  {
+   "symbol": "uF",
+   "name": "microfarad (ASCII 'u')",
+   "quantity": "capacitance",
+   "system": "SI"
+  },
+  {
+   "symbol": "H",
+   "name": "henry",
+   "quantity": "inductance",
+   "system": "SI"
+  },
+  {
+   "symbol": "mH",
+   "name": "millihenry",
+   "quantity": "inductance",
+   "system": "SI"
+  },
+  {
+   "symbol": "µH",
+   "name": "microhenry",
+   "quantity": "inductance",
+   "system": "SI"
+  },
+  {
+   "symbol": "nH",
+   "name": "nanohenry",
+   "quantity": "inductance",
+   "system": "SI"
+  },
+  {
+   "symbol": "uH",
+   "name": "microhenry (ASCII 'u')",
+   "quantity": "inductance",
+   "system": "SI"
+  },
+  {
+   "symbol": "C",
+   "name": "coulomb",
+   "quantity": "charge",
+   "system": "SI"
+  },
+  {
+   "symbol": "mC",
+   "name": "millicoulomb",
+   "quantity": "charge",
+   "system": "SI"
+  },
+  {
+   "symbol": "µC",
+   "name": "microcoulomb",
+   "quantity": "charge",
+   "system": "SI"
+  },
+  {
+   "symbol": "nC",
+   "name": "nanocoulomb",
+   "quantity": "charge",
+   "system": "SI"
+  },
+  {
+   "symbol": "pC",
+   "name": "picocoulomb",
+   "quantity": "charge",
+   "system": "SI"
+  },
+  {
+   "symbol": "uC",
+   "name": "microcoulomb (ASCII 'u')",
+   "quantity": "charge",
+   "system": "SI"
+  },
+  {
+   "symbol": "Hz",
+   "name": "hertz",
+   "quantity": "frequency",
+   "system": "SI"
+  },
+  {
+   "symbol": "kHz",
+   "name": "kilohertz",
+   "quantity": "frequency",
+   "system": "SI"
+  },
+  {
+   "symbol": "MHz",
+   "name": "megahertz",
+   "quantity": "frequency",
+   "system": "SI"
+  },
+  {
+   "symbol": "GHz",
+   "name": "gigahertz",
+   "quantity": "frequency",
+   "system": "SI"
+  },
+  {
+   "symbol": "THz",
+   "name": "terahertz",
+   "quantity": "frequency",
+   "system": "SI"
+  },
+  {
+   "symbol": "mHz",
+   "name": "millihertz",
+   "quantity": "frequency",
+   "system": "SI"
+  },
+  {
+   "symbol": "T",
+   "name": "tesla",
+   "quantity": "magnetic flux density",
+   "system": "SI"
+  },
+  {
+   "symbol": "mT",
+   "name": "millitesla",
+   "quantity": "magnetic flux density",
+   "system": "SI"
+  },
+  {
+   "symbol": "µT",
+   "name": "microtesla",
+   "quantity": "magnetic flux density",
+   "system": "SI"
+  },
+  {
+   "symbol": "nT",
+   "name": "nanotesla",
+   "quantity": "magnetic flux density",
+   "system": "SI"
+  },
+  {
+   "symbol": "uT",
+   "name": "microtesla (ASCII 'u')",
+   "quantity": "magnetic flux density",
+   "system": "SI"
+  },
+  {
+   "symbol": "Wb",
+   "name": "weber",
+   "quantity": "magnetic flux",
+   "system": "SI"
+  },
+  {
+   "symbol": "mWb",
+   "name": "milliweber",
+   "quantity": "magnetic flux",
+   "system": "SI"
+  },
+  {
+   "symbol": "lm",
+   "name": "lumen",
+   "quantity": "luminous flux",
+   "system": "SI"
+  },
+  {
+   "symbol": "lx",
+   "name": "lux",
+   "quantity": "illuminance",
+   "system": "SI"
+  },
+  {
+   "symbol": "klx",
+   "name": "kilolux",
+   "quantity": "illuminance",
+   "system": "SI"
+  },
+  {
+   "symbol": "Bq",
+   "name": "becquerel",
+   "quantity": "radioactivity",
+   "system": "SI"
+  },
+  {
+   "symbol": "kBq",
+   "name": "kilobecquerel",
+   "quantity": "radioactivity",
+   "system": "SI"
+  },
+  {
+   "symbol": "MBq",
+   "name": "megabecquerel",
+   "quantity": "radioactivity",
+   "system": "SI"
+  },
+  {
+   "symbol": "Gy",
+   "name": "gray",
+   "quantity": "absorbed dose",
+   "system": "SI"
+  },
+  {
+   "symbol": "mGy",
+   "name": "milligray",
+   "quantity": "absorbed dose",
+   "system": "SI"
+  },
+  {
+   "symbol": "Sv",
+   "name": "sievert",
+   "quantity": "dose equivalent",
+   "system": "SI"
+  },
+  {
+   "symbol": "mSv",
+   "name": "millisievert",
+   "quantity": "dose equivalent",
+   "system": "SI"
+  },
+  {
+   "symbol": "µSv",
+   "name": "microsievert",
+   "quantity": "dose equivalent",
+   "system": "SI"
+  },
+  {
+   "symbol": "uSv",
+   "name": "microsievert (ASCII 'u')",
+   "quantity": "dose equivalent",
+   "system": "SI"
+  },
+  {
+   "symbol": "L",
+   "name": "litre",
+   "quantity": "volume",
+   "system": "SI"
+  },
+  {
+   "symbol": "mL",
+   "name": "millilitre",
+   "quantity": "volume",
+   "system": "SI"
+  },
+  {
+   "symbol": "µL",
+   "name": "microlitre",
+   "quantity": "volume",
+   "system": "SI"
+  },
+  {
+   "symbol": "dL",
+   "name": "decilitre",
+   "quantity": "volume",
+   "system": "SI"
+  },
+  {
+   "symbol": "cL",
+   "name": "centilitre",
+   "quantity": "volume",
+   "system": "SI"
+  },
+  {
+   "symbol": "uL",
+   "name": "microlitre (ASCII 'u')",
+   "quantity": "volume",
+   "system": "SI"
+  },
+  {
+   "symbol": "VA",
+   "name": "volt-ampere",
+   "quantity": "apparent power",
+   "system": "SI"
+  },
+  {
+   "symbol": "kVA",
+   "name": "kilovolt-ampere",
+   "quantity": "apparent power",
+   "system": "SI"
+  },
+  {
+   "symbol": "MVA",
+   "name": "megavolt-ampere",
+   "quantity": "apparent power",
+   "system": "SI"
+  },
+  {
+   "symbol": "var",
+   "name": "volt-ampere reactive",
+   "quantity": "reactive power",
+   "system": "SI"
+  },
+  {
+   "symbol": "kvar",
+   "name": "kilovolt-ampere reactive",
+   "quantity": "reactive power",
+   "system": "SI"
+  },
+  {
+   "symbol": "Mvar",
+   "name": "megavolt-ampere reactive",
+   "quantity": "reactive power",
+   "system": "SI"
+  },
+  {
+   "symbol": "Wh",
+   "name": "watt-hour",
+   "quantity": "energy",
+   "system": "SI"
+  },
+  {
+   "symbol": "kWh",
+   "name": "kilowatt-hour",
+   "quantity": "energy",
+   "system": "SI"
+  },
+  {
+   "symbol": "MWh",
+   "name": "megawatt-hour",
+   "quantity": "energy",
+   "system": "SI"
+  },
+  {
+   "symbol": "GWh",
+   "name": "gigawatt-hour",
+   "quantity": "energy",
+   "system": "SI"
+  },
+  {
+   "symbol": "Ah",
+   "name": "ampere-hour",
+   "quantity": "charge",
+   "system": "SI"
+  },
+  {
+   "symbol": "mAh",
+   "name": "milliampere-hour",
+   "quantity": "charge",
+   "system": "SI"
+  },
+  {
+   "symbol": "b",
+   "name": "bit",
+   "quantity": "information",
+   "system": "SI"
+  },
+  {
+   "symbol": "B",
+   "name": "byte",
+   "quantity": "information",
+   "system": "SI"
+  },
+  {
+   "symbol": "kB",
+   "name": "kilobyte",
+   "quantity": "information",
+   "system": "SI"
+  },
+  {
+   "symbol": "MB",
+   "name": "megabyte",
+   "quantity": "information",
+   "system": "SI"
+  },
+  {
+   "symbol": "GB",
+   "name": "gigabyte",
+   "quantity": "information",
+   "system": "SI"
+  },
+  {
+   "symbol": "bit/s",
+   "name": "bit per second",
+   "quantity": "data rate",
+   "system": "SI"
+  },
+  {
+   "symbol": "kbit/s",
+   "name": "kilobit per second",
+   "quantity": "data rate",
+   "system": "SI"
+  },
+  {
+   "symbol": "Mbit/s",
+   "name": "megabit per second",
+   "quantity": "data rate",
+   "system": "SI"
+  },
+  {
+   "symbol": "Gbit/s",
+   "name": "gigabit per second",
+   "quantity": "data rate",
+   "system": "SI"
+  },
+  {
+   "symbol": "eV",
+   "name": "electronvolt",
+   "quantity": "energy",
+   "system": "SI"
+  },
+  {
+   "symbol": "keV",
+   "name": "kiloelectronvolt",
+   "quantity": "energy",
+   "system": "SI"
+  },
+  {
+   "symbol": "MeV",
+   "name": "megaelectronvolt",
+   "quantity": "energy",
+   "system": "SI"
+  },
+  {
+   "symbol": "t",
+   "name": "tonne",
+   "quantity": "mass",
+   "system": "SI"
+  },
+  {
+   "symbol": "°C",
+   "name": "degree Celsius",
+   "quantity": "temperature",
+   "system": "SI"
+  },
+  {
+   "symbol": "°F",
+   "name": "degree Fahrenheit",
+   "quantity": "temperature",
+   "system": "imperial"
+  },
+  {
+   "symbol": "°",
+   "name": "degree",
+   "quantity": "angle",
+   "system": "SI"
+  },
+  {
+   "symbol": "rad",
+   "name": "radian",
+   "quantity": "angle",
+   "system": "SI"
+  },
+  {
+   "symbol": "sr",
+   "name": "steradian",
+   "quantity": "solid angle",
+   "system": "SI"
+  },
+  {
+   "symbol": "rpm",
+   "name": "revolutions per minute",
+   "quantity": "rotational speed",
+   "system": "SI"
+  },
+  {
+   "symbol": "rev/min",
+   "name": "revolutions per minute",
+   "quantity": "rotational speed",
+   "system": "SI"
+  },
+  {
+   "symbol": "rad/s",
+   "name": "radian per second",
+   "quantity": "angular velocity",
+   "system": "SI"
+  },
+  {
+   "symbol": "m/s",
+   "name": "metre per second",
+   "quantity": "velocity",
+   "system": "SI"
+  },
+  {
+   "symbol": "km/h",
+   "name": "kilometre per hour",
+   "quantity": "velocity",
+   "system": "SI"
+  },
+  {
+   "symbol": "m/s²",
+   "name": "metre per second squared",
+   "quantity": "acceleration",
+   "system": "SI"
+  },
+  {
+   "symbol": "m/s^2",
+   "name": "metre per second squared",
+   "quantity": "acceleration",
+   "system": "SI"
+  },
+  {
+   "symbol": "m²",
+   "name": "square metre",
+   "quantity": "area",
+   "system": "SI"
+  },
+  {
+   "symbol": "m^2",
+   "name": "square metre",
+   "quantity": "area",
+   "system": "SI"
+  },
+  {
+   "symbol": "mm²",
+   "name": "square millimetre",
+   "quantity": "area",
+   "system": "SI"
+  },
+  {
+   "symbol": "mm^2",
+   "name": "square millimetre",
+   "quantity": "area",
+   "system": "SI"
+  },
+  {
+   "symbol": "cm²",
+   "name": "square centimetre",
+   "quantity": "area",
+   "system": "SI"
+  },
+  {
+   "symbol": "cm^2",
+   "name": "square centimetre",
+   "quantity": "area",
+   "system": "SI"
+  },
+  {
+   "symbol": "km²",
+   "name": "square kilometre",
+   "quantity": "area",
+   "system": "SI"
+  },
+  {
+   "symbol": "m³",
+   "name": "cubic metre",
+   "quantity": "volume",
+   "system": "SI"
+  },
+  {
+   "symbol": "m^3",
+   "name": "cubic metre",
+   "quantity": "volume",
+   "system": "SI"
+  },
+  {
+   "symbol": "cm³",
+   "name": "cubic centimetre",
+   "quantity": "volume",
+   "system": "SI"
+  },
+  {
+   "symbol": "cm^3",
+   "name": "cubic centimetre",
+   "quantity": "volume",
+   "system": "SI"
+  },
+  {
+   "symbol": "mm³",
+   "name": "cubic millimetre",
+   "quantity": "volume",
+   "system": "SI"
+  },
+  {
+   "symbol": "m³/s",
+   "name": "cubic metre per second",
+   "quantity": "flow rate",
+   "system": "SI"
+  },
+  {
+   "symbol": "L/min",
+   "name": "litre per minute",
+   "quantity": "flow rate",
+   "system": "SI"
+  },
+  {
+   "symbol": "L/s",
+   "name": "litre per second",
+   "quantity": "flow rate",
+   "system": "SI"
+  },
+  {
+   "symbol": "kg/m³",
+   "name": "kilogram per cubic metre",
+   "quantity": "density",
+   "system": "SI"
+  },
+  {
+   "symbol": "kg/m^3",
+   "name": "kilogram per cubic metre",
+   "quantity": "density",
+   "system": "SI"
+  },
+  {
+   "symbol": "g/cm³",
+   "name": "gram per cubic centimetre",
+   "quantity": "density",
+   "system": "SI"
+  },
+  {
+   "symbol": "N·m",
+   "name": "newton metre",
+   "quantity": "torque",
+   "system": "SI"
+  },
+  {
+   "symbol": "Nm",
+   "name": "newton metre",
+   "quantity": "torque",
+   "system": "SI"
+  },
+  {
+   "symbol": "N m",
+   "name": "newton metre",
+   "quantity": "torque",
+   "system": "SI"
+  },
+  {
+   "symbol": "kN·m",
+   "name": "kilonewton metre",
+   "quantity": "moment",
+   "system": "SI"
+  },
+  {
+   "symbol": "kNm",
+   "name": "kilonewton metre",
+   "quantity": "moment",
+   "system": "SI"
+  },
+  {
+   "symbol": "N/m",
+   "name": "newton per metre",
+   "quantity": "stiffness",
+   "system": "SI"
+  },
+  {
+   "symbol": "N/mm",
+   "name": "newton per millimetre",
+   "quantity": "stiffness",
+   "system": "SI"
+  },
+  {
+   "symbol": "N/mm²",
+   "name": "newton per square millimetre",
+   "quantity": "stress",
+   "system": "SI"
+  },
+  {
+   "symbol": "N/mm^2",
+   "name": "newton per square millimetre",
+   "quantity": "stress",
+   "system": "SI"
+  },
+  {
+   "symbol": "N/m²",
+   "name": "newton per square metre",
+   "quantity": "stress",
+   "system": "SI"
+  },
+  {
+   "symbol": "kN/m",
+   "name": "kilonewton per metre",
+   "quantity": "distributed load",
+   "system": "SI"
+  },
+  {
+   "symbol": "kN/m²",
+   "name": "kilonewton per square metre",
+   "quantity": "pressure",
+   "system": "SI"
+  },
+  {
+   "symbol": "W/m²",
+   "name": "watt per square metre",
+   "quantity": "irradiance",
+   "system": "SI"
+  },
+  {
+   "symbol": "W/(m·K)",
+   "name": "watt per metre kelvin",
+   "quantity": "thermal conductivity",
+   "system": "SI"
+  },
+  {
+   "symbol": "W/m·K",
+   "name": "watt per metre kelvin",
+   "quantity": "thermal conductivity",
+   "system": "SI"
+  },
+  {
+   "symbol": "J/(kg·K)",
+   "name": "joule per kilogram kelvin",
+   "quantity": "specific heat",
+   "system": "SI"
+  },
+  {
+   "symbol": "J/kg",
+   "name": "joule per kilogram",
+   "quantity": "specific energy",
+   "system": "SI"
+  },
+  {
+   "symbol": "kJ/kg",
+   "name": "kilojoule per kilogram",
+   "quantity": "specific energy",
+   "system": "SI"
+  },
+  {
+   "symbol": "V/m",
+   "name": "volt per metre",
+   "quantity": "electric field",
+   "system": "SI"
+  },
+  {
+   "symbol": "A/m",
+   "name": "ampere per metre",
+   "quantity": "magnetic field",
+   "system": "SI"
+  },
+  {
+   "symbol": "Ω·m",
+   "name": "ohm metre",
+   "quantity": "resistivity",
+   "system": "SI"
+  },
+  {
+   "symbol": "S/m",
+   "name": "siemens per metre",
+   "quantity": "conductivity",
+   "system": "SI"
+  },
+  {
+   "symbol": "dB",
+   "name": "decibel",
+   "quantity": "ratio",
+   "system": "SI"
+  },
+  {
+   "symbol": "dBm",
+   "name": "decibel-milliwatt",
+   "quantity": "power",
+   "system": "SI"
+  },
+  {
+   "symbol": "dBi",
+   "name": "decibel isotropic",
+   "quantity": "gain",
+   "system": "SI"
+  },
+  {
+   "symbol": "bar",
+   "name": "bar",
+   "quantity": "pressure",
+   "system": "SI"
+  },
+  {
+   "symbol": "mbar",
+   "name": "millibar",
+   "quantity": "pressure",
+   "system": "SI"
+  },
+  {
+   "symbol": "atm",
+   "name": "atmosphere",
+   "quantity": "pressure",
+   "system": "other"
+  },
+  {
+   "symbol": "mmHg",
+   "name": "millimetre of mercury",
+   "quantity": "pressure",
+   "system": "other"
+  },
+  {
+   "symbol": "psi",
+   "name": "pound per square inch",
+   "quantity": "pressure",
+   "system": "imperial"
+  },
+  {
+   "symbol": "ksi",
+   "name": "kilopound per square inch",
+   "quantity": "pressure",
+   "system": "imperial"
+  },
+  {
+   "symbol": "in",
+   "name": "inch",
+   "quantity": "length",
+   "system": "imperial"
+  },
+  {
+   "symbol": "ft",
+   "name": "foot",
+   "quantity": "length",
+   "system": "imperial"
+  },
+  {
+   "symbol": "yd",
+   "name": "yard",
+   "quantity": "length",
+   "system": "imperial"
+  },
+  {
+   "symbol": "mi",
+   "name": "mile",
+   "quantity": "length",
+   "system": "imperial"
+  },
+  {
+   "symbol": "mil",
+   "name": "thou",
+   "quantity": "length",
+   "system": "imperial"
+  },
+  {
+   "symbol": "lb",
+   "name": "pound",
+   "quantity": "mass",
+   "system": "imperial"
+  },
+  {
+   "symbol": "lbs",
+   "name": "pounds",
+   "quantity": "mass",
+   "system": "imperial"
+  },
+  {
+   "symbol": "oz",
+   "name": "ounce",
+   "quantity": "mass",
+   "system": "imperial"
+  },
+  {
+   "symbol": "lbf",
+   "name": "pound-force",
+   "quantity": "force",
+   "system": "imperial"
+  },
+  {
+   "symbol": "kip",
+   "name": "kilopound",
+   "quantity": "force",
+   "system": "imperial"
+  },
+  {
+   "symbol": "ft·lb",
+   "name": "foot-pound",
+   "quantity": "torque",
+   "system": "imperial"
+  },
+  {
+   "symbol": "lb·ft",
+   "name": "pound-foot",
+   "quantity": "torque",
+   "system": "imperial"
+  },
+  {
+   "symbol": "hp",
+   "name": "horsepower",
+   "quantity": "power",
+   "system": "imperial"
+  },
+  {
+   "symbol": "HP",
+   "name": "horsepower",
+   "quantity": "power",
+   "system": "imperial"
+  },
+  {
+   "symbol": "BTU",
+   "name": "British thermal unit",
+   "quantity": "energy",
+   "system": "imperial"
+  },
+  {
+   "symbol": "gal",
+   "name": "gallon",
+   "quantity": "volume",
+   "system": "imperial"
+  },
+  {
+   "symbol": "mph",
+   "name": "miles per hour",
+   "quantity": "velocity",
+   "system": "imperial"
+  },
+  {
+   "symbol": "ft/s",
+   "name": "foot per second",
+   "quantity": "velocity",
+   "system": "imperial"
+  },
+  {
+   "symbol": "cal",
+   "name": "calorie",
+   "quantity": "energy",
+   "system": "other"
+  },
+  {
+   "symbol": "kcal",
+   "name": "kilocalorie",
+   "quantity": "energy",
+   "system": "other"
+  },
+  {
+   "symbol": "min",
+   "name": "minute",
+   "quantity": "time",
+   "system": "SI"
+  },
+  {
+   "symbol": "h",
+   "name": "hour",
+   "quantity": "time",
+   "system": "SI"
+  },
+  {
+   "symbol": "hr",
+   "name": "hour",
+   "quantity": "time",
+   "system": "SI"
+  },
+  {
+   "symbol": "hrs",
+   "name": "hours",
+   "quantity": "time",
+   "system": "SI"
+  },
+  {
+   "symbol": "d",
+   "name": "day",
+   "quantity": "time",
+   "system": "SI"
+  },
+  {
+   "symbol": "ppm",
+   "name": "parts per million",
+   "quantity": "ratio",
+   "system": "SI"
+  },
+  {
+   "symbol": "%",
+   "name": "percent",
+   "quantity": "ratio",
+   "system": "SI"
+  },
+  {
+   "symbol": "pH",
+   "name": "pH",
+   "quantity": "acidity",
+   "system": "SI"
+  },
+  {
+   "symbol": "Hz/V",
+   "name": "hertz per volt",
+   "quantity": "sensitivity",
+   "system": "SI"
+  },
+  {
+   "symbol": "mV/V",
+   "name": "millivolt per volt",
+   "quantity": "sensitivity",
+   "system": "SI"
+  },
+  {
+   "symbol": "V/V",
+   "name": "volt per volt",
+   "quantity": "gain",
+   "system": "SI"
+  },
+  {
+   "symbol": "A/W",
+   "name": "ampere per watt",
+   "quantity": "responsivity",
+   "system": "SI"
+  },
+  {
+   "symbol": "Mbps",
+   "name": "megabit per second",
+   "quantity": "data rate",
+   "system": "SI"
+  },
+  {
+   "symbol": "kbps",
+   "name": "kilobit per second",
+   "quantity": "data rate",
+   "system": "SI"
+  },
+  {
+   "symbol": "Gbps",
+   "name": "gigabit per second",
+   "quantity": "data rate",
+   "system": "SI"
+  },
+  {
+   "symbol": "bps",
+   "name": "bit per second",
+   "quantity": "data rate",
+   "system": "SI"
+  }
+ ],
+ "miscased": {
+  "KG": "kg",
+  "Kg": "kg",
+  "KM": "km",
+  "Km": "km",
+  "MM": "mm",
+  "Mm": null,
+  "CM": "cm",
+  "Cm": "cm",
+  "KW": "kW",
+  "Kw": "kW",
+  "kw": "kW",
+  "MW": null,
+  "mw": "mW",
+  "KV": "kV",
+  "Kv": "kV",
+  "kv": "kV",
+  "KN": "kN",
+  "Kn": "kN",
+  "kn": "kN",
+  "KHZ": "kHz",
+  "KHz": "kHz",
+  "Khz": "kHz",
+  "khz": "kHz",
+  "MHZ": "MHz",
+  "Mhz": "MHz",
+  "mhz": "MHz",
+  "GHZ": "GHz",
+  "Ghz": "GHz",
+  "ghz": "GHz",
+  "HZ": "Hz",
+  "hz": "Hz",
+  "KPA": "kPa",
+  "Kpa": "kPa",
+  "kpa": "kPa",
+  "KPa": "kPa",
+  "MPA": "MPa",
+  "Mpa": "MPa",
+  "mpa": "MPa",
+  "GPA": "GPa",
+  "Gpa": "GPa",
+  "PA": null,
+  "pa": "Pa",
+  "MA": null,
+  "ma": "mA",
+  "Ma": "mA",
+  "KWH": "kWh",
+  "Kwh": "kWh",
+  "kwh": "kWh",
+  "KWh": "kWh",
+  "MV": null,
+  "mv": "mV",
+  "Mv": "mV",
+  "KJ": "kJ",
+  "Kj": "kJ",
+  "kj": "kJ",
+  "NM": "N·m",
+  "nm": null,
+  "Nm": null,
+  "SEC": "s",
+  "sec": "s",
+  "secs": "s",
+  "Sec": "s",
+  "MS": "ms",
+  "Ms": "ms",
+  "RPM": "rpm",
+  "Rpm": "rpm",
+  "KMPH": "km/h",
+  "kmph": "km/h",
+  "Kmph": "km/h",
+  "kph": "km/h",
+  "V/m": null,
+  "ohm": "Ω",
+  "ohms": "Ω",
+  "Ohm": "Ω",
+  "Ohms": "Ω",
+  "kohm": "kΩ",
+  "Kohm": "kΩ",
+  "kohms": "kΩ",
+  "Mohm": "MΩ",
+  "degC": "°C",
+  "deg C": "°C",
+  "oC": "°C",
+  "°c": "°C",
+  "C°": "°C",
+  "Deg": "°",
+  "LTR": "L",
+  "ltr": "L",
+  "ltrs": "L",
+  "Ltr": "L",
+  "l": "L",
+  "ML": "mL",
+  "ml": "mL",
+  "Ml": "mL",
+  "GM": "g",
+  "gm": "g",
+  "gms": "g",
+  "Gm": "g",
+  "grams": null,
+  "MG": "mg",
+  "Mg": null,
+  "KB": "kB",
+  "Kb": "kbit",
+  "kb": "kbit",
+  "mb": "MB",
+  "gb": "GB",
+  "Gb": "Gbit",
+  "watts": null,
+  "Watts": null,
+  "W.": null
+ },
+ "plurals": {
+  "kgs": "kg",
+  "Kgs": "kg",
+  "kms": "km",
+  "Kms": "Km",
+  "mms": "mm",
+  "cms": "cm",
+  "gms": "gm",
+  "mins": "min",
+  "hrs": "h",
+  "secs": "s",
+  "lbs": "lb",
+  "ltrs": "L",
+  "Ls": "L",
+  "Ns": "N",
+  "kNs": "kN",
+  "Vs": "V",
+  "Ws": "W",
+  "kWs": "kW",
+  "Hzs": "Hz"
+ }
+}

@@ -1,0 +1,23 @@
+# API
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+gunicorn==23.0.0 ; sys_platform != "win32"
+pydantic==2.10.3
+python-multipart==0.0.19
+# NLP core
+spacy==3.8.3
+nltk==3.9.1
+lemminflect==0.2.3
+wordfreq==3.1.1
+textstat==0.7.13
+yake==0.4.8
+sumy==0.11.0
+networkx==3.4.2
+# Files
+python-docx==1.1.2
+pdfplumber==0.11.4
+# Infra
+slowapi==0.1.9
+cachetools==5.5.0
+orjson==3.10.12
+httpx==0.28.1

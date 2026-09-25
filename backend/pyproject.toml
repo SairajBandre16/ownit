@@ -1,0 +1,35 @@
+[project]
+name = "ownit-backend"
+version = "0.1.0"
+requires-python = ">=3.11"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["data", ".venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003", "RUF009", "RUF012", "B008", "UP038"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["E501"]
+"app/style/delta.py" = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+warn_unused_ignores = false
+check_untyped_defs = true
+exclude = ["data/", "tests/"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+markers = [
+  "languagetool: needs a running LanguageTool server",
+  "lm: needs the built fluency LM",
+  "slow: slow tests",
+]
+filterwarnings = ["ignore::DeprecationWarning"]

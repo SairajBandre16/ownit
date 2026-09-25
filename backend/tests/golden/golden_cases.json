@@ -1,0 +1,83 @@
+[
+  {
+    "name": "wordy_to_concise",
+    "input": "We utilize a peristaltic pump in order to move the coolant through the loop.",
+    "params": {"tone": "academic", "intensity": 3},
+    "must_contain": ["to move the coolant"],
+    "must_not_contain": ["in order to"],
+    "must_not_change": ["peristaltic pump"],
+    "max_changes": 3
+  },
+  {
+    "name": "stock_opener_removed",
+    "input": "It is important to note that the bearing temperature rose to 85 °C after 20 minutes.",
+    "params": {"tone": "academic", "intensity": 3},
+    "must_contain": ["The bearing temperature rose to 85 °C after 20 minutes."],
+    "must_not_change": ["85 °C", "20 minutes"],
+    "max_changes": 2
+  },
+  {
+    "name": "citation_and_units_frozen",
+    "input": "In order to validate the model, the beam was loaded to 12.5 kN (Gupta et al., 2020) and the deflection was compared with Eq. (3).",
+    "params": {"tone": "academic", "intensity": 5},
+    "must_contain": ["12.5 kN", "(Gupta et al., 2020)", "Eq. (3)"],
+    "must_not_change": ["12.5 kN", "(Gupta et al., 2020)", "Eq. (3)"],
+    "max_changes": 4
+  },
+  {
+    "name": "repeated_transition_varied",
+    "input": "Moreover, the sensor is cheap. Moreover, the sensor is easy to calibrate. Moreover, it draws only 5 mA.",
+    "params": {"tone": "academic", "intensity": 3},
+    "must_not_contain": ["Moreover, the sensor is easy to calibrate. Moreover,"],
+    "must_not_change": ["5 mA"],
+    "max_changes": 4
+  },
+  {
+    "name": "clean_text_unchanged",
+    "input": "We fitted two accelerometers to the lathe and logged one reading per millisecond for ten minutes.",
+    "params": {"tone": "academic", "intensity": 3},
+    "must_contain": ["We fitted two accelerometers to the lathe and logged one reading per millisecond for ten minutes."],
+    "must_not_change": [],
+    "max_changes": 0
+  },
+  {
+    "name": "equation_line_frozen",
+    "input": "The power is computed as follows.\nP = V × I\nIn order to reduce losses, it is important to note that the wires were shortened.",
+    "params": {"tone": "neutral", "intensity": 4},
+    "must_contain": ["P = V × I"],
+    "must_not_change": ["P = V × I"],
+    "max_changes": 4
+  },
+  {
+    "name": "quote_frozen",
+    "input": "The datasheet states \"the device has the ability to operate in order to protect the load\" and we agree.",
+    "params": {"tone": "academic", "intensity": 5},
+    "must_contain": ["\"the device has the ability to operate in order to protect the load\""],
+    "must_not_change": ["\"the device has the ability to operate in order to protect the load\""],
+    "max_changes": 2
+  },
+  {
+    "name": "long_sentence_split",
+    "input": "The prototype was assembled on a wooden base with four bolts and a steel bracket, and the students then measured the output voltage at five different wind speeds in the university laboratory.",
+    "params": {"tone": "academic", "intensity": 3},
+    "must_contain": ["steel bracket. The students then measured"],
+    "must_not_change": [],
+    "max_changes": 2
+  },
+  {
+    "name": "keep_terms_list",
+    "input": "In order to utilize the energy, we utilize a flywheel.",
+    "params": {"tone": "academic", "intensity": 5, "keep_terms": ["utilize"]},
+    "must_contain": ["utilize the energy", "utilize a flywheel"],
+    "must_not_change": [],
+    "max_changes": 2
+  },
+  {
+    "name": "headings_kept",
+    "input": "Methodology\nIt is important to note that the samples were dried at 105 °C for 24 h.",
+    "params": {"tone": "academic", "intensity": 3},
+    "must_contain": ["Methodology\n", "105 °C", "24 h"],
+    "must_not_change": ["Methodology"],
+    "max_changes": 2
+  }
+]
