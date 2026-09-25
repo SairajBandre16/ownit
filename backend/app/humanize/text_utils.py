@@ -35,7 +35,7 @@ def lower_first(text: str) -> str:
     if not m:
         return text
     word = m.group(1)
-    if word == "I" or word.isupper() or any(c.isupper() for c in word[1:]):
+    if word == "I" or (len(word) > 1 and word.isupper()) or any(c.isupper() for c in word[1:]):
         return text
     i = m.start(1)
     return text[:i] + word[0].lower() + text[i + 1 :]

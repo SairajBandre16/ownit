@@ -18,8 +18,10 @@ import networkx as nx
 from app.core.graph import pagerank
 from app.core.segment import Segmentation
 from app.core.terms import noun_keyphrases
+from app.walkthrough.glossary import abbreviation_pairs
 
 MAX_NODES = 18
+LIGHT_VERBS = {"be", "have", "do", "make", "play", "take", "give", "get"}  # "plays a role"
 
 
 @dataclass
@@ -52,15 +54,25 @@ def _key(phrase: str) -> str:
 
 def build(seg: Segmentation, body_paragraphs: list[int]) -> ConceptMap:
     phrases = [p for p, _, _ in noun_keyphrases(seg, top=30)]
+    # "programmable logic controller (PLC)": one concept, labelled by the abbreviation
+    full_to_abbr = {full.lower(): abbr for abbr, full in abbreviation_pairs(seg).items()}
     concepts: dict[str, str] = {}
+    aliases: dict[str, list[str]] = defaultdict(list)
     for p in phrases:
+        abbr = full_to_abbr.get(p.lower())
+        if abbr:
+            aliases[_key(abbr)].append(p)
+            p = abbr
         k = _key(p)
         if k and not any(k in other or other in k for other in concepts if k != other):
-            concepts[k] = p
+            concepts.setdefault(k, p)
     if not concepts:
         return ConceptMap()
     patterns = {
-        k: re.compile(rf"(?<![\w-]){re.escape(label)}s?(?![\w-])", re.IGNORECASE)
+        k: re.compile(
+            "|".join(rf"(?<![\w-]){re.escape(form)}s?(?![\w-])" for form in [label, *aliases[k]]),
+            re.IGNORECASE,
+        )
         for k, label in concepts.items()
     }
 
@@ -82,7 +94,7 @@ def build(seg: Segmentation, body_paragraphs: list[int]) -> ConceptMap:
             for b in present[i + 1 :]:
                 pair = tuple(sorted((a, b)))
                 pair_weight[pair] += 1  # type: ignore[index]
-                label = _relation(sent, concepts[a], concepts[b])
+                label = _relation(sent, [concepts[a], *aliases[a]], [concepts[b], *aliases[b]])
                 if label:
                     pair_label[pair] = label  # type: ignore[index]
 
@@ -101,10 +113,7 @@ def build(seg: Segmentation, body_paragraphs: list[int]) -> ConceptMap:
         if len(keep) > 1
         else {keep[0]: (0.0, 0.0)}
     )
-    xs = [p[0] for p in pos.values()]
-    ys = [p[1] for p in pos.values()]
-    span_x = (max(xs) - min(xs)) or 1.0
-    span_y = (max(ys) - min(ys)) or 1.0
+    pos = _spread(pos)
     top = max(rank[n] for n in keep)
     nodes = [
         Node(
@@ -112,8 +121,8 @@ def build(seg: Segmentation, body_paragraphs: list[int]) -> ConceptMap:
             label=concepts[k],
             weight=round(rank[k] / top, 3),
             paragraphs=sorted(occurrences[k]),
-            x=round((pos[k][0] - min(xs)) / span_x, 3),
-            y=round((pos[k][1] - min(ys)) / span_y, 3),
+            x=round(pos[k][0], 3),
+            y=round(pos[k][1], 3),
         )
         for k in keep
     ]
@@ -129,12 +138,31 @@ def build(seg: Segmentation, body_paragraphs: list[int]) -> ConceptMap:
     return ConceptMap(nodes=nodes, edges=edges)
 
 
-def _relation(sent, a: str, b: str) -> str | None:  # type: ignore[no-untyped-def]
+def _spread(pos: dict) -> dict[str, tuple[float, float]]:  # type: ignore[type-arg]
+    """Scale a spring layout to [0, 1] by rank on each axis, blended with the raw position.
+
+    Spring layouts put loosely connected concepts far out and squash the rest into a
+    clump; ranking spreads labels evenly while keeping who-is-near-whom."""
+    keys = list(pos)
+    if len(keys) == 1:
+        return {keys[0]: (0.5, 0.5)}
+    out: dict[str, list[float]] = {k: [0.0, 0.0] for k in keys}
+    for axis in (0, 1):
+        vals = [float(pos[k][axis]) for k in keys]
+        lo, hi = min(vals), max(vals)
+        order = sorted(keys, key=lambda k: pos[k][axis])
+        for r, k in enumerate(order):
+            raw = (float(pos[k][axis]) - lo) / ((hi - lo) or 1.0)
+            out[k][axis] = 0.7 * r / (len(keys) - 1) + 0.3 * raw
+    return {k: (v[0], v[1]) for k, v in out.items()}
+
+
+def _relation(sent, a: list[str], b: list[str]) -> str | None:  # type: ignore[no-untyped-def]
     """Verb connecting two concepts when one is (in) the subject and the other the object."""
     span = sent.span
-    la, lb = a.lower(), b.lower()
+    la, lb = [x.lower() for x in a], [x.lower() for x in b]
     for tok in span:
-        if tok.pos_ not in ("VERB", "AUX") or tok.lemma_ == "be":
+        if tok.pos_ not in ("VERB", "AUX") or tok.lemma_ in LIGHT_VERBS:
             continue
         subj = " ".join(
             t.text for c in tok.children if c.dep_ in ("nsubj", "nsubjpass") for t in c.subtree
@@ -145,6 +173,8 @@ def _relation(sent, a: str, b: str) -> str | None:  # type: ignore[no-untyped-de
             if c.dep_ in ("dobj", "pobj", "attr", "prep", "agent")
             for t in c.subtree
         ).lower()
-        if (la in subj and lb in obj) or (lb in subj and la in obj):
+        a_subj, a_obj = any(x in subj for x in la), any(x in obj for x in la)
+        b_subj, b_obj = any(x in subj for x in lb), any(x in obj for x in lb)
+        if (a_subj and b_obj) or (b_subj and a_obj):
             return tok.lemma_.lower()
     return None

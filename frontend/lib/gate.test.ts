@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import type { WalkthroughResponse } from "./api";
 import { computeGate } from "./gate";
 import { DEFAULT_SETTINGS, type OwnDoc } from "./types";
 
@@ -20,7 +21,7 @@ function doc(partial: Partial<OwnDoc>): OwnDoc {
 
 const walkthrough = (reviewed: number, total: number) => ({
   text: "",
-  data: { paragraphs: Array.from({ length: total }, () => ({})) },
+  data: { paragraphs: Array.from({ length: total }, (_, i) => ({ index: i })), concept_map: { nodes: [], edges: [] } } as unknown as WalkthroughResponse,
   marks: Object.fromEntries(Array.from({ length: reviewed }, (_, i) => [i, "got" as const])),
 });
 

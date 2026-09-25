@@ -57,6 +57,8 @@ def test_case_helpers():
     assert capitalize_first("  the pump") == "  The pump"
     assert lower_first("The pump") == "the pump"
     assert lower_first("IoT sensors") == "IoT sensors"
+    assert lower_first("A proportional controller") == "a proportional controller"
+    assert lower_first("PLC logic") == "PLC logic"
 
 
 # ------------------------------------------------------------------ phrase_simplify

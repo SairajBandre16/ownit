@@ -202,6 +202,11 @@ def _is_nominal(seg: Segmentation, start: int, end: int) -> bool:
     toks = [t for t in span if not t.is_punct]
     if not toks or toks[-1].pos_ not in ("NOUN", "PROPN"):
         return False
+    first = toks[0]
+    if len(toks) == 1 and first.i >= 2:
+        to, adj = seg.doc[first.i - 1], seg.doc[first.i - 2]
+        if to.lower_ == "to" and adj.pos_ == "ADJ":
+            return False  # "simple to tune": a verb the tagger read as a noun
     return all(t.pos_ in _TERM_POS or (t.pos_ == "ADP" and t.lower_ == "of") for t in toks)
 
 

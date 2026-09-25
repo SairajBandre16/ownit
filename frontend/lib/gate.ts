@@ -15,12 +15,12 @@ export interface GateStatus {
   thresholds: { quiz: number; teachback: number; walkthrough: number };
 }
 
+/** Share of walkthrough paragraphs marked "Got it" or "Confusing" (0-1). */
 export function walkthroughProgress(doc: OwnDoc | null): number {
   const wt = doc?.walkthrough;
-  if (!wt) return 0;
-  const paras = (wt.data as { paragraphs?: unknown[] } | null)?.paragraphs?.length ?? 0;
-  if (!paras) return 0;
-  return Object.keys(wt.marks).length / paras;
+  const paras = wt?.data?.paragraphs ?? [];
+  if (!wt || !paras.length) return 0;
+  return paras.filter((p) => wt.marks[p.index] != null).length / paras.length;
 }
 
 /** Pure gate computation (§9.7): quiz ≥ 70 %, teach-back ≥ 60 %, walkthrough ≥ 80 % reviewed. */

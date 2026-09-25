@@ -17,11 +17,26 @@ from app.walkthrough.gist import gist
 from app.walkthrough.glossary import document_definitions, paragraph_terms
 from app.walkthrough.simplify import simplify_paragraphs
 
+TITLE_MAX_WORDS = 14
+
+
+def is_title_line(text: str) -> bool:
+    """A one-line block without end punctuation ("Design and Testing of a …") is a title,
+    not a paragraph to walk through."""
+    t = text.strip()
+    return (
+        "\n" not in t and len(t.split()) <= TITLE_MAX_WORDS and not t.endswith((".", "!", "?", ":"))
+    )
+
 
 def walkthrough(text: str) -> WalkthroughResponse:
     seg = segment(text)
     body = [
-        p for p in seg.paragraphs if not p.is_heading and seg.section_at(p.start) != "references"
+        p
+        for p in seg.paragraphs
+        if not p.is_heading
+        and not is_title_line(p.text)
+        and seg.section_at(p.start) != "references"
     ]
     doc_defs = document_definitions(seg)
     simple = simplify_paragraphs(text, [(p.start, p.end) for p in body]) if body else []

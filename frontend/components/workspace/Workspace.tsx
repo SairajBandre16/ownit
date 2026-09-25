@@ -81,8 +81,8 @@ export function Workspace({ docId }: { docId: string }) {
   return (
     <>
       <SiteHeader />
-      <div className="mx-auto grid w-full max-w-[96rem] flex-1 gap-6 px-4 py-6 sm:px-6 lg:grid-cols-[14rem_minmax(0,1fr)]">
-        <div className="lg:sticky lg:top-20 lg:self-start">
+      <div className="mx-auto grid w-full max-w-[96rem] flex-1 grid-cols-1 gap-6 px-4 py-6 sm:px-6 lg:grid-cols-[14rem_minmax(0,1fr)]">
+        <div className="min-w-0 lg:sticky lg:top-20 lg:self-start">
           <input
             aria-label="Document title"
             value={doc.title}

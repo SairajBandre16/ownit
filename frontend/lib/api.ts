@@ -13,6 +13,10 @@ export type CompareResponse = Schemas["CompareResponse"];
 export type ProtectedSpan = Schemas["ProtectedSpan"];
 export type AnalyzeResponse = Schemas["AnalyzeResponse"];
 export type Section = Schemas["Section"];
+export type WalkthroughResponse = Schemas["WalkthroughResponse"];
+export type WalkthroughParagraph = Schemas["ParagraphOut"];
+export type KeyTerm = Schemas["KeyTerm"];
+export type ConceptMapData = Schemas["ConceptMapOut"];
 
 export const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000").replace(/\/$/, "");
 
@@ -107,4 +111,5 @@ export const api = {
   fingerprint: (samples: string[]) => post<StyleProfile>("/style/fingerprint", { samples }),
   compareStyle: (text: string, profile: StyleProfile, signal?: AbortSignal) =>
     post<CompareResponse>("/style/compare", { text, profile }, signal),
+  walkthrough: (text: string, signal?: AbortSignal) => post<WalkthroughResponse>("/walkthrough", { text }, signal),
 };

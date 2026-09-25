@@ -10,7 +10,13 @@ from app.core.segment import segment
 from app.core.spans import SpanIndex
 from app.humanize.docpass import _merge_text
 from app.humanize.pipeline import humanize
-from app.humanize.transforms import clause_front, contractions, opener_vary, passive_to_active, voice_fit
+from app.humanize.transforms import (
+    clause_front,
+    contractions,
+    opener_vary,
+    passive_to_active,
+    voice_fit,
+)
 from app.humanize.transforms.passive_to_active import rewrite
 from app.humanize.types import HumanizeContext
 from app.style.delta import compare, voice_match
@@ -24,7 +30,9 @@ def ctx_for(text: str, tone: str = "academic", profile=None) -> HumanizeContext:
     return HumanizeContext(seg=seg, protected=idx, tone=tone, intensity=5, profile=profile)
 
 
-def texts(module, text: str, sentence: int = 0, tone: str = "academic", profile=None, prepare=None) -> list[str]:
+def texts(
+    module, text: str, sentence: int = 0, tone: str = "academic", profile=None, prepare=None
+) -> list[str]:
     ctx = ctx_for(text, tone, profile)
     if prepare:
         prepare(ctx)
@@ -38,12 +46,24 @@ def texts(module, text: str, sentence: int = 0, tone: str = "academic", profile=
 @pytest.mark.parametrize(
     ("passive", "active"),
     [
-        ("The data was processed by the controller in real time.", "The controller processed the data in real time."),
-        ("In 2020, the bridge was inspected by two engineers.", "In 2020, two engineers inspected the bridge."),
+        (
+            "The data was processed by the controller in real time.",
+            "The controller processed the data in real time.",
+        ),
+        (
+            "In 2020, the bridge was inspected by two engineers.",
+            "In 2020, two engineers inspected the bridge.",
+        ),
         ("The samples are tested by the lab every week.", "The lab tests the samples every week."),
-        ("The motor has been replaced by the technicians.", "The technicians have replaced the motor."),
+        (
+            "The motor has been replaced by the technicians.",
+            "The technicians have replaced the motor.",
+        ),
         ("The results were analysed by us using MATLAB.", "We analysed the results using MATLAB."),
-        ("The report will be reviewed by the supervisor.", "The supervisor will review the report."),
+        (
+            "The report will be reviewed by the supervisor.",
+            "The supervisor will review the report.",
+        ),
         ("The circuit is being tested by the students.", "The students are testing the circuit."),
     ],
 )
@@ -68,7 +88,7 @@ def test_passive_to_active_does_not_fire(sentence):
 def test_passive_to_active_skips_methodology():
     text = "Methodology\nThe samples were weighed by the technician before drying."
     ctx = ctx_for(text)
-    body = [s for s in ctx.seg.sentences if s.section == "methodology"][0]
+    body = next(s for s in ctx.seg.sentences if s.section == "methodology")
     assert passive_to_active.apply(ctx.view(body), ctx) == []
 
 
@@ -76,7 +96,9 @@ def test_passive_to_active_skips_methodology():
 
 
 def test_clause_front_both_directions():
-    assert texts(clause_front, "The pump stopped because the fuse blew.") == ["Because the fuse blew, the pump stopped."]
+    assert texts(clause_front, "The pump stopped because the fuse blew.") == [
+        "Because the fuse blew, the pump stopped."
+    ]
     assert texts(clause_front, "If the voltage drops, the relay opens the circuit.") == [
         "The relay opens the circuit if the voltage drops."
     ]
@@ -91,7 +113,9 @@ def test_opener_vary_fires_on_repeated_openers():
     text = "The sample was heated in the furnace for two hours."
 
     def prep(ctx):
-        ctx.chosen.extend(["The tube was cleaned.", "The oven was set to 200 °C.", "The scale was zeroed."])
+        ctx.chosen.extend(
+            ["The tube was cleaned.", "The oven was set to 200 °C.", "The scale was zeroed."]
+        )
 
     out = texts(opener_vary, text, prepare=prep)
     assert "For two hours, the sample was heated in the furnace." in out
@@ -101,7 +125,10 @@ def test_opener_vary_quiet_without_repetition():
     def prep(ctx):
         ctx.chosen.extend(["We cleaned the tube.", "After that, the oven heated up.", "It worked."])
 
-    assert texts(opener_vary, "The sample was heated in the furnace for two hours.", prepare=prep) == []
+    assert (
+        texts(opener_vary, "The sample was heated in the furnace for two hours.", prepare=prep)
+        == []
+    )
 
 
 def test_opener_class():
@@ -116,11 +143,15 @@ def test_opener_class():
 
 
 def test_contractions_casual():
-    assert texts(contractions, "We do not know why it is noisy.", tone="casual") == ["We don't know why it's noisy."]
+    assert texts(contractions, "We do not know why it is noisy.", tone="casual") == [
+        "We don't know why it's noisy."
+    ]
 
 
 def test_contractions_expanded_in_academic():
-    assert texts(contractions, "We don't know why it's noisy.", tone="academic") == ["We do not know why it is noisy."]
+    assert texts(contractions, "We don't know why it's noisy.", tone="academic") == [
+        "We do not know why it is noisy."
+    ]
 
 
 def test_contractions_neutral_without_profile_left_alone():
@@ -133,7 +164,9 @@ def test_contractions_keep_clarifying_that_is():
 
 def test_contractions_follow_profile_in_neutral_tone():
     profile = {"features": {"contractions_per_sentence": 0.8}, "function_word_freqs": {}}
-    assert texts(contractions, "We do not know.", tone="neutral", profile=profile) == ["We don't know."]
+    assert texts(contractions, "We do not know.", tone="neutral", profile=profile) == [
+        "We don't know."
+    ]
 
 
 # ------------------------------------------------------------------ voice_fit
@@ -158,11 +191,17 @@ def test_voice_fit_keeps_favourite():
 
 
 def test_merge_text_pronoun_back_reference():
-    assert _merge_text("The pump is small.", "It fits in a box.") == ("The pump is small, and it fits in a box.", ", and")
+    assert _merge_text("The pump is small.", "It fits in a box.") == (
+        "The pump is small, and it fits in a box.",
+        ", and",
+    )
 
 
 def test_merge_text_however():
-    assert _merge_text("The pump is cheap.", "However, it is loud.")[0] == "The pump is cheap; however, it is loud."
+    assert (
+        _merge_text("The pump is cheap.", "However, it is loud.")[0]
+        == "The pump is cheap; however, it is loud."
+    )
 
 
 def test_merge_text_unrelated_not_merged():
@@ -170,7 +209,9 @@ def test_merge_text_unrelated_not_merged():
 
 
 def test_merge_in_pipeline_at_high_intensity():
-    out = humanize("The pump is small. It fits in a box. We tested it for a week in the lab.", intensity=5)
+    out = humanize(
+        "The pump is small. It fits in a box. We tested it for a week in the lab.", intensity=5
+    )
     assert "small, and it fits in a box." in out.text
     for c in out.changes:
         assert out.text[c.new_start : c.new_end] == c.replacement
@@ -244,7 +285,9 @@ def test_voice_objective_rewards_moving_towards_profile():
     ]
     obj = VoiceObjective(p, sents)
     plain = obj.gain(0, "We found that our system spots the faults when we add them to the board.")
-    formal = obj.gain(0, "Furthermore, the apparatus possesses the capability to ascertain anomalies efficiently.")
+    formal = obj.gain(
+        0, "Furthermore, the apparatus possesses the capability to ascertain anomalies efficiently."
+    )
     assert plain > formal
 
 

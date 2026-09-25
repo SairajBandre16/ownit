@@ -1,5 +1,5 @@
 import type { JSONContent } from "@tiptap/core";
-import type { AnalyzeResponse, Change, ProtectedSpan } from "./api";
+import type { AnalyzeResponse, Change, ProtectedSpan, WalkthroughResponse } from "./api";
 
 export type StepId = "humanize" | "walkthrough" | "personalize" | "prove" | "export";
 export const STEPS: { id: StepId; n: number; label: string; short: string }[] = [
@@ -27,10 +27,16 @@ export interface HumanizeState {
   decisions: Record<string, Decision>;
 }
 
+export type ParagraphMark = "got" | "confusing";
+
 export interface WalkthroughState {
-  data: unknown; // WalkthroughResponse (typed in the step component)
+  data: WalkthroughResponse;
+  /** text the walkthrough offsets refer to */
   text: string;
-  marks: Record<number, "got" | "confusing">;
+  /** keyed by paragraph index (WalkthroughParagraph.index) */
+  marks: Record<number, ParagraphMark>;
+  /** the student's own definitions, keyed by lower-cased term (feeds the Revision Deck) */
+  ownDefs?: Record<string, string>;
 }
 
 export interface Spot {

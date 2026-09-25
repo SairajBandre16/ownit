@@ -17,7 +17,7 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
 | P1 Analyze | done |
 | P2 Humanize v1 | done |
 | P3 Humanize v2 + Voice | done |
-| P4 Walkthrough | in progress (backend mostly done, frontend not started) |
+| P4 Walkthrough | done (awaiting review) |
 | P5 Make it yours + Ownership | pending |
 | P6 Prove it | pending |
 | P7 Report Doctor | pending |
@@ -78,11 +78,23 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
 - [x] Shared helpers: `core/terms.py` (noun-phrase keyphrases that skip stock phrases, maths, citations, figure refs, generic single words), `core/graph.py` (PageRank without scipy). Humanize gained `prefer="simplest"`.
 - [x] Manually checked on the sample draft: clean gists, sensible key terms/definitions, simplified paragraphs lower FK grade.
 
-#### Stopped here (paused on user request) — next steps
-1. Run backend lint/tests (`ruff check .`, `mypy app`, `pytest -q`); a last `ruff --fix --unsafe-fixes` was applied to `app/humanize/types.py` (SIM110) — re-verify.
-2. Write P4 unit tests (gist, glossary, simplify offset mapping, concept map, `/walkthrough` endpoint).
-3. Check `/walkthrough` latency on a ~2,000-word document (was ~6 s on a small sample incl. warm-up).
-4. Restart the API (no auto-reload; see `scripts/dev.ps1`), run `npm run gen:api`, then build the Walkthrough step UI: paragraph cards (gist, key terms, "define it yourself", simplify toggle, Got it / Confusing), React Flow concept map synced with scrolling, progress bar.
-5. Then P5–P9 as in CLAUDE.md §12.
+- [x] Quality pass on real drafts:
+  - Gists keep figure refs and hyphenated words whole, drop parentheticals, keep noun coordination ("pH, TDS and hardness"), fall back to the full sentence rather than end on a function word or a cut list ("consist of", "tested at 7"), and skip heading fragments.
+  - Glossary: "Full Name (ABBR)" trims leading words ("A programmable logic controller (PLC)"). Document definitions need the term to head its clause, use only "X is a/an …" (not "X is the best …") and match abbreviations case-sensitively ("IS 1498" is not the verb "is"). WordNet senses are chosen by gloss overlap with the paragraph (simplified Lesk); off-domain senses ("(tennis)") and unsupported ambiguous senses are rejected, so the student is asked to define the term instead.
+  - Key terms grow to the whole noun compound ("capacitive soil moisture sensor", not "capacitive soil"); section names, unit symbols and evaluative pairs ("significant attention") are not terms; "simple to tune" is not a noun.
+  - Concept map merges an abbreviation with its expansion, never labels edges with light verbs ("play", "have"), and spreads the layout by rank so labels don't clump.
+  - A one-line title at the top is not a paragraph.
+- [x] Fixes found on the way: clause_front produced "Because …, A controller was used" (`lower_first` now lower-cases the article "A"). `/walkthrough` is ~5× faster (per-document memo for the style/excluded span indexes, parse-free gloss lemmas): **2.3 s per 1,000 words** on a 2,035-word engineering document.
+- [x] Backend tests: 26 new in `tests/unit/test_walkthrough.py` (gist incl. must-not-fire cases, abbreviation expansion, definition patterns, WordNet sense rejection, term offsets, unit/section filtering, offset mapping, concept map merge/determinism, title skipping, compound expansion, endpoint + word limit). Total: 217 passing; ruff + mypy clean. Eval harness rerun with LanguageTool on: 0 new grammar errors, meaning_sim 0.973 (unchanged).
+- [x] Frontend Walkthrough step (`components/steps/WalkthroughStep.tsx`, `components/walkthrough/ParagraphCard.tsx`, `components/concept-map/ConceptMap.tsx`, `lib/walkthrough.ts`):
+  - Builds automatically on first visit. Paragraph cards: section, serif one-line gist, text with key terms underlined, "Simplify" toggle with reading grade before → after, key terms with definition + source, "Define" / "In my words" for the student's own definition (stored in `walkthrough.ownDefs` for the Revision Deck).
+  - Got it / Confusing per paragraph; keys J/K move, G got it (and advance), C confusing, S simpler version. Confusing paragraphs are listed in the insight panel (they feed step 4).
+  - Understanding panel: % reviewed with the 80 % gate marker; `gate.ts` now counts marks only for paragraphs that exist.
+  - React Flow concept map synced with scrolling: an IntersectionObserver picks the paragraph being read, and its concepts (plus their neighbours) are highlighted and zoomed to. Click a concept to jump to its paragraph; "Expand" opens the full map with all edge labels. Reduced motion respected.
+  - Refresh after edits keeps marks on paragraphs whose text didn't change (`remapMarks`).
+  - Workspace shell: fixed a 174 px horizontal overflow on phones (grid column `min-w-0`).
+- [x] Frontend tests: 32 passing (new: `lib/walkthrough.test.ts`, `components/walkthrough/ParagraphCard.test.tsx`); eslint + tsc clean. Checked in Chromium via Playwright: desktop and 390 px mobile, marks persist after reload, no console errors.
 
-Notes: nothing has been committed to git yet. Dev servers may still be running (LanguageTool :8010, API :8000, Next.js :3000).
+#### Next
+- Review P4, then P5 (Make it yours + Ownership) as in CLAUDE.md §12.
+- Tooling note: in Git Bash on this machine, heredocs piped into Python turned `\b`/`\1` into control characters; edit regex lines with the editor, not shell heredocs.

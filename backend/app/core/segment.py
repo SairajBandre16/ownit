@@ -5,6 +5,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 from functools import lru_cache
+from typing import Any
 
 from spacy.tokens import Doc, Span
 
@@ -136,6 +137,8 @@ class Segmentation:
     paragraphs: list[Paragraph]
     sentences: list[Sentence]
     sections: list[Section]
+    # per-document memo for derived indexes (style phrases, excluded spans, ...)
+    cache: dict[str, Any] = field(default_factory=dict, repr=False, compare=False)
 
     def section_at(self, offset: int) -> str:
         for s in self.sections:
