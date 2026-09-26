@@ -167,8 +167,17 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
 - [x] Deploy config: `deploy/hf-space/` (single-image Dockerfile with API + LanguageTool, `start.sh`, Space README with steps); Vercel instructions in the README; `frontend/.env.example`.
 - [x] Playwright smoke test of the whole 5-step flow (`frontend/e2e/smoke.spec.ts`, `playwright.config.ts`).
 - [x] `next build` passes (all 10 routes). Tests: backend 428 passing (4 new), frontend 103 passing (18 new: markdown, SM-2, deck, DeckReview, ProgressDashboard); ruff, mypy, eslint, tsc clean.
-- [ ] Not done: the actual deployment (needs the user's Hugging Face and Vercel accounts), so "deployed URLs work end to end" is not verified; the Docker image wasn't built here (no Docker on this machine); the Playwright smoke test wasn't run (the dev servers were stopped for low memory).
+- [ ] Not done: the actual deployment (needs the user's Hugging Face and Vercel accounts), so "deployed URLs work end to end" is not verified; the Docker image wasn't built here (no Docker on this machine).
+- [x] Committed as `da1e7bd`.
+
+### Verification after P9
+- [x] Playwright smoke test of the whole 5-step flow: **passes** against the production build (`next build` + `next start`, API with LanguageTool switched off to save memory), 13.4 s. (A first run passed against an orphaned `next dev` server from an earlier session that was still holding port 3000; it was stopped and the test re-run against the production build.)
+- [x] Live pass over P6–P9 screens in Chromium (quiz, teach-back, Viva Simulator, Export gate, Deck, Progress, Learn, lesson): no console errors; no horizontal overflow at 390 px on any of them.
+- Findings from the live pass (to fix next):
+  - Viva: a definition question whose first mention is a weak sentence ("In conclusion, … the smart irrigation controller has the potential to revolutionize farming") expects only one concept ("farming"), so a reasonable answer scores ~13.
+  - Viva: after a weak answer, the drop-to-definition question can target an everyday word ("Explain farming in your own words."); the bank already filters those, the adaptive step didn't.
+  - Viva feedback screenshot looked washed out; check whether that's only the fade-in animation.
 
 #### Next
-- Deploy (user's accounts), run the Playwright smoke test against the running stack, live browser pass over P6–P9 screens.
+- Fix the viva findings above; then deploy (user's accounts).
 - Tooling note: in Git Bash on this machine, heredocs piped into Python turned `\b`/`\1` into control characters; edit regex lines with the editor, not shell heredocs.
