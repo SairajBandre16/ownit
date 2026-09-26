@@ -20,7 +20,7 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
 | P4 Walkthrough | done |
 | P5 Make it yours + Ownership | done |
 | P6 Prove it | done |
-| P7 Report Doctor | pending |
+| P7 Report Doctor | done |
 | P8 Export | pending |
 | P9 Deck, Progress, Learn, Polish, Deploy | pending |
 
@@ -127,6 +127,22 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
 - [x] Frontend tests: 74 passing (new: assess helpers, QuestionCard, a full VivaSimulator session with the API mocked incl. timer auto-submit); eslint + tsc clean.
 - [ ] Not done: live browser check of the new screens. The dev servers were stopped by the system (low memory), and API types were generated from a dumped OpenAPI file instead of the running server.
 
+- [x] Committed as `7694ab6`. From here the user asked to keep going phase after phase (commit each) until told to stop.
+
+### P7 Report Doctor
+- [x] `app/doctor/` — one module per §9.5 check, all issues `category="engineering"` with lesson slugs:
+  - `units.py`: missing space ("12V" → "12 V"), wrong case ("5 KG" → "5 kg", "kw" → "kW"; ambiguous ones like "MW" are left alone), plural symbols ("2 hrs" → "2 h"), SI and non-SI units mixed for one quantity, Results/Discussion numbers with no unit (skips counts, ranges "120 to 410 Pa", years, figure numbers and dimensionless values such as COP or ratios). "45 in the test" is not inches.
+  - `abbreviations.py`: used before "Full Name (ABBR)" (fix suggested from the later definition or the abbreviation list), defined twice (an Abstract definition may be repeated in the body), defined but never used; accepts "ABBR (Full Name)"; ignores common abbreviations, units, Roman numerals and tool names (MATLAB, LabVIEW, SolidWorks).
+  - `figures.py`: first mentions must run 1, 2, 3; captions ("Figure 3: …", one per line) must be referred to; references to a missing caption; caption numbering gaps. With no captions at all (pasted text) only the order is checked.
+  - `tense.py`: main-verb tense per sentence (auxiliary-aware); Methodology/Results expect past, Introduction/Theory present; outliers flagged, or one note when a whole section uses the other tense; references to the report ("Table 2 shows"), interpretation verbs and dated history are exempt.
+  - `claims.py` + `resources/claim_markers.json` (50 markers): strong claims with no citation, number or figure/table reference in the same or the next sentence.
+  - `structure.py`: missing core sections (Introduction, Methodology, Results, Conclusion; References as info), out-of-order sections, abstract > 250 words; "Results and Discussion" covers both; essays (< 2 recognised headings) are not checked.
+- [x] `POST /doctor` → `{issues, counts}` (counts per check).
+- [x] Fix found on the way: a title such as "Design of a Solar Tracker" was read as a Methodology heading (prefix match on "design"); a heading alias now only matches with a short tail that doesn't start with "of/for/a/the …".
+- [x] Backend tests: 71 new in `tests/unit/test_doctor.py` (≥ 5 firing and ≥ 5 must-not-fire cases per check, service counts, endpoint). Total: 410 passing; ruff + mypy clean. On the eval texts the findings were real (undefined abbreviations in excerpts, out-of-order figure mentions, unsupported "clearly shows").
+- [x] Frontend: step 1 has a third review tab, "Doctor", with a pass/count tile per check, the issue list filtered by check (IssueList gained `groupOf`), hover cards and one-click fixes for unit problems; a "Report Doctor" layer toggle shows the dashed engineering highlights in the editor at any time. `useDoctor` runs `/doctor` debounced.
+- [x] Frontend tests: 78 passing (new: DoctorPanel); eslint + tsc clean. Live browser check still pending (dev servers stopped).
+
 #### Next
-- Review P6, then P7 (Report Doctor) as in CLAUDE.md §12.
+- P8 (Export) as in CLAUDE.md §12.
 - Tooling note: in Git Bash on this machine, heredocs piped into Python turned `\b`/`\1` into control characters; edit regex lines with the editor, not shell heredocs.

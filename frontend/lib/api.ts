@@ -23,6 +23,7 @@ export type ResultOut = Schemas["ResultOut"];
 export type GradeResponse = Schemas["GradeResponse"];
 export type VivaNextResponse = Schemas["VivaNextResponse"];
 export type TeachbackResponse = Schemas["TeachbackResponse"];
+export type DoctorResponse = Schemas["DoctorResponse"];
 
 export const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000").replace(/\/$/, "");
 
@@ -125,4 +126,5 @@ export const api = {
     post<GradeResponse>("/assess/grade", { questions, answers, text }),
   vivaNext: (text: string, history: Schemas["VivaTurnIn"][]) => post<VivaNextResponse>("/assess/viva/next", { text, history }),
   teachback: (text: string, explanation: string) => post<TeachbackResponse>("/teachback", { text, explanation }),
+  doctor: (text: string, signal?: AbortSignal) => post<DoctorResponse>("/doctor", { text }, signal),
 };

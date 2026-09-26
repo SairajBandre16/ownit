@@ -16,6 +16,7 @@ export const CATEGORY_COLORS: Record<string, string> = {
 };
 
 const ORDER = ["correctness", "engineering", "clarity", "vocabulary", "voice", "rhythm"];
+const byCategory = (i: Issue) => i.category;
 
 export function IssueCard({ issue, text, onApply }: { issue: Issue; text?: string; onApply?: (i: Issue) => void }) {
   const quote = text ? text.slice(issue.start, issue.end) : "";
@@ -56,25 +57,28 @@ export function IssueList({
   onSelect,
   text,
   onApply,
+  groupOf = byCategory,
 }: {
   issues: Issue[];
   activeId?: string | null;
   onSelect?: (id: string) => void;
   text?: string;
   onApply?: (i: Issue) => void;
+  /** what the filter chips group by (default: category) */
+  groupOf?: (i: Issue) => string;
 }) {
   const [filter, setFilter] = useState<string | null>(null);
   const counts = useMemo(() => {
     const c: Record<string, number> = {};
-    for (const i of issues) c[i.category] = (c[i.category] ?? 0) + 1;
+    for (const i of issues) c[groupOf(i)] = (c[groupOf(i)] ?? 0) + 1;
     return c;
-  }, [issues]);
+  }, [issues, groupOf]);
   const shown = useMemo(
     () =>
       issues
-        .filter((i) => !filter || i.category === filter)
+        .filter((i) => !filter || groupOf(i) === filter)
         .sort((a, b) => ORDER.indexOf(a.category) - ORDER.indexOf(b.category) || a.start - b.start),
-    [issues, filter],
+    [issues, filter, groupOf],
   );
   if (!issues.length) return <p className="text-sm text-muted-foreground">No issues found.</p>;
   return (
@@ -91,7 +95,7 @@ export function IssueList({
             aria-pressed={filter === cat}
             className={cn("flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs", filter === cat ? "border-foreground" : "border-rule text-muted-foreground")}
           >
-            <span className="size-1.5 rounded-full" style={{ background: CATEGORY_COLORS[cat] }} />
+            <span className="size-1.5 rounded-full" style={{ background: CATEGORY_COLORS[cat] ?? CATEGORY_COLORS.engineering }} />
             {cat} {n}
           </button>
         ))}

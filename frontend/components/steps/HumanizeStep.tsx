@@ -13,6 +13,7 @@ import { DocEditor } from "@/components/editor/DocEditor";
 import type { OffsetLayers, OffsetSpan } from "@/components/editor/Editor";
 import { LayerToggles } from "@/components/steps/LayerToggles";
 import { useAnalysis } from "@/hooks/useAnalysis";
+import { useDoctor } from "@/hooks/useDoctor";
 import { useStyleProfile } from "@/hooks/useStyleProfile";
 import { api, type Issue } from "@/lib/api";
 import { decisionStats, displayPair, locatePending } from "@/lib/changes";
@@ -20,7 +21,10 @@ import { replaceHighlight, scrollToHighlight } from "@/lib/editing";
 import { useWorkspace } from "@/lib/store";
 import type { Decision, DocSettings, HumanizeState } from "@/lib/types";
 import { VoicePanel } from "@/components/voice/VoicePanel";
+import { DoctorPanel } from "@/components/analysis/DoctorPanel";
 import { HumanizeControls } from "./HumanizeControls";
+
+type ReviewTab = "changes" | "suggestions" | "doctor";
 import { Panel, StepLayout } from "./StepLayout";
 
 export function HumanizeStep({ onNext }: { onNext: () => void }) {
@@ -34,11 +38,14 @@ export function HumanizeStep({ onNext }: { onNext: () => void }) {
   const setActiveChange = useWorkspace((s) => s.setActiveChange);
   const patchDoc = useWorkspace((s) => s.patchDoc);
   const { stored: voice } = useStyleProfile();
-  const [tab, setTab] = useState<"changes" | "suggestions">(doc.humanize ? "changes" : "suggestions");
+  const [tab, setTab] = useState<ReviewTab>(doc.humanize ? "changes" : "suggestions");
   // bumps when the pending-change layer must be recomputed from offsets (new result, reload)
   const [changesNonce, setChangesNonce] = useState(0);
 
   const analysis = useAnalysis(text, doc.settings.targetGrade);
+  const doctor = useDoctor(text);
+  const doctorResult = doctor.data?.result;
+  const doctorText = doctor.data?.text ?? "";
   const result = analysis.data?.result;
   const analyzedText = analysis.data?.text ?? "";
 
@@ -131,7 +138,19 @@ export function HumanizeStep({ onNext }: { onNext: () => void }) {
     };
   }, [editor, changesNonce, layersOn.changes]);
 
-  const layers = useMemo(() => ({ analysis: analysisLayer, changes: changesLayer }), [analysisLayer, changesLayer]);
+  // Report Doctor issues: shown on the Doctor tab, or everywhere when its layer is switched on
+  const doctorLayer: OffsetLayers | undefined = useMemo(() => {
+    if (!doctorResult || !(layersOn.engineering || tab === "doctor")) return undefined;
+    return {
+      text: doctorText,
+      spans: doctorResult.issues.map((i) => ({ start: i.start, end: i.end, id: i.id, kind: "engineering" as const, category: "engineering", rule: i.rule })),
+    };
+  }, [doctorResult, doctorText, layersOn.engineering, tab]);
+
+  const layers = useMemo(
+    () => ({ analysis: analysisLayer, changes: changesLayer, doctor: doctorLayer }),
+    [analysisLayer, changesLayer, doctorLayer],
+  );
 
   // ------------------------------------------------------------------ decisions
   const decide = useCallback(
@@ -201,6 +220,7 @@ export function HumanizeStep({ onNext }: { onNext: () => void }) {
 
   // ------------------------------------------------------------------ hover cards
   const issuesById = useMemo(() => new Map((result?.issues ?? []).map((i) => [i.id, i])), [result]);
+  const doctorById = useMemo(() => new Map((doctorResult?.issues ?? []).map((i) => [i.id, i])), [doctorResult]);
   const renderHover = useCallback(
     (id: string, kind: string) => {
       if (kind === "protected") {
@@ -235,9 +255,13 @@ export function HumanizeStep({ onNext }: { onNext: () => void }) {
         );
       }
       const issue = issuesById.get(id);
+      if (kind === "engineering") {
+        const d = doctorById.get(id);
+        return d ? <IssueCard issue={d} text={doctorText} onApply={applyIssue} /> : null;
+      }
       return issue ? <IssueCard issue={issue} text={analyzedText} onApply={applyIssue} /> : null;
     },
-    [issuesById, analyzedText, applyIssue, result, h, decide],
+    [issuesById, analyzedText, applyIssue, result, h, decide, doctorById, doctorText],
   );
 
   const stats = decisionStats(h);
@@ -257,7 +281,7 @@ export function HumanizeStep({ onNext }: { onNext: () => void }) {
             ) : null}
           </span>
           <div className="ml-auto flex items-center gap-2">
-            <LayerToggles available={["issues", "protected", "changes"]} />
+            <LayerToggles available={["issues", "protected", "changes", "engineering"]} />
             <button type="button" onClick={onNext} className="inline-flex items-center gap-1 rounded-md border border-rule px-3 py-1.5 text-sm hover:bg-secondary">
               Walkthrough <ArrowRight className="size-4" />
             </button>
@@ -269,7 +293,7 @@ export function HumanizeStep({ onNext }: { onNext: () => void }) {
           layers={layers}
           activeId={tab === "changes" ? activeChangeId : activeIssueId}
           renderHover={renderHover}
-          onHighlightClick={(id, kind) => (kind === "change" ? setActiveChange(id) : kind === "issue" && setActiveIssue(id))}
+          onHighlightClick={(id, kind) => (kind === "change" ? setActiveChange(id) : (kind === "issue" || kind === "engineering") && setActiveIssue(id))}
         />
       }
       aside={
@@ -303,7 +327,7 @@ export function HumanizeStep({ onNext }: { onNext: () => void }) {
 
           <section className="rounded-xl border border-rule bg-card p-4">
             <div className="mb-3 flex gap-1 rounded-lg bg-secondary p-1 text-xs" role="tablist" aria-label="Review">
-              {(["changes", "suggestions"] as const).map((t) => (
+              {(["changes", "suggestions", "doctor"] as const).map((t) => (
                 <button
                   key={t}
                   role="tab"
@@ -312,7 +336,11 @@ export function HumanizeStep({ onNext }: { onNext: () => void }) {
                   onClick={() => setTab(t)}
                   className={`flex-1 rounded-md px-2 py-1 ${tab === t ? "bg-background shadow-sm" : "text-muted-foreground"}`}
                 >
-                  {t === "changes" ? `Changes${h ? ` (${stats.offered - stats.decided})` : ""}` : `Suggestions${result ? ` (${result.issues.length})` : ""}`}
+                  {t === "changes"
+                    ? `Changes${h ? ` (${stats.offered - stats.decided})` : ""}`
+                    : t === "suggestions"
+                      ? `Suggestions${result ? ` (${result.issues.length})` : ""}`
+                      : `Doctor${doctorResult ? ` (${doctorResult.issues.length})` : ""}`}
                 </button>
               ))}
             </div>
@@ -322,6 +350,18 @@ export function HumanizeStep({ onNext }: { onNext: () => void }) {
               ) : (
                 <p className="text-sm text-muted-foreground">Press “Suggest rewrites” to get changes you can accept or reject one by one.</p>
               )
+            ) : tab === "doctor" ? (
+              <DoctorPanel
+                result={doctorResult}
+                loading={doctor.isFetching}
+                text={doctorText}
+                activeId={activeIssueId}
+                onSelect={(id) => {
+                  setActiveIssue(activeIssueId === id ? null : id);
+                  if (editor) scrollToHighlight(editor, id);
+                }}
+                onApply={applyIssue}
+              />
             ) : result ? (
               <IssueList
                 issues={result.issues}

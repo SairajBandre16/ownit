@@ -167,9 +167,16 @@ def canonical_section(heading: str) -> str | None:
     if h in _ALIAS_TO_SECTION:
         return _ALIAS_TO_SECTION[h]
     for alias, name in _ALIAS_TO_SECTION.items():
-        if h.startswith(alias + " ") and len(h.split()) <= 6:
+        if not h.startswith(alias + " "):
+            continue
+        # "Conclusion and future scope" is a section; "Design of a Solar Tracker" is a title
+        tail = h[len(alias) :].split()
+        if len(tail) <= 3 and tail[0] not in _TITLE_TAIL_STARTS:
             return name
     return None
+
+
+_TITLE_TAIL_STARTS = {"of", "for", "to", "in", "on", "a", "an", "the", "with", "using", "by"}
 
 
 def looks_like_heading(line: str) -> bool:
