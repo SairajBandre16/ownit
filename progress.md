@@ -178,6 +178,8 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
   - [x] After a weak answer the adaptive step could ask "Explain farming in your own words."; it now uses the same "definable" filter as the question bank.
   - [x] The washed-out viva feedback screenshot was only the fade-in; settled, contrast is fine.
   - [x] 4 regression tests (backend total 432).
+- [x] Evaluation harness re-run with LanguageTool on, after the P6/P7 segmentation changes (intensity 3): **0 new grammar errors**, meaning_sim 0.973 (min 0.915), writing score +2.4 (+3.6 on AI drafts), 50 % of sentences changed, 1.0 s per 1,000 words in document mode: unchanged from P2/P3.
+- [x] All servers started for these checks were stopped afterwards (ports 3000, 8000, 8010 free).
 
 #### Next
 - Deploy (needs the user's Hugging Face and Vercel accounts).
