@@ -173,11 +173,12 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
 ### Verification after P9
 - [x] Playwright smoke test of the whole 5-step flow: **passes** against the production build (`next build` + `next start`, API with LanguageTool switched off to save memory), 13.4 s. (A first run passed against an orphaned `next dev` server from an earlier session that was still holding port 3000; it was stopped and the test re-run against the production build.)
 - [x] Live pass over P6–P9 screens in Chromium (quiz, teach-back, Viva Simulator, Export gate, Deck, Progress, Learn, lesson): no console errors; no horizontal overflow at 390 px on any of them.
-- Findings from the live pass (to fix next):
-  - Viva: a definition question whose first mention is a weak sentence ("In conclusion, … the smart irrigation controller has the potential to revolutionize farming") expects only one concept ("farming"), so a reasonable answer scores ~13.
-  - Viva: after a weak answer, the drop-to-definition question can target an everyday word ("Explain farming in your own words."); the bank already filters those, the adaptive step didn't.
-  - Viva feedback screenshot looked washed out; check whether that's only the fade-in animation.
+- Findings from the live pass, all fixed:
+  - [x] Viva definition questions picked a weak source ("In conclusion, … the smart irrigation controller has the potential to revolutionize farming") and expected one concept ("farming"): a reasonable answer scored 13. Sources are now ranked (definition, then body sections over Conclusion/Abstract, then subject position, then centrality); a multi-word concept also uses body sentences about its head noun ("The controller was built around an ESP32 board."); a concept mentioned only in a summing-up sentence gets no definition question. The same answer now scores 38 ("partly there") and the feedback quotes the body sentence.
+  - [x] After a weak answer the adaptive step could ask "Explain farming in your own words."; it now uses the same "definable" filter as the question bank.
+  - [x] The washed-out viva feedback screenshot was only the fade-in; settled, contrast is fine.
+  - [x] 4 regression tests (backend total 432).
 
 #### Next
-- Fix the viva findings above; then deploy (user's accounts).
+- Deploy (needs the user's Hugging Face and Vercel accounts).
 - Tooling note: in Git Bash on this machine, heredocs piped into Python turned `\b`/`\1` into control characters; edit regex lines with the editor, not shell heredocs.

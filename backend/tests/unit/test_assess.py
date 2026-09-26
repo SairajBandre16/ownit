@@ -517,3 +517,50 @@ def test_assess_word_limit(client):
     big = "word " * 3001
     assert client.post("/assess/generate", json={"text": big}).status_code == 413
     assert client.post("/teachback", json={"text": big, "explanation": "x"}).status_code == 413
+
+
+# --- definition sources (found in the live pass) ---------------------------------------------
+
+
+def test_definition_prefers_body_over_the_conclusion():
+    from app.assess.viva import mentions
+
+    text = (
+        "Methodology\nThe relay module switches the pump when the soil is dry.\n\n"
+        "Conclusion\nIn conclusion, the relay module made the whole system work well for us.\n"
+    )
+    s = segment(text)
+    best = mentions(key_sentences(s), "relay module")[0]
+    assert best.sent.section == "methodology"
+
+
+def test_definition_question_uses_the_head_noun_when_the_phrase_says_little():
+    from app.assess.viva import definition_question
+
+    text = (
+        "Methodology\nThe controller was built around an ESP32 board with a relay output.\n\n"
+        "Conclusion\nIn conclusion, the smart irrigation controller could transform farming.\n"
+    )
+    s = segment(text)
+    q = definition_question(s, key_sentences(s), "smart irrigation controller")
+    assert q is not None and len(q.concepts) >= 2
+    assert any("relay" in c or "board" in c for c in q.concepts)
+
+
+def test_definition_question_skipped_when_only_a_summing_up_mentions_it():
+    from app.assess.viva import definition_question
+
+    text = (
+        "Introduction\nPumps move water through pipes in many farms today.\n\n"
+        "Conclusion\nIn conclusion, the gizmotron changed everything for us.\n"
+    )
+    s = segment(text)
+    assert definition_question(s, key_sentences(s), "gizmotron") is None
+
+
+def test_weak_answer_never_drops_to_an_everyday_word(seg):
+    q1 = next_question(seg, [])
+    assert q1 is not None
+    q2 = next_question(seg, [Turn(q1.prompt, "no idea", 5, q1.id, ["farming", "water"])])
+    assert q2 is not None
+    assert "farming" not in q2.prompt.lower() and "explain water" not in q2.prompt.lower()

@@ -40,6 +40,10 @@ UP, DOWN = 70, 40
 MAX_NP_TOKENS = 7
 MIN_Q_WORDS, MAX_Q_WORDS = 4, 26
 HEDGE_MODALS = {"may", "might", "could", "would"}
+# sections that sum up rather than explain: a poor source for "what is X?"
+RHETORICAL_SECTIONS = {"conclusion", "abstract"}
+MIN_DEFINITION_CONCEPTS = 2
+MAX_DEFINITION_SOURCES = 3
 HEDGE_WORDS = {
     "likely",
     "probably",
@@ -407,13 +411,42 @@ def _question(
     )
 
 
-def _first_mention(keys: list[KeySentence], concept: str) -> KeySentence | None:
+def _is_subject(ks: KeySentence, concept: str) -> bool:
+    doc = ks.doc
+    root = _root(doc)
+    if root is None:
+        return False
+    subj = next((c for c in root.children if c.dep_ in ("nsubj", "nsubjpass")), None)
+    return subj is not None and concept.lower() in " ".join(t.lower_ for t in subj.subtree)
+
+
+def mentions(keys: list[KeySentence], concept: str) -> list[KeySentence]:
+    """Sentences that mention `concept`, best source first: its definition, then body
+    sentences (not the Conclusion's summing-up) where it is the subject, then centrality."""
     pat = re.compile(rf"(?<![\w-]){re.escape(concept)}(?![\w-])", re.IGNORECASE)
     hits = [k for k in keys if pat.search(k.sent.text)]
-    if not hits:
-        return None
-    defs = [k for k in hits if k.definition and k.definition.term.lower() == concept.lower()]
-    return defs[0] if defs else max(hits[:3], key=lambda k: k.score)
+
+    def rank(k: KeySentence) -> tuple[bool, bool, bool, float]:
+        is_def = bool(k.definition and k.definition.term.lower() == concept.lower())
+        return (is_def, k.sent.section not in RHETORICAL_SECTIONS, _is_subject(k, concept), k.score)
+
+    return sorted(hits, key=rank, reverse=True)
+
+
+def _first_mention(keys: list[KeySentence], concept: str) -> KeySentence | None:
+    found = mentions(keys, concept)
+    return found[0] if found else None
+
+
+def definable(concept: str, defined: set[str]) -> bool:
+    """Worth a definition question: defined in the text, a multi-word term, an abbreviation or
+    a rare (technical) word. "farming", "crops" are not."""
+    return (
+        concept.lower() in defined
+        or len(concept.split()) >= 2
+        or concept.isupper()
+        or zipf(concept) < TECH_ZIPF
+    )
 
 
 def evaluable(concept: str) -> bool:
@@ -462,8 +495,8 @@ def concept_phrase(concept: str, seg: Segmentation) -> tuple[str, bool]:
 def definition_question(
     seg: Segmentation, keys: list[KeySentence], concept: str
 ) -> Question | None:
-    ks = _first_mention(keys, concept)
-    if ks is None:
+    found = mentions(keys, concept)
+    if not found:
         return None
     from app.assess.mcq import _is_abbr
 
@@ -477,9 +510,35 @@ def definition_question(
     prompt = _finish(tmpl.replace("{X}", shown))
     if not prompt:
         return None
-    # a definition answer should cover what the source sentence says about the concept
-    s = ks.sent
-    return _question(seg, kind, prompt, concept, s.start, s.end, level)
+    # a definition answer should cover what the text says about the concept. Sources: its
+    # mentions in the body; "the smart irrigation controller" is often just "the controller"
+    # there, so sentences about the head noun count too. A summing-up sentence (Conclusion,
+    # Abstract) is used only when nothing else mentions the concept.
+    head = concept.split()[-1]
+    body = [m for m in found if m.sent.section not in RHETORICAL_SECTIONS]
+    if len(concept.split()) >= 2:
+        body += [
+            m
+            for m in mentions(keys, head)
+            if m not in found and m.sent.section not in RHETORICAL_SECTIONS
+        ]
+    sources = (body or found)[:MAX_DEFINITION_SOURCES]
+    concepts: list[str] = []
+    for src in sources:
+        if len(concepts) >= MIN_DEFINITION_CONCEPTS + 1:
+            break
+        for c in span_concepts(seg, src.sent.start, src.sent.end, limit=5, exclude=prompt):
+            low = c.lower()
+            if low not in (concept.lower(), head.lower()) and low not in {
+                x.lower() for x in concepts
+            }:
+                concepts.append(c)
+    if len(concepts) < MIN_DEFINITION_CONCEPTS and not body:
+        return None  # only a summing-up sentence mentions it: nothing to check an answer against
+    s = sources[0].sent
+    q = _question(seg, kind, prompt, concept, s.start, s.end, level)
+    q.concepts = concepts[:5] or q.concepts
+    return q
 
 
 def build_bank(seg: Segmentation) -> list[Question]:
@@ -497,8 +556,7 @@ def build_bank(seg: Segmentation) -> list[Question]:
     concepts = doc_keyphrases(seg)[:12]
     defined = {k.definition.term.lower() for k in keys if k.definition}
     for c in concepts:
-        # "farmers", "crops": everyday words make poor definition questions
-        if c.lower() in defined or len(c.split()) >= 2 or c.isupper() or zipf(c) < TECH_ZIPF:
+        if definable(c, defined):  # "farmers", "crops": everyday words make poor questions
             add(definition_question(seg, keys, c))
     for ks in sorted(keys, key=lambda k: -k.score)[:60]:
         doc, s = ks.doc, ks.sent
@@ -578,7 +636,8 @@ def next_question(seg: Segmentation, history: list[Turn]) -> Question | None:
         if last_q and last_q.target:
             missed = [last_q.target, *missed] if level > 1 else missed
         keys = key_sentences(seg)
-        for concept in missed:
+        defined = {k.definition.term.lower() for k in keys if k.definition}
+        for concept in (c for c in missed if definable(c, defined)):
             q = definition_question(seg, keys, concept)
             if q is not None and q.prompt.lower() not in asked:
                 return q
