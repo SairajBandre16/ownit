@@ -181,6 +181,15 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
 - [x] Evaluation harness re-run with LanguageTool on, after the P6/P7 segmentation changes (intensity 3): **0 new grammar errors**, meaning_sim 0.973 (min 0.915), writing score +2.4 (+3.6 on AI drafts), 50 % of sentences changed, 1.0 s per 1,000 words in document mode: unchanged from P2/P3.
 - [x] All servers started for these checks were stopped afterwards (ports 3000, 8000, 8010 free).
 
+### Free hosting: PC + Cloudflare Tunnel
+Hugging Face now requires a paid plan for Docker (and Gradio) Spaces, and free app hosts (Render, Koyeb) give ~512 MB, too little for spaCy + LM + LanguageTool (~2.5 GB). Chosen setup: website on Vercel (free), backend on the user's PC shared through a Cloudflare quick tunnel (free, no account, no card).
+- [x] `scripts/share.ps1`: downloads `cloudflared` once (to `backend/data/tools/`), starts LanguageTool and the API if they aren't running, opens a quick tunnel, waits for the public address to answer, prints it and a share link (`<site>/?api=<tunnel>`); Ctrl+C (or `-Minutes n`) stops only the processes it started, including child processes; `-NoGrammar` skips LanguageTool. Logs in `backend/data/share-logs/`.
+- [x] Frontend picks its server at runtime: `?api=` share links (the visitor confirms first, because that server receives their text; only https, or http on localhost; the parameter is removed from the address bar), a **Server** indicator in the top bar (status, address, change, back to default), saved in localStorage; the build-time `NEXT_PUBLIC_API_URL` stays the default. So the changing tunnel address never needs a Vercel redeploy.
+- [x] Rate limit per visitor behind the tunnel: the API keys the limit on `CF-Connecting-IP`, trusted only on loopback connections (from elsewhere it could be forged).
+- [x] Verified live: script run twice (2 and 5 minutes); public `/health` and `/doctor` answered through the tunnel with CORS for a `*.vercel.app` origin; a production build of the website opened with the share link, the visitor confirmed, and analysis requests went through the tunnel; everything was stopped cleanly afterwards (ports 8000/8010 free, no cloudflared/java left).
+- [x] Tests: backend 435 (rate-limit key), frontend 107 (server address rules, share-link confirm/decline).
+- [x] README "Deploying (free)" rewritten around this setup; `deploy/hf-space/README.md` notes the Hugging Face paid plan (the Dockerfile still runs on any Docker host).
+
 #### Next
-- Deploy (needs the user's Hugging Face and Vercel accounts).
+- User: push to GitHub and import `frontend/` into Vercel, then run `scripts\share.ps1 -Site <vercel-url>` when sharing.
 - Tooling note: in Git Bash on this machine, heredocs piped into Python turned `\b`/`\1` into control characters; edit regex lines with the editor, not shell heredocs.

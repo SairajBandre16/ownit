@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ServerStatus } from "./ServerStatus";
 import { ThemeToggle } from "./ThemeToggle";
 import { cn } from "@/lib/utils";
 
@@ -45,6 +46,7 @@ export function SiteHeader() {
           <span className="hidden rounded-full border border-rule px-2.5 py-0.5 text-xs text-muted-foreground md:inline tabular">
             0 AI models · 0 external APIs
           </span>
+          <ServerStatus />
           <ThemeToggle />
         </div>
       </div>

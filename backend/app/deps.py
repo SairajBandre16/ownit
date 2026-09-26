@@ -11,10 +11,26 @@ from cachetools import LRUCache
 from fastapi import HTTPException
 from slowapi import Limiter
 from slowapi.util import get_remote_address
+from starlette.requests import Request
 
 from app.config import settings
 
-limiter = Limiter(key_func=get_remote_address, default_limits=[settings.rate_limit])
+LOOPBACK = {"127.0.0.1", "::1", "localhost"}
+
+
+def client_key(request: Request) -> str:
+    """Rate-limit key: the visitor's IP. Behind a Cloudflare Tunnel every request reaches the
+    API from the local cloudflared process, so the visitor's address comes from the
+    CF-Connecting-IP header. That header is trusted only on loopback connections: from
+    anywhere else it could be forged to dodge the limit."""
+    remote = get_remote_address(request)
+    forwarded = request.headers.get("cf-connecting-ip")
+    if forwarded and remote in LOOPBACK:
+        return forwarded.strip()
+    return remote
+
+
+limiter = Limiter(key_func=client_key, default_limits=[settings.rate_limit])
 
 _cache: LRUCache[str, Any] = LRUCache(maxsize=settings.cache_size)
 T = TypeVar("T")

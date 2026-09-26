@@ -25,7 +25,54 @@ export type VivaNextResponse = Schemas["VivaNextResponse"];
 export type TeachbackResponse = Schemas["TeachbackResponse"];
 export type DoctorResponse = Schemas["DoctorResponse"];
 
-export const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000").replace(/\/$/, "");
+/** Server set at build time (NEXT_PUBLIC_API_URL). */
+export const DEFAULT_API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000").replace(/\/$/, "");
+const API_URL_KEY = "ownit-api-url";
+const LOCAL_HOSTS = new Set(["localhost", "127.0.0.1", "[::1]"]);
+
+/**
+ * A usable server address, or null: https anywhere, http only on this computer (browsers block
+ * http calls from an https page anyway). Paths, queries and trailing slashes are dropped.
+ */
+export function normalizeApiUrl(raw: string): string | null {
+  let u: URL;
+  try {
+    u = new URL(raw.trim());
+  } catch {
+    return null;
+  }
+  if (u.username || u.password) return null;
+  if (u.protocol === "https:" || (u.protocol === "http:" && LOCAL_HOSTS.has(u.hostname))) return u.origin;
+  return null;
+}
+
+/**
+ * The server this browser talks to: one chosen at runtime (e.g. a Cloudflare Tunnel address
+ * that changes every time it starts, saved in localStorage) or the build-time default.
+ */
+export function getApiUrl(): string {
+  if (typeof window !== "undefined") {
+    try {
+      const saved = window.localStorage.getItem(API_URL_KEY);
+      const ok = saved ? normalizeApiUrl(saved) : null;
+      if (ok) return ok;
+    } catch {
+      /* storage blocked: use the default */
+    }
+  }
+  return DEFAULT_API_URL;
+}
+
+/** Remember a server address for this browser (null goes back to the default). */
+export function setApiUrl(url: string | null): void {
+  try {
+    if (url && normalizeApiUrl(url) && normalizeApiUrl(url) !== DEFAULT_API_URL)
+      window.localStorage.setItem(API_URL_KEY, normalizeApiUrl(url)!);
+    else window.localStorage.removeItem(API_URL_KEY);
+  } catch {
+    /* storage blocked: nothing to remember */
+  }
+}
 
 export class ApiError extends Error {
   constructor(
@@ -39,7 +86,7 @@ export class ApiError extends Error {
 async function request<T>(path: string, init: RequestInit): Promise<T> {
   let res: Response;
   try {
-    res = await fetch(`${API_URL}${path}`, init);
+    res = await fetch(`${getApiUrl()}${path}`, init);
   } catch {
     throw new ApiError(0, "Can't reach the OwnIt server. Is the backend running?");
   }
@@ -74,7 +121,7 @@ export function get<T>(path: string, signal?: AbortSignal): Promise<T> {
 export async function postBlob(path: string, body: unknown): Promise<{ blob: Blob; filename: string }> {
   let res: Response;
   try {
-    res = await fetch(`${API_URL}${path}`, {
+    res = await fetch(`${getApiUrl()}${path}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
@@ -93,7 +140,7 @@ export async function uploadFile(path: string, file: File): Promise<Schemas["Ext
   form.append("file", file);
   let res: Response;
   try {
-    res = await fetch(`${API_URL}${path}`, { method: "POST", body: form });
+    res = await fetch(`${getApiUrl()}${path}`, { method: "POST", body: form });
   } catch {
     throw new ApiError(0, "Can't reach the OwnIt server. Is the backend running?");
   }

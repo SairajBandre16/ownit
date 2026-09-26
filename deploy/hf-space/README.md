@@ -10,6 +10,8 @@ pinned: false
 
 # OwnIt API (Hugging Face Space)
 
+> **Note (2026):** Hugging Face now requires a paid plan (PRO) to create Docker Spaces. For a free setup, run the backend on your PC and share it with `scripts/share.ps1` (see the main README). The Dockerfile here also runs unchanged on any Docker host that sets `PORT`.
+
 The OwnIt backend (FastAPI, spaCy, WordNet, n-gram LM) and a LanguageTool server in one
 container. No AI models, no external APIs at runtime; request text is processed in memory and
 never stored.

@@ -70,16 +70,39 @@ docker compose run --rm backend python scripts/build_lm.py
 
 The Docker image compiles KenLM, so `/health` reports `"lm": "kenlm"` once `data/lm/wiki5.binary` exists. Without it, the pure-Python trigram fallback is used (`"lm": "fallback"`).
 
-## Deploying (free tiers)
+## Deploying (free)
 
-**Backend + LanguageTool → Hugging Face Spaces (Docker).** `deploy/hf-space/` has a single-image `Dockerfile` (API + LanguageTool, fallback LM built at image build time), a `start.sh` that starts LanguageTool and then the API on port 7860, and a `README.md` with the Space configuration and step-by-step instructions. Test the image locally with:
+The website goes on **Vercel** (free, no card). The backend needs ~2.5 GB of memory (spaCy, the LM and LanguageTool), which free app hosts don't offer, so the free way is to **run it on your own PC and share it through a Cloudflare quick tunnel** (free, no account, no card).
+
+### 1. Website → Vercel
+
+Push the repository to GitHub, import it in Vercel with **Root Directory** `frontend`, and deploy. `NEXT_PUBLIC_API_URL` is optional: visitors connect to your PC through a share link (below), and anyone can pick a server from **Server** in the top bar.
+
+### 2. Backend → your PC + Cloudflare Tunnel
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\share.ps1 -Site https://<your-app>.vercel.app
+```
+
+The script downloads `cloudflared` once, starts LanguageTool and the API if they aren't running, opens a tunnel and prints:
+
+```
+OwnIt is shared at:  https://<random-words>.trycloudflare.com
+Share this link:     https://<your-app>.vercel.app/?api=https%3A%2F%2F<random-words>.trycloudflare.com
+```
+
+Open or send the share link. The website asks the visitor to confirm the server once, then remembers it. The tunnel address is new every time you run the script, so send a fresh link each session. Press **Ctrl+C** to stop sharing (only what the script started is stopped). Options: `-NoGrammar` (skip LanguageTool, saves ~1 GB of memory), `-Minutes 60` (stop automatically). Your PC must stay on and awake while people use it. Rate limits apply per visitor (the API reads Cloudflare's visitor address, trusted only from the local tunnel). Logs go to `backend/data/share-logs/`.
+
+### Other hosts
+
+`deploy/hf-space/` has a single-image `Dockerfile` (API + LanguageTool, fallback LM built at image build time) and a `start.sh` that serves on `$PORT` (default 7860). It runs on any Docker host: an Oracle Cloud Always Free VM, Google Cloud Run, or a Hugging Face Docker Space (Hugging Face now requires a paid plan for Docker Spaces). Test the image locally with:
 
 ```bash
 docker build -f deploy/hf-space/Dockerfile -t ownit-space .
 docker run -p 7860:7860 ownit-space       # then open http://localhost:7860/health
 ```
 
-**Frontend → Vercel.** Import the repository, set the project root to `frontend/`, and set `NEXT_PUBLIC_API_URL` to the Space URL (e.g. `https://<user>-<space>.hf.space`). Nothing else is needed: the build is `next build`, and the API already accepts requests from `*.vercel.app`. For a custom domain, add it to the Space's `OWNIT_CORS_ORIGINS` variable. See `frontend/.env.example`.
+With a permanent backend address, set `NEXT_PUBLIC_API_URL` in Vercel to it and redeploy. The API accepts requests from `*.vercel.app`; for a custom website domain, add it to `OWNIT_CORS_ORIGINS`. See `frontend/.env.example`.
 
 ## Configuration (environment variables)
 
