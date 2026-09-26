@@ -194,7 +194,7 @@ export function VivaSimulator({ docId }: { docId: string }) {
           </button>
         </header>
 
-        <main className="flex flex-1 flex-col justify-center py-10">
+        <main id="main" className="flex flex-1 flex-col justify-center py-10">
           {error && (
             <p role="alert" className="mb-6 rounded-lg border border-destructive/60 bg-destructive/10 px-4 py-2 text-sm">
               {error}
@@ -360,6 +360,11 @@ export function VivaSimulator({ docId }: { docId: string }) {
                   <Link href={`/workspace/${docId}`} className="rounded-md border border-rule px-5 py-2">
                     Back to your document
                   </Link>
+                  {summary.weak.length > 0 && (
+                    <Link href="/deck" className="rounded-md border border-rule px-5 py-2">
+                      Revise them in the Deck
+                    </Link>
+                  )}
                 </div>
               </motion.section>
             )}

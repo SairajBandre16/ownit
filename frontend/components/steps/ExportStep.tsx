@@ -1,6 +1,7 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
+import Link from "next/link";
 import { ArrowLeft, Check, FileDown, FileText, Lock } from "lucide-react";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
@@ -148,6 +149,13 @@ export function ExportStep({ onGo }: { onGo: (step: StepId) => void }) {
                 Your Ownership Score breakdown, the three understanding checks, concepts you&apos;ve mastered and ones to revise, your glossary (with
                 your own definitions), every viva question with your answer and feedback, quiz questions you missed, your teach-back, and a revision
                 list. Use it as a revision sheet before the viva.
+              </p>
+              <p className="mt-3">
+                For daily practice, the{" "}
+                <Link href="/deck" className="text-signal-ink underline underline-offset-4">
+                  Revision Deck
+                </Link>{" "}
+                turns your glossary, missed questions and common writing issues into flashcards.
               </p>
             </section>
           </div>

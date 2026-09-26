@@ -127,6 +127,8 @@ export interface OwnDoc {
   step: StepId;
   settings: DocSettings;
   analysis?: AnalyzeResponse;
+  /** the text `analysis` offsets refer to */
+  analysisText?: string;
   firstScore?: number;
   humanize?: HumanizeState;
   /** decisions from earlier humanize runs (ownership: decisions made / changes offered) */

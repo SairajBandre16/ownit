@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
 const SAMPLE =
@@ -34,23 +33,17 @@ export function LiveDemo() {
         {text}
       </p>
       <div className="mt-4 min-h-[5.5rem]">
-        <AnimatePresence mode="wait">
-          {step > 0 && (
-            <motion.div
+        {step > 0 && (
+            <div
               key={step}
-              initial={{ opacity: 0, x: 24 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -24 }}
-              transition={{ duration: 0.25 }}
-              className="rounded-lg border border-rule border-l-4 border-l-[var(--own-engine)] bg-background p-3 text-sm"
+              className="rounded-lg border border-rule border-l-4 border-l-[var(--own-engine)] bg-background p-3 text-sm animate-in fade-in-0 slide-in-from-right-6 duration-300"
             >
               <div className="tabular mb-1 text-xs text-muted-foreground">
                 “{CHANGES[step - 1].from.trim()}” → “{CHANGES[step - 1].to || "∅"}”
               </div>
               {CHANGES[step - 1].reason}
-            </motion.div>
+            </div>
           )}
-        </AnimatePresence>
       </div>
       <div className="mt-4 flex gap-2">
         <button

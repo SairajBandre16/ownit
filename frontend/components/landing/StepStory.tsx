@@ -1,7 +1,3 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
-
 const STEPS = [
   {
     n: "01",
@@ -36,21 +32,13 @@ const STEPS = [
 ];
 
 export function StepStory() {
-  const reduce = useReducedMotion();
   return (
     <section id="how" className="border-b border-rule">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
         <h2 className="font-display text-4xl sm:text-5xl">Five steps from draft to defensible.</h2>
         <ol className="mt-12 grid gap-px overflow-hidden rounded-xl border border-rule bg-rule">
-          {STEPS.map((s, i) => (
-            <motion.li
-              key={s.n}
-              initial={reduce ? false : { opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.45, delay: i * 0.04 }}
-              className="grid gap-4 bg-background p-6 sm:grid-cols-[5rem_1fr_1fr] sm:p-8"
-            >
+          {STEPS.map((s) => (
+            <li key={s.n} className="scroll-reveal grid gap-4 bg-background p-6 sm:grid-cols-[5rem_1fr_1fr] sm:p-8">
               <span className="tabular text-sm text-signal-ink">{s.n}</span>
               <div>
                 <h3 className="font-display text-3xl">{s.title}</h3>
@@ -59,7 +47,7 @@ export function StepStory() {
               <p className="tabular self-end rounded-md border border-dashed border-rule p-3 text-sm">
                 {s.detail}
               </p>
-            </motion.li>
+            </li>
           ))}
         </ol>
       </div>

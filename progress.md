@@ -22,7 +22,7 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
 | P6 Prove it | done |
 | P7 Report Doctor | done |
 | P8 Export | done |
-| P9 Deck, Progress, Learn, Polish, Deploy | pending |
+| P9 Deck, Progress, Learn, Polish, Deploy | done (deployment itself pending the user's accounts) |
 
 ## Task log
 
@@ -154,6 +154,21 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
 - [x] Frontend tests: 85 passing (new: report builder, ExportStep gate lock/unlock and downloads); eslint + tsc clean.
 - [ ] Not verified: opening the exported file in Microsoft Word itself (no Word on this machine); the structure and styles were checked by re-reading the file with python-docx.
 
+- [x] Committed as `d4813e5`.
+
+### P9 Deck, Progress, Learn, Polish, Deploy
+- [x] Lessons: 24 Markdown lessons in `backend/app/resources/lessons/` (every `lesson_slug` an issue can link to, plus transitions, specific detail and viva preparation), grouped; `GET /lessons`, `GET /lessons/{slug}`. A test checks that every slug used in the code has a lesson.
+- [x] Learn pages `/learn` and `/learn/[topic]`, rendered by a small Markdown renderer (`lib/markdown.tsx`) that builds React elements only (no raw HTML; only internal and https links).
+- [x] SM-2 (`lib/srs.ts`): grades 1-4 → quality 1/3/4/5, Again = back in 10 minutes and a lapse, 1 d → 6 d → interval × ease, ease ≥ 1.3; interval preview labels; due cards; day streak in local time.
+- [x] Revision Deck (`lib/deck.ts`, `/deck`): cards from glossary terms (own definitions first), missed quiz questions, viva answers under 70 and the student's recurring writing issues (example from their own text + fix; `doc.analysisText` now stored with the analysis); "Update from my documents" adds new cards without resetting schedules; review with Space / 1-4, interval preview on each button, stats (due, reviewed today, streak), card list with filters and delete. Links from the viva summary and the Export step.
+- [x] Progress dashboard (`/progress`): tiles (documents, average ownership, checks passed, viva sessions, cards due, streak), per-document table (words, writing score first → latest, ownership, quiz, teach-back, viva average, status), viva-average line chart and 14-day review bar chart (Recharts; single series in `--chart-2`, validated with the dataviz palette checker in light and dark mode; hover tooltips; "Show as a table" for each chart).
+- [x] Polish: skip-to-content link; footer links; home-link accessible name fixed; landing page no longer loads framer-motion (CSS scroll-driven reveal and tw-animate instead); header/footer links don't prefetch heavy routes (Recharts was being prefetched on the landing page).
+- [x] Lighthouse (mobile, simulated throttling, production build, local): **performance 90, accessibility 100** on three runs (was 80-89 before the fixes; LCP 3.6 s is the remaining cost).
+- [x] Deploy config: `deploy/hf-space/` (single-image Dockerfile with API + LanguageTool, `start.sh`, Space README with steps); Vercel instructions in the README; `frontend/.env.example`.
+- [x] Playwright smoke test of the whole 5-step flow (`frontend/e2e/smoke.spec.ts`, `playwright.config.ts`).
+- [x] `next build` passes (all 10 routes). Tests: backend 428 passing (4 new), frontend 103 passing (18 new: markdown, SM-2, deck, DeckReview, ProgressDashboard); ruff, mypy, eslint, tsc clean.
+- [ ] Not done: the actual deployment (needs the user's Hugging Face and Vercel accounts), so "deployed URLs work end to end" is not verified; the Docker image wasn't built here (no Docker on this machine); the Playwright smoke test wasn't run (the dev servers were stopped for low memory).
+
 #### Next
-- P9 (Deck, Progress, Learn, Polish, Deploy) as in CLAUDE.md §12.
+- Deploy (user's accounts), run the Playwright smoke test against the running stack, live browser pass over P6–P9 screens.
 - Tooling note: in Git Bash on this machine, heredocs piped into Python turned `\b`/`\1` into control characters; edit regex lines with the editor, not shell heredocs.

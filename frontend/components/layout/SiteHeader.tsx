@@ -18,7 +18,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-rule bg-background/85 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 sm:px-6">
-        <Link href="/" className="flex items-baseline gap-1.5" aria-label="OwnIt home">
+        <Link href="/" className="flex items-baseline gap-1.5" aria-label="OwnIt v0.1 home">
           <span className="font-display text-2xl leading-none">OwnIt</span>
           <span className="tabular text-[10px] text-muted-foreground">v0.1</span>
         </Link>
@@ -29,6 +29,7 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
+                prefetch={false}
                 aria-current={active ? "page" : undefined}
                 className={cn(
                   "rounded-md px-2.5 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground",
@@ -49,7 +50,7 @@ export function SiteHeader() {
       </div>
       <nav aria-label="Main mobile" className="flex gap-1 overflow-x-auto border-t border-rule px-4 py-1.5 sm:hidden">
         {NAV.map((item) => (
-          <Link key={item.href} href={item.href} className="shrink-0 rounded-md px-2 py-1 text-sm text-muted-foreground">
+          <Link key={item.href} href={item.href} prefetch={false} className="shrink-0 rounded-md px-2 py-1 text-sm text-muted-foreground">
             {item.label}
           </Link>
         ))}

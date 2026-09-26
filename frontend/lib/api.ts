@@ -127,6 +127,8 @@ export const api = {
   vivaNext: (text: string, history: Schemas["VivaTurnIn"][]) => post<VivaNextResponse>("/assess/viva/next", { text, history }),
   teachback: (text: string, explanation: string) => post<TeachbackResponse>("/teachback", { text, explanation }),
   doctor: (text: string, signal?: AbortSignal) => post<DoctorResponse>("/doctor", { text }, signal),
+  lessons: (signal?: AbortSignal) => get<Schemas["LessonSummary"][]>("/lessons", signal),
+  lesson: (slug: string, signal?: AbortSignal) => get<Schemas["LessonOut"]>(`/lessons/${encodeURIComponent(slug)}`, signal),
   exportDocx: (body: Schemas["ExportDocxRequest"]) => postBlob("/export/docx", body),
   exportReport: (body: Schemas["UnderstandingReportRequest"]) => postBlob("/export/report", body),
 };

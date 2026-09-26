@@ -51,8 +51,8 @@ export function HumanizeStep({ onNext }: { onNext: () => void }) {
 
   useEffect(() => {
     if (!result) return;
-    patchDoc((d) => ({ analysis: result, firstScore: d.firstScore ?? result.score }));
-  }, [result, patchDoc]);
+    patchDoc((d) => ({ analysis: result, analysisText: analyzedText, firstScore: d.firstScore ?? result.score }));
+  }, [result, analyzedText, patchDoc]);
 
   useEffect(() => {
     if (analysis.error) toast.error((analysis.error as Error).message, { id: "analyze-error" });

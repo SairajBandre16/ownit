@@ -276,6 +276,22 @@
   border-bottom: 2px dashed var(--signal);
 }
 
+/* landing "scroll story": items fade up as they enter the viewport (browsers with
+   scroll-driven animations; everywhere else they're simply visible) */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-reveal {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

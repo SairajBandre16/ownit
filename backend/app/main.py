@@ -20,6 +20,7 @@ from app.api import (
     routes_export,
     routes_health,
     routes_humanize,
+    routes_learn,
     routes_personalize,
     routes_style,
     routes_walkthrough,
@@ -70,3 +71,4 @@ app.include_router(routes_personalize.router)
 app.include_router(routes_assess.router)
 app.include_router(routes_doctor.router)
 app.include_router(routes_export.router)
+app.include_router(routes_learn.router)

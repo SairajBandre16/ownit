@@ -58,6 +58,12 @@ export default function Home() {
       <footer className="border-t border-rule py-8">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 text-sm text-muted-foreground sm:px-6">
           <span>OwnIt is a learning tool. It never claims to make text “undetectable”.</span>
+          <nav aria-label="Footer" className="flex gap-4">
+            <Link href="/learn" prefetch={false} className="hover:text-foreground">Learn</Link>
+            <Link href="/deck" prefetch={false} className="hover:text-foreground">Revision Deck</Link>
+            <Link href="/progress" prefetch={false} className="hover:text-foreground">Progress</Link>
+            <Link href="/voice" prefetch={false} className="hover:text-foreground">Voice</Link>
+          </nav>
           <span className="tabular">spaCy · WordNet · n‑gram LM · LanguageTool</span>
         </div>
       </footer>
