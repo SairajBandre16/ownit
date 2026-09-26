@@ -190,6 +190,14 @@ Hugging Face now requires a paid plan for Docker (and Gradio) Spaces, and free a
 - [x] Tests: backend 435 (rate-limit key), frontend 107 (server address rules, share-link confirm/decline).
 - [x] README "Deploying (free)" rewritten around this setup; `deploy/hf-space/README.md` notes the Hugging Face paid plan (the Dockerfile still runs on any Docker host).
 
+### Deployed
+- [x] Code on GitHub: https://github.com/SairajBandre16/ownit (main, in sync).
+- [x] Website on Vercel: **https://ownit-nine.vercel.app** (root directory `frontend`, no environment variables; checked: HTTP 200).
+- [x] Backend: the user's PC, shared on demand with
+  `powershell -ExecutionPolicy Bypass -File scripts\share.ps1 -Site https://ownit-nine.vercel.app`
+  → open or send the printed `Share this link` (visitors click **Connect**; the **Server** dot turns green). The PC must stay on with the window open; each run gives a new link; Ctrl+C stops sharing.
+- Sharing the project: the live link (while the script runs) for people to use it; the GitHub link (or a collaborator invite if the repository is private) for the code; `progress.md` for what was built and tested.
+
 #### Next
-- User: push to GitHub and import `frontend/` into Vercel, then run `scripts\share.ps1 -Site <vercel-url>` when sharing.
+- Optional: an always-on free backend (Oracle Cloud Always Free VM + Docker + free HTTPS domain) so the site works without this PC.
 - Tooling note: in Git Bash on this machine, heredocs piped into Python turned `\b`/`\1` into control characters; edit regex lines with the editor, not shell heredocs.
