@@ -17,12 +17,11 @@ never stored.
 ## Deploying
 
 1. Create a new Space with the **Docker** SDK (CPU basic is enough).
-2. Copy into the Space repository:
-   - this `README.md` (the YAML header above configures the Space),
-   - `deploy/hf-space/Dockerfile` → `Dockerfile` at the Space root, and change its
-     `COPY deploy/hf-space/start.sh` line to `COPY start.sh`,
-   - `deploy/hf-space/start.sh` → `start.sh`,
-   - the whole `backend/` folder.
+2. Copy into the Space repository (same paths as in this repo, so nothing needs editing):
+   - this `README.md` → `README.md` at the Space root (the YAML header configures the Space),
+   - `deploy/hf-space/Dockerfile` → `Dockerfile` at the Space root,
+   - `deploy/hf-space/start.sh` → `deploy/hf-space/start.sh`,
+   - the `backend/` folder **without** `backend/.venv`, `backend/data` and cache folders.
 3. Push. The first build takes 15–20 minutes (it downloads LanguageTool and builds the
    fallback language model).
 4. Check `https://<user>-<space>.hf.space/health`: it should report `"languagetool": true`
