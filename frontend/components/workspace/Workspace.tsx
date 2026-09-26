@@ -112,7 +112,7 @@ export function Workspace({ docId }: { docId: string }) {
           {doc.step === "walkthrough" && <WalkthroughStep onNext={() => go("personalize")} />}
           {doc.step === "personalize" && <MakeItYoursStep onNext={() => go("prove")} />}
           {doc.step === "prove" && <ProveItStep onNext={() => go("export")} />}
-          {doc.step === "export" && <ExportStep onBack={() => go("prove")} />}
+          {doc.step === "export" && <ExportStep onGo={go} />}
         </main>
       </div>
     </>

@@ -55,6 +55,7 @@ export function NewDocDialog({
       setText(res.text);
       if (!title) setTitle(file.name.replace(/\.(docx|pdf)$/i, ""));
       toast.success(`Extracted ${countWords(res.text)} words from ${file.name}`);
+      for (const w of res.warnings ?? []) toast(w);
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Couldn't read that file");
     } finally {

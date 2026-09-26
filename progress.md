@@ -21,7 +21,7 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
 | P5 Make it yours + Ownership | done |
 | P6 Prove it | done |
 | P7 Report Doctor | done |
-| P8 Export | pending |
+| P8 Export | done |
 | P9 Deck, Progress, Learn, Polish, Deploy | pending |
 
 ## Task log
@@ -143,6 +143,17 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
 - [x] Frontend: step 1 has a third review tab, "Doctor", with a pass/count tile per check, the issue list filtered by check (IssueList gained `groupOf`), hover cards and one-click fixes for unit problems; a "Report Doctor" layer toggle shows the dashed engineering highlights in the editor at any time. `useDoctor` runs `/doctor` debounced.
 - [x] Frontend tests: 78 passing (new: DoctorPanel); eslint + tsc clean. Live browser check still pending (dev servers stopped).
 
+- [x] Committed as `57ceb0c`.
+
+### P8 Export
+- [x] `POST /files/extract` (`export/extract.py`): .docx paragraphs in order (headings, captions and list items kept, tables skipped with a warning); .pdf text layer with page numbers and running headers/footers removed, hyphenated line breaks re-joined, wrapped lines merged into paragraphs (a paragraph continues across a page break unless its sentence ended), headings by the segmenter's rule; scans (no text layer), broken files, other types and files over 10 MB are rejected with a clear message (422/415/413). The upload dialog shows the warnings.
+- [x] `POST /export/docx` (`export/docx_writer.py`): Title + byline (author, date), Word headings from the segmenter (numbered "2.1" headings one level down), Caption style for figure/table captions, bullets for "- " lines, line breaks inside paragraphs kept, document properties set; optional ownership note. File name from the title.
+- [x] `POST /export/report` (`export/understanding_report.py`): Understanding Report with Ownership Score breakdown (table), understanding checks (table), concepts mastered / to revise, glossary (student's own definitions first), every viva question with answer, score and feedback, quiz misses, teach-back, revision list.
+- [x] Backend tests: 14 new in `tests/unit/test_export.py` (docx and hand-built PDF extraction incl. headers/page numbers/hyphenation, reflow across pages, errors, size limit; exported .docx re-opened with python-docx to check styles, headings, captions, bullets, properties and the ownership note; report sections and tables; endpoints). Total: 424 passing; ruff + mypy clean.
+- [x] Frontend Export step: locked until the gate passes (lists what's missing with "Go there" links; the gate can be switched off in the panel); then title/author fields, optional ownership note, "Download .docx" and "Download Understanding Report" (report data built from the student's work in `lib/report.ts`: concepts mastered/weak ranked by how often they were missed, glossary with own definitions, quiz misses, viva turns); downloads recorded in `doc.exports` for the progress page.
+- [x] Frontend tests: 85 passing (new: report builder, ExportStep gate lock/unlock and downloads); eslint + tsc clean.
+- [ ] Not verified: opening the exported file in Microsoft Word itself (no Word on this machine); the structure and styles were checked by re-reading the file with python-docx.
+
 #### Next
-- P8 (Export) as in CLAUDE.md §12.
+- P9 (Deck, Progress, Learn, Polish, Deploy) as in CLAUDE.md §12.
 - Tooling note: in Git Bash on this machine, heredocs piped into Python turned `\b`/`\1` into control characters; edit regex lines with the editor, not shell heredocs.

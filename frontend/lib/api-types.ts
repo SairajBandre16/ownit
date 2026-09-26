@@ -208,6 +208,57 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/files/extract": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Files Extract */
+        post: operations["files_extract_files_extract_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/export/docx": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Export Docx */
+        post: operations["export_docx_export_docx_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/export/report": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Export Report */
+        post: operations["export_report_export_report_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -249,6 +300,14 @@ export interface components {
              * @default
              */
             answer: string;
+        };
+        /** Body_files_extract_files_extract_post */
+        Body_files_extract_files_extract_post: {
+            /**
+             * File
+             * Format: binary
+             */
+            file: string;
         };
         /** Change */
         Change: {
@@ -339,10 +398,46 @@ export interface components {
                 [key: string]: number;
             };
         };
+        /** ExportDocxRequest */
+        ExportDocxRequest: {
+            /** Text */
+            text: string;
+            /**
+             * Title
+             * @default Untitled
+             */
+            title: string;
+            /** Author */
+            author?: string | null;
+            understanding?: components["schemas"]["OwnershipNote"] | null;
+        };
+        /** ExtractResponse */
+        ExtractResponse: {
+            /** Text */
+            text: string;
+            /** Words */
+            words: number;
+            /**
+             * Warnings
+             * @default []
+             */
+            warnings: string[];
+        };
         /** FingerprintRequest */
         FingerprintRequest: {
             /** Samples */
             samples: string[];
+        };
+        /** GateRow */
+        GateRow: {
+            /** Label */
+            label: string;
+            /** Value */
+            value: number | null;
+            /** Required */
+            required: number;
+            /** Passed */
+            passed: boolean;
         };
         /** GenerateRequest */
         GenerateRequest: {
@@ -363,6 +458,15 @@ export interface components {
         GenerateResponse: {
             /** Questions */
             questions: components["schemas"]["QuestionOut"][];
+        };
+        /** GlossaryRow */
+        GlossaryRow: {
+            /** Term */
+            term: string;
+            /** Definition */
+            definition?: string | null;
+            /** Source */
+            source?: string | null;
         };
         /** GradeRequest */
         GradeRequest: {
@@ -501,6 +605,26 @@ export interface components {
             /** Score */
             score: number;
         };
+        /** OwnershipNote */
+        OwnershipNote: {
+            /** Score */
+            score: number;
+            /** Student Share */
+            student_share: number;
+            /** Passed At */
+            passed_at?: string | null;
+        };
+        /** OwnershipPartIn */
+        OwnershipPartIn: {
+            /** Label */
+            label: string;
+            /** Weight */
+            weight: number;
+            /** Value */
+            value: number | null;
+            /** Detail */
+            detail: string;
+        };
         /** ParagraphOut */
         ParagraphOut: {
             /** Index */
@@ -567,6 +691,18 @@ export interface components {
             difficulty?: string | null;
             /** Kind */
             kind?: string | null;
+        };
+        /** QuizMiss */
+        QuizMiss: {
+            /** Prompt */
+            prompt: string;
+            /** Answer Key */
+            answer_key: string;
+            /**
+             * Your Answer
+             * @default
+             */
+            your_answer: string;
         };
         /** ResultOut */
         ResultOut: {
@@ -707,6 +843,79 @@ export interface components {
             /** Text */
             text: string;
         };
+        /** UnderstandingReportRequest */
+        UnderstandingReportRequest: {
+            /**
+             * Title
+             * @default Untitled
+             */
+            title: string;
+            /** Author */
+            author?: string | null;
+            /** Date */
+            date?: string | null;
+            /**
+             * Ownership Score
+             * @default 0
+             */
+            ownership_score: number;
+            /**
+             * Student Share
+             * @default 0
+             */
+            student_share: number;
+            /**
+             * Ownership Parts
+             * @default []
+             */
+            ownership_parts: components["schemas"]["OwnershipPartIn"][];
+            /**
+             * Gate
+             * @default []
+             */
+            gate: components["schemas"]["GateRow"][];
+            /**
+             * Gate Passed
+             * @default false
+             */
+            gate_passed: boolean;
+            /**
+             * Mastered
+             * @default []
+             */
+            mastered: string[];
+            /**
+             * Weak
+             * @default []
+             */
+            weak: string[];
+            /**
+             * Glossary
+             * @default []
+             */
+            glossary: components["schemas"]["GlossaryRow"][];
+            /**
+             * Viva
+             * @default []
+             */
+            viva: components["schemas"]["VivaRow"][];
+            /** Quiz Total */
+            quiz_total?: number | null;
+            /**
+             * Quiz Missed
+             * @default []
+             */
+            quiz_missed: components["schemas"]["QuizMiss"][];
+            /** Teachback Coverage */
+            teachback_coverage?: number | null;
+            /** Teachback Explanation */
+            teachback_explanation?: string | null;
+            /**
+             * Teachback Missed
+             * @default []
+             */
+            teachback_missed: string[];
+        };
         /** ValidationError */
         ValidationError: {
             /** Location */
@@ -742,6 +951,36 @@ export interface components {
              * @default []
              */
             target_concepts: string[];
+        };
+        /** VivaRow */
+        VivaRow: {
+            /** Question */
+            question: string;
+            /**
+             * Difficulty
+             * @default
+             */
+            difficulty: string;
+            /**
+             * Answer
+             * @default
+             */
+            answer: string;
+            /**
+             * Score
+             * @default 0
+             */
+            score: number;
+            /**
+             * Feedback
+             * @default
+             */
+            feedback: string;
+            /**
+             * Missed Concepts
+             * @default []
+             */
+            missed_concepts: string[];
         };
         /** VivaTurnIn */
         VivaTurnIn: {
@@ -1148,6 +1387,101 @@ export interface operations {
                 content: {
                     "application/json": components["schemas"]["DoctorResponse"];
                 };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    files_extract_files_extract_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": components["schemas"]["Body_files_extract_files_extract_post"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ExtractResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    export_docx_export_docx_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ExportDocxRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    export_report_export_report_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UnderstandingReportRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             /** @description Validation Error */
             422: {

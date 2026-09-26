@@ -134,6 +134,8 @@ export interface OwnDoc {
   walkthrough?: WalkthroughState;
   personalize?: PersonalizeState;
   assess?: AssessState;
+  /** downloads made in the Export step (progress history) */
+  exports?: { at: number; kind: "docx" | "report" }[];
   /** Cached Ownership Score breakdown for lists/progress (recomputed live in the editor). */
   ownership?: { score: number; studentShare: number };
 }

@@ -88,7 +88,7 @@ export async function postBlob(path: string, body: unknown): Promise<{ blob: Blo
   return { blob: await res.blob(), filename: match?.[1] ?? "document.docx" };
 }
 
-export async function uploadFile(path: string, file: File): Promise<{ text: string }> {
+export async function uploadFile(path: string, file: File): Promise<Schemas["ExtractResponse"]> {
   const form = new FormData();
   form.append("file", file);
   let res: Response;
@@ -127,4 +127,6 @@ export const api = {
   vivaNext: (text: string, history: Schemas["VivaTurnIn"][]) => post<VivaNextResponse>("/assess/viva/next", { text, history }),
   teachback: (text: string, explanation: string) => post<TeachbackResponse>("/teachback", { text, explanation }),
   doctor: (text: string, signal?: AbortSignal) => post<DoctorResponse>("/doctor", { text }, signal),
+  exportDocx: (body: Schemas["ExportDocxRequest"]) => postBlob("/export/docx", body),
+  exportReport: (body: Schemas["UnderstandingReportRequest"]) => postBlob("/export/report", body),
 };
