@@ -15,6 +15,8 @@ interface WorkspaceState {
   text: string;
   layers: Record<Layer, boolean>;
   heatmap: boolean;
+  /** suggestion category shown in the editor and the list; null = the main (warn/error) issues */
+  issueFocus: string | null;
   activeIssueId: string | null;
   activeChangeId: string | null;
   activeParagraph: number | null;
@@ -24,6 +26,7 @@ interface WorkspaceState {
   setText: (t: string) => void;
   toggleLayer: (l: Layer, on?: boolean) => void;
   setHeatmap: (on: boolean) => void;
+  setIssueFocus: (category: string | null) => void;
   setActiveIssue: (id: string | null) => void;
   setActiveChange: (id: string | null) => void;
   setActiveParagraph: (i: number | null) => void;
@@ -41,6 +44,7 @@ export const useWorkspace = create<WorkspaceState>((set, get) => ({
   text: "",
   layers: { issues: true, protected: true, changes: true, engineering: false, spots: false },
   heatmap: false,
+  issueFocus: null,
   activeIssueId: null,
   activeChangeId: null,
   activeParagraph: null,
@@ -57,6 +61,7 @@ export const useWorkspace = create<WorkspaceState>((set, get) => ({
   setText: (text) => set({ text }),
   toggleLayer: (l, on) => set((s) => ({ layers: { ...s.layers, [l]: on ?? !s.layers[l] } })),
   setHeatmap: (heatmap) => set({ heatmap }),
+  setIssueFocus: (issueFocus) => set({ issueFocus }),
   setActiveIssue: (activeIssueId) => set({ activeIssueId }),
   setActiveChange: (activeChangeId) => set({ activeChangeId }),
   setActiveParagraph: (activeParagraph) => set({ activeParagraph }),

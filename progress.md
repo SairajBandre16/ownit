@@ -208,3 +208,13 @@ Hugging Face now requires a paid plan for Docker (and Gradio) Spaces, and free a
 - [x] Logo: an "O" that is half thin grey line (the AI draft) and half solid ink (your writing), with the signal-orange pen tip where you take over; wordmark "Own*It*" in Newsreader. Used in the header (`components/brand/Logo.tsx`) and as the favicon (`app/icon.svg`). The "v0.1" tag is gone; the default Next.js favicon and scaffold SVGs are removed.
 - [x] Fixed a hydration error: the theme toggle's aria-label depended on the client-only theme.
 - [x] Tests: backend 436, frontend 107; lint and types clean. Checked in the browser (landing, workspace, editor with analysis).
+
+### UX round 1 and punctuation tidy-up (2026-09-29)
+- [x] Offline banner (`components/layout/ServerOfflineBanner.tsx`) on the workspace, Voice and Viva pages: what still works, how to start the local server or paste a new share link, and Retry. Failed requests re-run once the server answers (a retry passes through "pending", so only settled results count). The background analysis no longer toasts the same message.
+- [x] "Suggest rewrites" moved into the sticky step toolbar; the Rewrite settings panel sits under the score.
+- [x] Layers menu replaces the row of layer chips. The editor shows the main (warn/error) suggestions by default; choosing a category in the Suggestions list (shared `issueFocus` in the store) shows all of its highlights.
+- [x] `dash_tidy` transform (all intensities): pair of dashes becomes commas (short aside) or brackets; a single dash becomes a full stop between two full sentences (each side parsed on its own), a colon after a cue ("one thing") or a non-sentence, and a comma otherwise ("but", "which", "especially"). Ranges, protected spans and students whose own writing uses dashes are left alone. `style_fit` counts dashes against cleanliness, so the ranking prefers the tidy version.
+- [x] Analyzer flags: `dash` (the dash itself) and `contrast_formula` ("it's not just X, it's Y"), info level, lesson links. Punctuation lesson has a dashes section.
+- [x] Eval: new `paragraphs_dashes.txt` (10 paragraphs, stored with the escape, decoded by `run_eval.py`). Run with LanguageTool: 0 new grammar errors in every group, dashes group meaning_sim 0.995, no dashes left, 1.2 s per 1,000 words.
+- [x] Tests: backend 451 with LanguageTool running (dash_tidy 14 incl. fragment regressions), frontend 113 (offline banner incl. recovery, Layers menu, controlled issue focus). Checked in the browser: banner, retry and recovery, Layers menu, category focus, toolbar rewrite.
+- [x] `ROADMAP.md` records the remaining UX ideas, future features and known issues.

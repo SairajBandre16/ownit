@@ -27,6 +27,7 @@ from app.humanize.ranking.style_fit import StyleTargets
 from app.humanize.transforms import (
     clause_front,
     contractions,
+    dash_tidy,
     opener_vary,
     passive_to_active,
     phrase_simplify,
@@ -49,7 +50,7 @@ MAX_CANDIDATES = 8
 GRAMMAR_CHECK_TOP = 3
 
 # transforms enabled at each intensity (1 = gentlest)
-_GENTLE = [phrase_simplify, transition_vary, voice_fit]
+_GENTLE = [phrase_simplify, transition_vary, dash_tidy, voice_fit]
 _STRUCTURAL = [passive_to_active, clause_front, opener_vary]
 TRANSFORMS: dict[int, list[ModuleType]] = {
     1: _GENTLE,
@@ -145,6 +146,8 @@ def targets_for(tone: str, profile: dict[str, Any] | None) -> StyleTargets:
             t.contraction_rate = feats["contractions_per_sentence"]
         if "commas_per_sentence" in feats:
             t.comma_rate = feats["commas_per_sentence"]
+        if "dashes_per_sentence" in feats:
+            t.dash_rate = feats["dashes_per_sentence"]
         t.function_word_freqs = profile.get("function_word_freqs") or None
     return t
 

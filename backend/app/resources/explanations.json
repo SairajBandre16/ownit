@@ -67,5 +67,13 @@
   "issue.generic.conclusion_no_voice": "The conclusion has no evaluative or first-person sentence. What do you think?",
   "issue.generic.no_concrete": "Several sentences in a row with no concrete detail (name, number or unit).",
   "transform.phrase_simplify.stock_note": "'{old}' → '{new}'. {note}",
-  "transform.phrase_simplify.stock_note_delete": "Removed '{old}'. {note}"
+  "transform.phrase_simplify.stock_note_delete": "Removed '{old}'. {note}",
+  "transform.dash_tidy.pair_commas": "Dashes around '{aside}' replaced with commas: a pair of commas marks a short aside just as clearly and reads plainer.",
+  "transform.dash_tidy.pair_brackets": "Dashes around '{aside}' replaced with brackets: the aside is long, so brackets show clearly where it starts and ends.",
+  "transform.dash_tidy.stop": "The dash joined two complete sentences. A full stop gives each idea its own sentence.",
+  "transform.dash_tidy.semicolon": "The dash joined two complete sentences. A semicolon is the standard mark for two closely linked sentences.",
+  "transform.dash_tidy.comma": "What follows the dash continues the sentence, so a comma is enough.",
+  "transform.dash_tidy.colon": "What follows the dash explains or lists something, which is the colon's job.",
+  "issue.dash": "A dash used as punctuation. A comma, colon, full stop or brackets usually shows more precisely how the parts connect.",
+  "issue.contrast_formula": "'{phrase}' is a stock contrast pattern ('not just X, it's Y'). State the point directly."
 }

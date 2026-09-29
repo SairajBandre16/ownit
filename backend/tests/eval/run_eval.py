@@ -54,13 +54,17 @@ class Row:
     voice_after: float | None = None
 
 
+EM_DASH_ESCAPE = chr(92) + "u2014"
+
+
 def load_paragraphs(limit: int | None) -> list[tuple[str, str]]:
     out = []
     for path in sorted(EVAL_DIR.glob("paragraphs_*.txt")):
         cat = path.stem.removeprefix("paragraphs_")
         for line in path.read_text(encoding="utf-8").splitlines():
             if line.strip():
-                out.append((cat, line.strip()))
+                # the repo has no literal em dashes (house style): fixtures write the escape
+                out.append((cat, line.strip().replace(EM_DASH_ESCAPE, chr(0x2014))))
     return out[:limit] if limit else out
 
 

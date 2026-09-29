@@ -95,7 +95,7 @@ def test_intensity_one_only_uses_gentle_transforms():
         "We utilize a pump in order to move water."
     )
     out = humanize(text, intensity=1)
-    assert {c.transform for c in out.changes} <= {"phrase_simplify", "transition_vary"}
+    assert {c.transform for c in out.changes} <= {"phrase_simplify", "transition_vary", "dash_tidy"}
 
 
 def test_headings_and_references_untouched():

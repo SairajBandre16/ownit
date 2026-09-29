@@ -1,4 +1,5 @@
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { QuestionOut } from "@/lib/api";
 import { getDoc, saveDoc } from "@/lib/db";
@@ -21,7 +22,7 @@ const q = (i: number, level: number): QuestionOut => ({
 
 const vivaNext = vi.fn();
 const grade = vi.fn();
-vi.mock("@/lib/api", async (orig) => ({ ...(await orig<typeof import("@/lib/api")>()), api: { vivaNext: (...a: unknown[]) => vivaNext(...a), grade: (...a: unknown[]) => grade(...a) } }));
+vi.mock("@/lib/api", async (orig) => ({ ...(await orig<typeof import("@/lib/api")>()), api: { vivaNext: (...a: unknown[]) => vivaNext(...a), grade: (...a: unknown[]) => grade(...a), health: async () => ({ status: "ok", languagetool: true }) } }));
 
 // imported after the mock
 const { VivaSimulator } = await import("./VivaSimulator");
@@ -56,7 +57,7 @@ describe("VivaSimulator", () => {
       ],
     }));
 
-    render(<VivaSimulator docId="viva-doc" />);
+    render(<QueryClientProvider client={new QueryClient()}><VivaSimulator docId="viva-doc" /></QueryClientProvider>);
     fireEvent.click(await screen.findByRole("button", { name: /Begin/ }));
     expect(await screen.findByText("Question number 1?")).toBeInTheDocument();
 
@@ -91,7 +92,7 @@ describe("VivaSimulator", () => {
       total: 0,
       results: [{ id: "v1", correct: null, score: 0, feedback: "Write at least one full sentence.", missed_concepts: ["relay"], covered_concepts: [], source_span: { start: 0, end: 28 } }],
     });
-    render(<VivaSimulator docId="viva-doc" />);
+    render(<QueryClientProvider client={new QueryClient()}><VivaSimulator docId="viva-doc" /></QueryClientProvider>);
     fireEvent.click(await screen.findByRole("button", { name: /Begin/ }));
     await screen.findByText("Question number 1?");
     expect(screen.getByRole("timer")).toHaveAccessibleName("60 seconds left");

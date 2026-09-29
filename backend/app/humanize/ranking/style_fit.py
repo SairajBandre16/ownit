@@ -32,6 +32,7 @@ class StyleTargets:
     contraction_rate: float | None = None  # per sentence, from a voice profile
     function_word_freqs: dict[str, float] | None = None  # per 1000 words, from a voice profile
     comma_rate: float | None = None
+    dash_rate: float | None = None  # dashes per sentence in the student's own writing
     recent_openers: tuple[str, ...] = ()  # first words of the previous sentences
 
 
@@ -41,6 +42,15 @@ def _lexicons():  # type: ignore[no-untyped-def]
         lexicon(n)
         for n in ("wordy_phrases", "ai_style_phrases", "fillers", "weak_verbs", "cliches")
     ]
+
+
+def dash_hits(text: str, t: StyleTargets) -> int:
+    """Dashes used as sentence punctuation, unless dashes are part of the student's voice."""
+    from app.humanize.transforms.dash_tidy import OWN_STYLE_RATE, dashes
+
+    if t.dash_rate is not None and t.dash_rate >= OWN_STYLE_RATE:
+        return 0
+    return len(dashes(text))
 
 
 def lexicon_hits(text: str) -> int:
@@ -116,8 +126,8 @@ def sentence_lengths(text: str) -> list[int]:
 
 
 def style_fit(text: str, words: int, t: StyleTargets) -> float:
-    # each flagged phrase halves cleanliness: removing one is a clear, measurable gain
-    cleanliness = 0.5 ** lexicon_hits(text)
+    # each flagged phrase (or dash) halves cleanliness: removing one is a clear, measurable gain
+    cleanliness = 0.5 ** (lexicon_hits(text) + dash_hits(text, t))
     lengths = sentence_lengths(text) or [words]
     len_fit = sum(length_fit(n, t) for n in lengths) / len(lengths)
     parts = [

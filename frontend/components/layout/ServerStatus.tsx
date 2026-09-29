@@ -23,12 +23,9 @@ export function useApiUrl(): string {
   return useSyncExternalStore(subscribe, getApiUrl, () => DEFAULT_API_URL);
 }
 
-/** Header indicator: which OwnIt server this browser uses, whether it answers, and a way to change it. */
-export function ServerStatus() {
+/** Health of the server this browser uses (shared cache: the header dot and the offline banner). */
+export function useServerHealth() {
   const url = useApiUrl();
-  const client = useQueryClient();
-  const [draft, setDraft] = useState("");
-  const [error, setError] = useState<string | null>(null);
   const health = useQuery({
     queryKey: ["health", url],
     queryFn: () => api.health(),
@@ -36,8 +33,16 @@ export function ServerStatus() {
     refetchInterval: 60_000,
     staleTime: 30_000,
   });
-  const ok = health.isSuccess;
-  const state = health.isPending ? "checking" : ok ? "connected" : "offline";
+  // a retry after a failure passes through "pending"; it still counts as offline until it succeeds
+  const retrying = health.isFetching && health.errorUpdatedAt > health.dataUpdatedAt;
+  return { url, health, ok: health.isSuccess, offline: health.isError || retrying };
+}
+
+/** Switch to another server address (or back to the default). */
+export function ServerAddressForm({ url, className }: { url: string; className?: string }) {
+  const client = useQueryClient();
+  const [draft, setDraft] = useState("");
+  const [error, setError] = useState<string | null>(null);
 
   const apply = (next: string | null) => {
     setApiUrl(next);
@@ -46,6 +51,43 @@ export function ServerStatus() {
     setError(null);
     void client.invalidateQueries();
   };
+
+  return (
+    <div className={cn("flex flex-col gap-2", className)}>
+      <form
+        className="flex gap-2"
+        onSubmit={(e) => {
+          e.preventDefault();
+          const n = normalizeApiUrl(draft);
+          if (!n) setError("Use an https:// address (or http://localhost).");
+          else apply(n);
+        }}
+      >
+        <input
+          value={draft}
+          onChange={(e) => setDraft(e.target.value)}
+          placeholder="https://….trycloudflare.com"
+          aria-label="Server address"
+          className="min-w-0 flex-1 rounded-md border border-input bg-background px-2 py-1 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        />
+        <button type="submit" className="rounded-md bg-primary px-3 py-1 text-sm font-medium text-primary-foreground">
+          Use
+        </button>
+      </form>
+      {error && <p className="text-xs text-destructive">{error}</p>}
+      {url !== DEFAULT_API_URL && (
+        <button type="button" onClick={() => apply(null)} className="self-start text-xs underline underline-offset-2">
+          Back to the default server
+        </button>
+      )}
+    </div>
+  );
+}
+
+/** Header indicator: which OwnIt server this browser uses, whether it answers, and a way to change it. */
+export function ServerStatus() {
+  const { url, health, ok } = useServerHealth();
+  const state = health.isPending ? "checking" : ok ? "connected" : "offline";
 
   return (
     <Popover>
@@ -66,35 +108,10 @@ export function ServerStatus() {
           {health.isPending
             ? "Checking…"
             : ok
-              ? `Connected${health.data.languagetool ? "" : " · grammar check off"}.`
+              ? `Connected${health.data?.languagetool ? "" : " · grammar check off"}.`
               : "Not reachable. Start it on the computer that hosts it, or use another address."}
         </p>
-        <form
-          className="flex gap-2"
-          onSubmit={(e) => {
-            e.preventDefault();
-            const n = normalizeApiUrl(draft);
-            if (!n) setError("Use an https:// address (or http://localhost).");
-            else apply(n);
-          }}
-        >
-          <input
-            value={draft}
-            onChange={(e) => setDraft(e.target.value)}
-            placeholder="https://….trycloudflare.com"
-            aria-label="Server address"
-            className="min-w-0 flex-1 rounded-md border border-input bg-background px-2 py-1 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          />
-          <button type="submit" className="rounded-md bg-primary px-3 py-1 text-sm font-medium text-primary-foreground">
-            Use
-          </button>
-        </form>
-        {error && <p className="text-xs text-destructive">{error}</p>}
-        {url !== DEFAULT_API_URL && (
-          <button type="button" onClick={() => apply(null)} className="self-start text-xs underline underline-offset-2">
-            Back to the default server
-          </button>
-        )}
+        <ServerAddressForm url={url} />
         <p className="text-xs text-muted-foreground">Your text is sent to this server for processing and isn&apos;t stored there.</p>
       </PopoverContent>
     </Popover>

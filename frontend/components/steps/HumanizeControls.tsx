@@ -1,6 +1,6 @@
 "use client";
 
-import { Loader2, Sparkles, X } from "lucide-react";
+import { X } from "lucide-react";
 import { useState } from "react";
 import type { DocSettings, Tone } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -23,14 +23,10 @@ const INTENSITY_HINT = [
 export function HumanizeControls({
   settings,
   onChange,
-  onRun,
-  running,
   hasProfile,
 }: {
   settings: DocSettings;
   onChange: (p: Partial<DocSettings>) => void;
-  onRun: () => void;
-  running: boolean;
   hasProfile: boolean;
 }) {
   const [term, setTerm] = useState("");
@@ -134,15 +130,7 @@ export function HumanizeControls({
         )}
       </label>
 
-      <button
-        type="button"
-        onClick={onRun}
-        disabled={running}
-        className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-lg bg-primary font-medium text-primary-foreground disabled:opacity-60"
-      >
-        {running ? <Loader2 className="size-4 animate-spin" /> : <Sparkles className="size-4" />}
-        {running ? "Rewriting…" : "Suggest rewrites"}
-      </button>
+      <p className="text-[11px] text-muted-foreground">Used the next time you press <strong className="font-medium text-foreground">Suggest rewrites</strong> in the top bar.</p>
     </div>
   );
 }

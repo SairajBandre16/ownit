@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { ServerOfflineBanner } from "@/components/layout/ServerOfflineBanner";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { ExportStep } from "@/components/steps/ExportStep";
 import { HumanizeStep } from "@/components/steps/HumanizeStep";
@@ -108,6 +109,7 @@ export function Workspace({ docId }: { docId: string }) {
           />
         </div>
         <main id="main" className="min-w-0">
+          <ServerOfflineBanner className="mb-4" />
           {doc.step === "humanize" && <HumanizeStep onNext={() => go("walkthrough")} />}
           {doc.step === "walkthrough" && <WalkthroughStep onNext={() => go("personalize")} />}
           {doc.step === "personalize" && <MakeItYoursStep onNext={() => go("prove")} />}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
-import { ArrowRight, Loader2 } from "lucide-react";
+import { ArrowRight, Loader2, Sparkles } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { IssueCard, IssueList } from "@/components/analysis/IssueList";
@@ -15,7 +15,7 @@ import { LayerToggles } from "@/components/steps/LayerToggles";
 import { useAnalysis } from "@/hooks/useAnalysis";
 import { useDoctor } from "@/hooks/useDoctor";
 import { useStyleProfile } from "@/hooks/useStyleProfile";
-import { api, type Issue } from "@/lib/api";
+import { ApiError, api, type Issue } from "@/lib/api";
 import { decisionStats, displayPair, locatePending } from "@/lib/changes";
 import { replaceHighlight, scrollToHighlight } from "@/lib/editing";
 import { useWorkspace } from "@/lib/store";
@@ -34,6 +34,8 @@ export function HumanizeStep({ onNext }: { onNext: () => void }) {
   const layersOn = useWorkspace((s) => s.layers);
   const activeIssueId = useWorkspace((s) => s.activeIssueId);
   const setActiveIssue = useWorkspace((s) => s.setActiveIssue);
+  const issueFocus = useWorkspace((s) => s.issueFocus);
+  const setIssueFocus = useWorkspace((s) => s.setIssueFocus);
   const activeChangeId = useWorkspace((s) => s.activeChangeId);
   const setActiveChange = useWorkspace((s) => s.setActiveChange);
   const patchDoc = useWorkspace((s) => s.patchDoc);
@@ -55,7 +57,9 @@ export function HumanizeStep({ onNext }: { onNext: () => void }) {
   }, [result, analyzedText, patchDoc]);
 
   useEffect(() => {
-    if (analysis.error) toast.error((analysis.error as Error).message, { id: "analyze-error" });
+    // an unreachable server is explained by the offline banner, so only toast other failures
+    const e = analysis.error;
+    if (e && !(e instanceof ApiError && e.status === 0)) toast.error(e.message, { id: "analyze-error" });
   }, [analysis.error]);
 
   const h = doc.humanize;
@@ -113,9 +117,11 @@ export function HumanizeStep({ onNext }: { onNext: () => void }) {
       for (const p of result.protected) spans.push({ start: p.start, end: p.end, id: `p-${p.start}`, kind: "protected", label: p.kind });
     if (layersOn.issues && tab === "suggestions")
       for (const i of result.issues)
-        spans.push({ start: i.start, end: i.end, id: i.id, kind: "issue", category: i.category, rule: i.rule });
+        // one category at a time, or only the main issues, so the text stays readable
+        if (issueFocus ? i.category === issueFocus : i.severity !== "info")
+          spans.push({ start: i.start, end: i.end, id: i.id, kind: "issue", category: i.category, rule: i.rule });
     return { text: analyzedText, spans };
-  }, [result, analyzedText, layersOn, tab]);
+  }, [result, analyzedText, layersOn, tab, issueFocus]);
 
   const stale = useMemo(() => new Set(h ? locatePending(text, h).stale : []), [h, text]);
 
@@ -282,6 +288,16 @@ export function HumanizeStep({ onNext }: { onNext: () => void }) {
           </span>
           <div className="ml-auto flex items-center gap-2">
             <LayerToggles available={["issues", "protected", "changes", "engineering"]} />
+            <button
+              type="button"
+              onClick={() => run.mutate()}
+              disabled={run.isPending}
+              title={`${doc.settings.tone} tone, intensity ${doc.settings.intensity}/5 (change under Rewrite settings)`}
+              className="inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground disabled:opacity-60"
+            >
+              {run.isPending ? <Loader2 className="size-4 animate-spin" /> : <Sparkles className="size-4" />}
+              {run.isPending ? "Rewriting…" : "Suggest rewrites"}
+            </button>
             <button type="button" onClick={onNext} className="inline-flex items-center gap-1 rounded-md border border-rule px-3 py-1.5 text-sm hover:bg-secondary">
               Walkthrough <ArrowRight className="size-4" />
             </button>
@@ -317,12 +333,12 @@ export function HumanizeStep({ onNext }: { onNext: () => void }) {
             )}
           </Panel>
 
-          <Panel title="Your voice">
-            <VoicePanel text={text} before={h?.voiceMatchBefore} />
+          <Panel title="Rewrite settings">
+            <HumanizeControls settings={doc.settings} onChange={setSettings} hasProfile={!!voice} />
           </Panel>
 
-          <Panel title="Rewrite">
-            <HumanizeControls settings={doc.settings} onChange={setSettings} onRun={() => run.mutate()} running={run.isPending} hasProfile={!!voice} />
+          <Panel title="Your voice">
+            <VoicePanel text={text} before={h?.voiceMatchBefore} />
           </Panel>
 
           <section className="rounded-xl border border-rule bg-card p-4">
@@ -372,6 +388,13 @@ export function HumanizeStep({ onNext }: { onNext: () => void }) {
                 }}
                 text={analyzedText}
                 onApply={applyIssue}
+                filter={issueFocus}
+                onFilter={setIssueFocus}
+                note={
+                  issueFocus
+                    ? `The text shows every ${issueFocus} suggestion.`
+                    : "The text shows the main suggestions. Pick a category to see all of its highlights."
+                }
               />
             ) : null}
           </section>

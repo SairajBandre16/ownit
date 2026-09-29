@@ -27,6 +27,7 @@ CATEGORY_BY_TRANSFORM = {
     "opener_vary": "rhythm",
     "contractions": "voice",
     "voice_fit": "voice",
+    "dash_tidy": "clarity",
 }
 
 

@@ -20,6 +20,7 @@ const TRANSFORM_LABEL: Record<string, string> = {
   opener_vary: "Vary opener",
   contractions: "Contraction",
   voice_fit: "Your voice",
+  dash_tidy: "Plainer punctuation",
 };
 
 interface Props {

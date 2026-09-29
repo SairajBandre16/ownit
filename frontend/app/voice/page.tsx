@@ -1,3 +1,4 @@
+import { ServerOfflineBanner } from "@/components/layout/ServerOfflineBanner";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { VoiceSetup } from "@/components/voice/VoiceSetup";
 
@@ -8,6 +9,7 @@ export default function VoicePage() {
     <>
       <SiteHeader />
       <main id="main" className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6">
+        <ServerOfflineBanner className="mb-6" />
         <VoiceSetup />
       </main>
     </>

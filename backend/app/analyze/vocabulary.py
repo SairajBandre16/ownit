@@ -2,9 +2,12 @@
 
 from __future__ import annotations
 
+import re
+
 from app.analyze.base import AnalyzerContext, MetricResult, make_issue
 from app.core.explain import explain
 from app.core.lexicon import PhraseLexicon, lexicon
+from app.humanize.transforms.dash_tidy import dashes
 
 MTLD_THRESHOLD = 0.72
 CONTENT_POS = {"NOUN", "VERB", "ADJ", "ADV"}
@@ -44,6 +47,18 @@ REPEAT_EXEMPT = {
     "can",
     "not",
 }
+
+
+DASH_CHARS = chr(0x2013) + chr(0x2014)
+# "it's not just X, it's Y" / "this isn't only X, but Y": a stock contrast formula
+CONTRAST_RE = re.compile(
+    r"\b(?:(?:is|are|was|were)\s+not|(?:is|are|was|were)n['’]t|(?:it|that)['’]s\s+not)"
+    r"\s+(?:just|only|merely|simply|about)\b[^.!?]{1,80}?(?:[,;:]|\s*["
+    + DASH_CHARS
+    + r"]\s*|\s--\s)"
+    r"\s*(?:it['’]s|it\s+is|this\s+is|that['’]s|they['’]re|they\s+are|but)\b",
+    re.IGNORECASE,
+)
 
 
 def _mtld_pass(tokens: list[str]) -> float:
@@ -166,6 +181,42 @@ def analyze(ctx: AnalyzerContext) -> MetricResult:
                 lesson_slug="cliches",
             )
         )
+
+    # --- dashes as punctuation and stock contrast formulas (flagged, not scored)
+    for s_ in sents:
+        base = s_.start
+        for a, b in dashes(s_.text):
+            if ctx.hard_index.overlaps(base + a, base + b):
+                continue
+            # highlight the dash itself, not the spaces around it
+            lo = base + a + (len(s_.text[a:b]) - len(s_.text[a:b].lstrip()))
+            hi = base + b - (len(s_.text[a:b]) - len(s_.text[a:b].rstrip()))
+            issues.append(
+                make_issue(
+                    start=lo,
+                    end=hi,
+                    category="vocabulary",
+                    rule="dash",
+                    severity="info",
+                    message=explain("issue.dash"),
+                    lesson_slug="punctuation",
+                )
+            )
+        for cm in CONTRAST_RE.finditer(s_.text):
+            start, end = base + cm.start(), base + cm.end()
+            if ctx.hard_index.overlaps(start, end):
+                continue
+            issues.append(
+                make_issue(
+                    start=start,
+                    end=end,
+                    category="vocabulary",
+                    rule="contrast_formula",
+                    severity="info",
+                    message=explain("issue.contrast_formula", phrase=cm.group(0)),
+                    lesson_slug="stock-phrases",
+                )
+            )
 
     return MetricResult(
         name="vocabulary",

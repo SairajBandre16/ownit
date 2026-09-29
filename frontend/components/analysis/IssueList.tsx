@@ -58,6 +58,9 @@ export function IssueList({
   text,
   onApply,
   groupOf = byCategory,
+  filter: controlled,
+  onFilter,
+  note,
 }: {
   issues: Issue[];
   activeId?: string | null;
@@ -66,8 +69,15 @@ export function IssueList({
   onApply?: (i: Issue) => void;
   /** what the filter chips group by (default: category) */
   groupOf?: (i: Issue) => string;
+  /** controlled filter (e.g. shared with the editor highlights); uncontrolled when omitted */
+  filter?: string | null;
+  onFilter?: (group: string | null) => void;
+  /** line under the chips explaining what the editor shows */
+  note?: React.ReactNode;
 }) {
-  const [filter, setFilter] = useState<string | null>(null);
+  const [ownFilter, setOwnFilter] = useState<string | null>(null);
+  const filter = onFilter ? (controlled ?? null) : ownFilter;
+  const setFilter = onFilter ?? setOwnFilter;
   const counts = useMemo(() => {
     const c: Record<string, number> = {};
     for (const i of issues) c[groupOf(i)] = (c[groupOf(i)] ?? 0) + 1;
@@ -84,7 +94,7 @@ export function IssueList({
   return (
     <div>
       <div className="mb-2 flex flex-wrap gap-1" role="toolbar" aria-label="Filter issues">
-        <button type="button" onClick={() => setFilter(null)} className={cn("rounded-full border px-2 py-0.5 text-xs", !filter ? "border-foreground" : "border-rule text-muted-foreground")}>
+        <button type="button" onClick={() => setFilter(null)} aria-pressed={!filter} className={cn("rounded-full border px-2 py-0.5 text-xs", !filter ? "border-foreground" : "border-rule text-muted-foreground")}>
           All {issues.length}
         </button>
         {Object.entries(counts).map(([cat, n]) => (
@@ -100,6 +110,7 @@ export function IssueList({
           </button>
         ))}
       </div>
+      {note && <p className="mb-2 text-xs text-muted-foreground">{note}</p>}
       <ul className="max-h-[28rem] space-y-1 overflow-y-auto pr-1">
         {shown.map((iss) => (
           <li

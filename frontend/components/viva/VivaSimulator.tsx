@@ -4,6 +4,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Loader2, Maximize2, Timer } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { ServerOfflineBanner } from "@/components/layout/ServerOfflineBanner";
 import { api, type QuestionOut, type ResultOut } from "@/lib/api";
 import { scoreBand, summarizeViva } from "@/lib/assess";
 import { getDoc, saveDoc } from "@/lib/db";
@@ -195,6 +196,7 @@ export function VivaSimulator({ docId }: { docId: string }) {
         </header>
 
         <main id="main" className="flex flex-1 flex-col justify-center py-10">
+          <ServerOfflineBanner className="mb-6" />
           {error && (
             <p role="alert" className="mb-6 rounded-lg border border-destructive/60 bg-destructive/10 px-4 py-2 text-sm">
               {error}
