@@ -40,7 +40,7 @@ export function VoiceSetup() {
         <p className="tabular text-xs uppercase tracking-[0.2em] text-muted-foreground">U1 · Write like me</p>
         <h1 className="font-display text-5xl">Voice Fingerprint</h1>
         <p className="mt-3 max-w-xl text-muted-foreground">
-          Paste one to three pieces of writing that are genuinely <em>yours</em> — an old assignment, a lab write-up, a
+          Paste one to three pieces of writing that are genuinely <em>yours</em>: an old assignment, a lab write-up, a
           long message. OwnIt measures how you write (sentence length, punctuation, favourite linking words, how often
           you say “I/we”, the 60 most common function words…) and the rewriter then moves drafts towards your voice
           instead of a generic one.

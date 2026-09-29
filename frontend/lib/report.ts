@@ -1,6 +1,6 @@
 /**
  * Data for the Understanding Report (§9.7): everything comes from the student's own work in the
- * app — ownership, the three checks, viva answers, quiz misses, teach-back and the glossary.
+ * app: ownership, the three checks, viva answers, quiz misses, teach-back and the glossary.
  */
 import type { Schemas } from "./api";
 import { summarizeViva } from "./assess";

@@ -1,7 +1,7 @@
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { LessonIndex } from "@/components/learn/LessonIndex";
 
-export const metadata = { title: "Learn — OwnIt" };
+export const metadata = { title: "Learn · OwnIt" };
 
 export default function LearnPage() {
   return (

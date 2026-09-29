@@ -3,7 +3,7 @@ const STEPS = [
     n: "01",
     title: "Humanize",
     body: "A rule-based rewrite: wordy phrases, repeated transitions, over-long sentences. Every change comes with a plain-English reason, and you accept or reject each one.",
-    detail: "“in order to” → “to” — shorter, same meaning.",
+    detail: "“in order to” → “to”: shorter, same meaning.",
   },
   {
     n: "02",
@@ -14,7 +14,7 @@ const STEPS = [
   {
     n: "03",
     title: "Make it yours",
-    body: "OwnIt finds the generic spots — vague quantities, claims without examples, results without numbers — and asks you to add your own data and experience.",
+    body: "OwnIt finds the generic spots (vague quantities, claims without examples, results without numbers) and asks you to add your own data and experience.",
     detail: "“Add the value you measured, with its unit.”",
   },
   {
@@ -26,7 +26,7 @@ const STEPS = [
   {
     n: "05",
     title: "Export",
-    body: "Download a clean .docx and an Understanding Report — your viva Q&A, glossary and weak concepts — once you've shown you understand it.",
+    body: "Download a clean .docx and an Understanding Report (your viva Q&A, glossary and weak concepts) once you've shown you understand it.",
     detail: "Ownership Score: an honest “you wrote 38% of this”.",
   },
 ];

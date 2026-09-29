@@ -11,7 +11,9 @@ export function ThemeToggle() {
     <Button
       variant="ghost"
       size="icon"
-      aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
+      // the theme is only known on the client, so a theme-dependent label breaks hydration
+      aria-label="Toggle light or dark theme"
+      title="Toggle light or dark theme"
       onClick={() => setTheme(dark ? "light" : "dark")}
     >
       <Sun className="hidden dark:block" />

@@ -148,7 +148,7 @@ def to_markdown(
 ) -> str:
     cols = list(dict.fromkeys(k for s in summary.values() for k in s))
     lines = [
-        f"# Humanize evaluation — {datetime.now():%Y-%m-%d %H:%M}",
+        f"# Humanize evaluation: {datetime.now():%Y-%m-%d %H:%M}",
         "",
         f"intensity={args.intensity} · tone={args.tone} · LanguageTool={'on' if lt else 'OFF'} · LM={lm}",
         "",

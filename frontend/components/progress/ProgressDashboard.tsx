@@ -19,7 +19,7 @@ const AXIS_TICK = { fontSize: 11, fill: "var(--muted-foreground)" };
 
 const fmtDate = (t: number) => new Date(t).toLocaleDateString(undefined, { day: "numeric", month: "short" });
 const words = (d: OwnDoc) => jsonText(d.content).split(/\s+/).filter(Boolean).length;
-const n = (x: number | null | undefined) => (x == null ? "—" : Math.round(x).toString());
+const n = (x: number | null | undefined) => (x == null ? "-" : Math.round(x).toString());
 
 export function ProgressDashboard() {
   const settings = useSettings();
@@ -128,9 +128,9 @@ export function ProgressDashboard() {
                       {first != null && latest != null && Math.round(first) !== Math.round(latest) ? `${n(first)} → ${n(latest)}` : n(latest ?? first)}
                     </td>
                     <td className="px-3 py-2 text-right">{n(d.ownership?.score)}</td>
-                    <td className="px-3 py-2 text-right">{d.assess?.quiz?.total != null ? `${n(d.assess.quiz.total)}%` : "—"}</td>
-                    <td className="px-3 py-2 text-right">{d.assess?.teachback ? `${n(d.assess.teachback.coverage)}%` : "—"}</td>
-                    <td className="px-3 py-2 text-right">{viva && viva.answered ? n(viva.average) : "—"}</td>
+                    <td className="px-3 py-2 text-right">{d.assess?.quiz?.total != null ? `${n(d.assess.quiz.total)}%` : "-"}</td>
+                    <td className="px-3 py-2 text-right">{d.assess?.teachback ? `${n(d.assess.teachback.coverage)}%` : "-"}</td>
+                    <td className="px-3 py-2 text-right">{viva && viva.answered ? n(viva.average) : "-"}</td>
                     <td className="px-3 py-2 font-sans text-xs">
                       {d.exports?.length ? "exported" : gate.passed ? "ready to export" : `step ${["humanize", "walkthrough", "personalize", "prove", "export"].indexOf(d.step) + 1} of 5`}
                     </td>

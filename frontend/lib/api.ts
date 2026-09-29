@@ -98,7 +98,7 @@ async function request<T>(path: string, init: RequestInit): Promise<T> {
     } catch {
       /* not JSON */
     }
-    if (res.status === 429) detail = "Too many requests — wait a minute and try again.";
+    if (res.status === 429) detail = "Too many requests. Wait a minute and try again.";
     throw new ApiError(res.status, detail);
   }
   return (await res.json()) as T;

@@ -335,7 +335,7 @@ export function VivaSimulator({ docId }: { docId: string }) {
                   {summary.byLevel.map((l) => (
                     <li key={l.level} className="rounded-lg border border-rule p-3">
                       <p className="text-[11px] uppercase tracking-wider text-muted-foreground">{l.name}</p>
-                      <p className="tabular text-2xl">{l.average == null ? "—" : Math.round(l.average)}</p>
+                      <p className="tabular text-2xl">{l.average == null ? "-" : Math.round(l.average)}</p>
                       <p className="text-xs text-muted-foreground">{l.count} question{l.count === 1 ? "" : "s"}</p>
                     </li>
                   ))}

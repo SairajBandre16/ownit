@@ -26,7 +26,7 @@ export default function Home() {
               <p className="mt-6 max-w-xl text-lg text-muted-foreground">
                 Paste an AI draft. OwnIt rewrites it clearly and explains every change, walks you
                 through each paragraph, asks you to add your own data and examples, and checks you
-                can defend it in a viva — before you export.
+                can defend it in a viva, before you export.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Link

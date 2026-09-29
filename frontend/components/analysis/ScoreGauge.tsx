@@ -61,7 +61,7 @@ export function ScoreGauge({ from, value, label = "Writing score", size = 180, c
       </svg>
       <div className="-mt-12 flex items-baseline gap-1">
         <span className="tabular text-4xl font-medium" aria-live="polite">
-          {value == null ? "—" : shown}
+          {value == null ? "-" : shown}
         </span>
         <span className="tabular text-sm text-muted-foreground">/100</span>
       </div>

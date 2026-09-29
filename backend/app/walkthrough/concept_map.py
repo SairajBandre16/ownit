@@ -3,7 +3,7 @@
 Nodes: document keyphrases merged by lemma, sized by PageRank centrality, each listing the
 paragraphs it appears in (so the UI can zoom to the paragraph being read).
 Edges: concepts appearing in the same sentence; labelled with the connecting verb when the
-dependency parse links them as subject → verb → object ("sensor —measures→ temperature").
+dependency parse links them as subject → verb → object ("sensor -measures-> temperature").
 Positions come from a seeded spring layout (deterministic), scaled to [0, 1].
 """
 

@@ -33,7 +33,7 @@ MENTION_RE = re.compile(
     re.IGNORECASE,
 )
 LINE_RE = re.compile(r"[^\n]+")
-CAPTION_RE = re.compile(r"^\s*(Fig\.|Figure|Table)\s*(\d+)\s*[.:–—-]", re.IGNORECASE)
+CAPTION_RE = re.compile(r"^\s*(Fig\.|Figure|Table)\s*(\d+)\s*[.:–\u2014-]", re.IGNORECASE)
 
 
 @dataclass(frozen=True)

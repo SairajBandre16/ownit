@@ -2,7 +2,7 @@ import { defineConfig, devices } from "@playwright/test";
 
 /**
  * End-to-end smoke test of the 5-step flow. Needs the whole stack running
- * (LanguageTool :8010, API :8000, web :3000 — see scripts/dev.ps1), then:  npm run e2e
+ * (LanguageTool :8010, API :8000, web :3000; see scripts/dev.ps1), then:  npm run e2e
  */
 export default defineConfig({
   testDir: "./e2e",

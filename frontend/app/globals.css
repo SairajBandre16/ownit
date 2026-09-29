@@ -5,15 +5,15 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ---------------------------------------------------------------------------
-   OwnIt design tokens — "a modern engineering notebook"
+   OwnIt design tokens: "a modern engineering notebook"
    paper / ink / rule lines, one signal-orange accent, semantic highlight hues.
 --------------------------------------------------------------------------- */
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-jetbrains);
+  --font-sans: var(--font-ui);
+  --font-mono: var(--font-num);
   --font-heading: var(--font-serif);
   --font-display: var(--font-serif);
   --color-ring: var(--ring);
@@ -158,7 +158,6 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "ss01", "cv11";
   }
   html {
     @apply font-sans;
@@ -168,7 +167,8 @@
   h3 {
     font-family: var(--font-serif), Georgia, serif;
     font-weight: 400;
-    letter-spacing: -0.01em;
+    font-optical-sizing: auto;
+    letter-spacing: -0.015em;
   }
 }
 
@@ -184,7 +184,7 @@
     background-size: 100% 2rem;
   }
   .tabular {
-    font-family: var(--font-jetbrains), ui-monospace, monospace;
+    font-family: var(--font-num), ui-monospace, monospace;
     font-variant-numeric: tabular-nums;
   }
 }
@@ -193,8 +193,10 @@
 .ownit-editor .ProseMirror {
   outline: none;
   min-height: 24rem;
-  line-height: 1.8;
-  font-size: 1.0625rem;
+  font-family: var(--font-serif), Georgia, serif;
+  font-optical-sizing: auto;
+  line-height: 1.75;
+  font-size: 1.1875rem;
 }
 .ownit-editor .ProseMirror p {
   margin: 0 0 0.6em;

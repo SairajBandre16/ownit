@@ -57,7 +57,7 @@
   "issue.caption_missing": "{kind} {n} has no caption.",
   "issue.tense_section": "Most of {section} is in the {found} tense. {name} is usually written in the {expected} tense.",
   "issue.tense_outlier": "Most of {section} is in the {expected} tense, but this sentence is in the {found} tense.",
-  "issue.unsupported_claim": "Unsupported claim ('{marker}'). Add evidence — a citation, number or figure — or soften it.",
+  "issue.unsupported_claim": "Unsupported claim ('{marker}'). Add evidence (a citation, number or figure) or soften it.",
   "issue.section_missing": "No '{section}' section found. A typical lab/project report has one.",
   "issue.section_order": "'{section}' usually comes after '{after}'.",
   "issue.abstract_long": "The abstract has {n} words. Keep it under 250.",

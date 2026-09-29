@@ -1,6 +1,6 @@
 """Key terms per paragraph with definitions from (in order of preference):
 
-1. the document itself — "X is a/an/the …", "X refers to …", "X is defined as …",
+1. the document itself: "X is a/an/the …", "X refers to …", "X is defined as …",
    "Full Name (ABBR)";
 2. the engineering abbreviation list;
 3. WordNet (first noun sense, only when the term is a WordNet entry).

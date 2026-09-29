@@ -1,4 +1,4 @@
-# OwnIt — Humanize it. Understand it. Own it.
+# OwnIt: Humanize it. Understand it. Own it.
 
 OwnIt turns an AI-written draft into a student's own work in five steps: **Humanize → Walkthrough → Make it yours → Prove it → Export**. Everything is rule-based and explainable: no AI models and no external APIs. The full build spec is in [`CLAUDE.md`](CLAUDE.md); build progress is in [`progress.md`](progress.md).
 
@@ -18,8 +18,8 @@ OwnIt turns an AI-written draft into a student's own work in five steps: **Human
 
 ## Stack
 
-- **Backend** — Python 3.11, FastAPI, spaCy (`en_core_web_md`), NLTK/WordNet, lemminflect, wordfreq, textstat, YAKE, sumy, a trigram/KenLM fluency model, and a self-hosted LanguageTool server.
-- **Frontend** — Next.js 16 (App Router) + TypeScript, Tailwind v4 + shadcn/ui, TipTap, Framer Motion, Recharts, React Flow, Zustand, TanStack Query, IndexedDB.
+- **Backend**: Python 3.11, FastAPI, spaCy (`en_core_web_md`), NLTK/WordNet, lemminflect, wordfreq, textstat, YAKE, sumy, a trigram/KenLM fluency model, and a self-hosted LanguageTool server.
+- **Frontend**: Next.js 16 (App Router) + TypeScript, Tailwind v4 + shadcn/ui, TipTap, Framer Motion, Recharts, React Flow, Zustand, TanStack Query, IndexedDB.
 
 ## Quick start (Windows, no Docker)
 
@@ -138,4 +138,4 @@ The API is stateless: request text is processed in memory (with a short in-proce
 
 ## Honest limits
 
-Rule-based rewriting is conservative, so sometimes the best candidate is "no change". WordNet knows few technical terms, so the glossary asks you to define unknown terms yourself. OwnIt never claims to make text "undetectable" — it helps you write clearly and understand and own your work.
+Rule-based rewriting is conservative, so sometimes the best candidate is "no change". WordNet knows few technical terms, so the glossary asks you to define unknown terms yourself. OwnIt never claims to make text "undetectable". It helps you write clearly and understand and own your work.

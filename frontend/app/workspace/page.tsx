@@ -1,7 +1,7 @@
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { DocList } from "@/components/workspace/DocList";
 
-export const metadata = { title: "Workspace — OwnIt" };
+export const metadata = { title: "Workspace · OwnIt" };
 
 export default function WorkspacePage() {
   return (

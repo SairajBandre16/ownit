@@ -80,7 +80,7 @@ export function NewDocDialog({
           id="doc-title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="e.g. Lab 4 — Heat exchanger report"
+          placeholder="e.g. Lab 4: Heat exchanger report"
           className="h-9 rounded-md border border-input bg-background px-3 text-sm"
         />
         <label className="text-sm font-medium" htmlFor="doc-text">

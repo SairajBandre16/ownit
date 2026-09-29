@@ -1,6 +1,6 @@
 """Claim–evidence check (CLAUDE.md §9.5): a strong claim ("proves", "clearly shows",
 "significantly", "always", "the best" …) with no citation, number or figure/table reference in
-the same or the next sentence → "Unsupported claim — add evidence or soften it"."""
+the same or the next sentence → "Unsupported claim. Add evidence or soften it"."""
 
 from __future__ import annotations
 

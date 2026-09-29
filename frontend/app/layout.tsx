@@ -1,20 +1,22 @@
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { IBM_Plex_Mono, Newsreader, Schibsted_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 
+// Newsreader: editorial serif with optical sizes, for headings and the document itself.
+// Schibsted Grotesk: newsroom grotesk for the UI. IBM Plex Mono: engineering numbers and units.
 // "optional": body text never repaints late with the web font (keeps LCP low on slow networks)
-const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "optional" });
-const serif = Instrument_Serif({
+const sans = Schibsted_Grotesk({ variable: "--font-ui", subsets: ["latin"], display: "optional" });
+const serif = Newsreader({
   variable: "--font-serif",
   subsets: ["latin"],
-  weight: "400",
   style: ["normal", "italic"],
+  axes: ["opsz"],
 });
-const mono = JetBrains_Mono({ variable: "--font-jetbrains", subsets: ["latin"] });
+const mono = IBM_Plex_Mono({ variable: "--font-num", subsets: ["latin"], weight: ["400", "500"] });
 
 export const metadata: Metadata = {
-  title: "OwnIt — Humanize it. Understand it. Own it.",
+  title: "OwnIt: Humanize it. Understand it. Own it.",
   description:
     "A learning tool for engineering students: rewrite an AI draft clearly, understand every paragraph, add your own work, and prove it before a viva. No AI models, no external APIs.",
 };
@@ -24,7 +26,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${serif.variable} ${mono.variable} h-full antialiased`}
+      className={`${sans.variable} ${serif.variable} ${mono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <a

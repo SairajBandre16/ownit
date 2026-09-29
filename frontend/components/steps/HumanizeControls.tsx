@@ -13,11 +13,11 @@ const TONES: { id: Tone; label: string; hint: string }[] = [
 
 const INTENSITY_HINT = [
   "",
-  "Gentle — only wordy phrases and repeated transitions",
-  "Light — adds plainer word choices",
-  "Balanced — also splits long sentences",
-  "Strong — also restructures sentences (active voice, clause order)",
-  "Maximum — every transform, smallest acceptable gain",
+  "Gentle: only wordy phrases and repeated transitions",
+  "Light: adds plainer word choices",
+  "Balanced: also splits long sentences",
+  "Strong: also restructures sentences (active voice, clause order)",
+  "Maximum: every transform, smallest acceptable gain",
 ];
 
 export function HumanizeControls({

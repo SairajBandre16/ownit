@@ -1,14 +1,14 @@
-# OwnIt — Humanize it. Understand it. Own it.
+# OwnIt: Humanize it. Understand it. Own it.
 
 > Build spec for Claude Code. Read this whole file before writing any code.
-> ("OwnIt" is a working name — rename freely.)
+> ("OwnIt" is a working name; rename freely.)
 
 ---
 
 ## 0. Instructions for Claude Code (read first)
 
 1. **Build phase by phase** (see §12). After each phase: run all tests, run the app, summarize what was built, and **stop and wait for my review** before starting the next phase.
-2. **Hard constraint — no AI models, no external APIs.**
+2. **Hard constraint: no AI models, no external APIs.**
    - Do NOT add: `transformers`, `torch`, `tensorflow`, `sentence-transformers`, `openai`, `anthropic`, `ollama`, `langchain`, Hugging Face inference, or any hosted NLP API.
    - Allowed: classic NLP libraries and small local statistical pipelines (spaCy, NLTK/WordNet, KenLM n‑grams, word vectors, textstat, YAKE, sumy, LanguageTool self-hosted).
 3. **No detector gaming.** Do not implement "AI detection probability" scores, detector-in-the-loop optimization, or any copy claiming the output bypasses Turnitin/GPTZero etc. The goal is natural, clear, *owned* writing.
@@ -16,6 +16,7 @@
 5. All text spans use **character offsets** `[start, end)` into the exact string that was sent to the API.
 6. I develop on **Windows**. Run the backend in **Docker (or WSL2)** because KenLM and LanguageTool (Java) are painful on native Windows. The frontend runs natively with Node.
 7. Keep a `README.md` up to date with setup and run commands.
+8. **No em dashes, anywhere** (UI copy, backend messages, code, comments, docs, commits). Use a comma, colon, full stop or brackets. Code that must match an em dash in user input writes the escape `\u2014`. `backend/tests/unit/test_no_em_dash.py` enforces this.
 
 ---
 
@@ -243,16 +244,16 @@ Every accepted edit produces a `Change` (see §8) with a `reason` written in pla
 
 Seed each file with the examples below, then **expand each to 300+ entries** with sensible, common-knowledge content. Keep them in versioned JSON so they can be reviewed.
 
-- `wordy_phrases.json` — `{"in order to": "to", "due to the fact that": "because", "at this point in time": "now", "has the ability to": "can", "a large number of": "many", "with regard to": "about", "in the event that": "if", "prior to": "before", "is able to": "can", "make a decision": "decide", "conduct an analysis of": "analyze", "for the purpose of": "to"}`
-- `ai_style_phrases.json` — each entry is `{phrase, replacement | null, note}`: "delve into", "in today's fast-paced world", "it is important to note that", "plays a crucial role", "a testament to", "navigate the complexities", "in the realm of", "seamlessly integrate", "ever-evolving landscape", "harness the power of", "a myriad of", "pave the way for", "unlock the potential", "in conclusion, it is evident that", "multifaceted"
+- `wordy_phrases.json`: `{"in order to": "to", "due to the fact that": "because", "at this point in time": "now", "has the ability to": "can", "a large number of": "many", "with regard to": "about", "in the event that": "if", "prior to": "before", "is able to": "can", "make a decision": "decide", "conduct an analysis of": "analyze", "for the purpose of": "to"}`
+- `ai_style_phrases.json`: each entry is `{phrase, replacement | null, note}`: "delve into", "in today's fast-paced world", "it is important to note that", "plays a crucial role", "a testament to", "navigate the complexities", "in the realm of", "seamlessly integrate", "ever-evolving landscape", "harness the power of", "a myriad of", "pave the way for", "unlock the potential", "in conclusion, it is evident that", "multifaceted"
 - `cliches.json`, `fillers.json`, `hedges.json`, `weak_verbs.json`
-- `transitions.json` — grouped by function
-- `eng_abbreviations.json` — {abbr: expansion}: IoT, PLC, CNC, FEM, CAD, PCB, MOSFET, PWM, SCADA, HVAC, ADC, DAC, UART, RMS, …
-- `si_units.json` — symbols, correct case, quantity type (length, mass, force, power, …)
-- `generic_patterns.json` — patterns for the "Make it yours" detector (§9.3)
-- `question_templates.json` — viva/quiz templates (§9.4)
-- `explanations.json` — reason templates for every transform and issue
-- `lessons/*.md` — short lessons (passive voice, concision, transitions, units, citing claims, …)
+- `transitions.json`: grouped by function
+- `eng_abbreviations.json`: {abbr: expansion}: IoT, PLC, CNC, FEM, CAD, PCB, MOSFET, PWM, SCADA, HVAC, ADC, DAC, UART, RMS, …
+- `si_units.json`: symbols, correct case, quantity type (length, mass, force, power, …)
+- `generic_patterns.json`: patterns for the "Make it yours" detector (§9.3)
+- `question_templates.json`: viva/quiz templates (§9.4)
+- `explanations.json`: reason templates for every transform and issue
+- `lessons/*.md`: short lessons (passive voice, concision, transitions, units, citing claims, …)
 
 ---
 
@@ -307,14 +308,14 @@ Features, computed per 1,000 words where relevant:
 
 `voice_match` = 100 × (1 − normalized distance), combining Burrows' Delta on function words (weight .5) with z-scored Euclidean distance on the other features (weight .5). Show the top 3 differences in plain words, e.g. "Your sentences are usually shorter (avg 16 vs 24 words)."
 
-### 9.2 Ownership tracking (U2) — frontend
+### 9.2 Ownership tracking (U2): frontend
 - A TipTap mark `origin` with values `ai | engine | student_edit | student_insert` on every text range.
 - Pasted text → `ai`. Accepted engine changes → `engine`. Typing inside an existing range → `student_edit`. Text inserted via "Make it yours" or typed in a new position → `student_insert`.
 - Ownership Score (0–100) =
   `0.45 × (student chars / total chars)` + `0.20 × (decisions made / changes offered)` (accepting or rejecting a change both count) + `0.20 × understanding score` + `0.15 × personalization spots filled / spots found`.
 - A heatmap toggle colors the text by origin. Show the formula breakdown in a popover. Be honest: never inflate the score.
 
-### 9.3 Make it yours — generic-spot detector
+### 9.3 Make it yours: generic-spot detector
 Rules (in `generic_patterns.json`):
 - vague quantifiers without numbers ("various", "numerous", "a wide range of", "significant" with no figure nearby)
 - abstract claims with no example ("plays a crucial role in", "is widely used in", "has many applications")
@@ -344,7 +345,7 @@ Each spot gets a prompt, e.g.: "Name one specific application you've seen (lab, 
 - **Abbreviations:** used before being defined as "Full Name (ABBR)"; defined twice; defined but never used.
 - **Figures/tables:** every "Fig. n"/"Table n" is referenced in the text; numbering is sequential; captions are present (from .docx input).
 - **Tense per section:** Methodology and Results are mainly past tense, Introduction/Theory mainly present tense (via spaCy `morph` Tense). Flag outlier sentences.
-- **Claim–evidence:** sentences with strong-claim markers ("proves", "clearly shows", "significantly", "always", "best") and no citation, number or figure reference in the same or the next sentence → "Unsupported claim — add evidence or soften it."
+- **Claim–evidence:** sentences with strong-claim markers ("proves", "clearly shows", "significantly", "always", "best") and no citation, number or figure reference in the same or the next sentence → "Unsupported claim. Add evidence or soften it."
 - **Structure:** detect headings; compare with a lab/project report template (Abstract, Introduction, Objectives, Theory, Methodology, Results, Discussion, Conclusion, References). Report missing or out-of-order sections and an abstract that is too long (> 250 words).
 
 ### 9.6 Revision Deck (U6)
@@ -361,7 +362,7 @@ Each spot gets a prompt, e.g.: "Name one specific application you've seen (lab, 
 
 **Direction:** "a modern engineering notebook". An editorial feel with precise, technical details. Not a generic purple-gradient SaaS look.
 
-- **Typography:** `Instrument Serif` or `Fraunces` for display headings, `Inter`/`Geist` for UI, `JetBrains Mono` for numbers, scores and units.
+- **Typography:** `Newsreader` (optical-size serif) for display headings and the editor text, `Schibsted Grotesk` for UI, `IBM Plex Mono` for numbers, scores and units. Avoid the stock "AI app" fonts (Inter, Instrument Serif, Fraunces, JetBrains Mono, Space Grotesk).
 - **Colors (CSS variables, light + dark):**
   - light: paper `#F7F5F0`, ink `#1A1A1A`, muted `#6B6B6B`, rule lines `#E4E0D8`
   - dark: `#111214` bg, `#EDEBE6` text

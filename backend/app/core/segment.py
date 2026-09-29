@@ -95,7 +95,7 @@ _ALIAS_TO_SECTION = {alias: name for name, aliases in SECTION_ALIASES.items() fo
 _NUMBERING_RE = re.compile(
     r"^\s*(?:#{1,6}\s*)?(?:(?:[0-9]+|[IVXivx]+|[A-Z])(?:\.[0-9]+)*[.)]?\s+)?"
 )
-_TRAILING_RE = re.compile(r"[\s:.\-–—]+$")
+_TRAILING_RE = re.compile(r"[\s:.\-–\u2014]+$")
 
 
 @dataclass(frozen=True)

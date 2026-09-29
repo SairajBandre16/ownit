@@ -1,4 +1,4 @@
-# Humanize evaluation — 2026-09-25 18:44
+# Humanize evaluation: 2026-09-25 18:44
 
 intensity=4 · tone=academic · LanguageTool=on · LM=fallback
 

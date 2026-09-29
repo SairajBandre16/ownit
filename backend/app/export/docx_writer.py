@@ -19,7 +19,7 @@ from docx.shared import Pt
 from app.core.segment import segment
 from app.schemas.export import OwnershipNote
 
-CAPTION_RE = re.compile(r"^\s*(?:Fig(?:ure)?\.?|Table)\s*\d+\s*[.:–—-]", re.IGNORECASE)
+CAPTION_RE = re.compile(r"^\s*(?:Fig(?:ure)?\.?|Table)\s*\d+\s*[.:–\u2014-]", re.IGNORECASE)
 SUBHEADING_RE = re.compile(r"^\s*\d+\.\d+")
 BULLET_RE = re.compile(r"^\s*[-•*]\s+")
 MARKDOWN_HEADING_RE = re.compile(r"^\s*#+\s*")

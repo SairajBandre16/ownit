@@ -1,7 +1,7 @@
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { ProgressDashboard } from "@/components/progress/ProgressDashboard";
 
-export const metadata = { title: "Progress — OwnIt" };
+export const metadata = { title: "Progress · OwnIt" };
 
 export default function ProgressPage() {
   return (

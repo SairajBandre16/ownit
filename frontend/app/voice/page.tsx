@@ -1,7 +1,7 @@
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { VoiceSetup } from "@/components/voice/VoiceSetup";
 
-export const metadata = { title: "Voice Fingerprint — OwnIt" };
+export const metadata = { title: "Voice Fingerprint · OwnIt" };
 
 export default function VoicePage() {
   return (

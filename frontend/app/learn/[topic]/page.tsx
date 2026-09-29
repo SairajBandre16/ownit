@@ -1,7 +1,7 @@
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { LessonView } from "@/components/learn/LessonView";
 
-export const metadata = { title: "Lesson — OwnIt" };
+export const metadata = { title: "Lesson · OwnIt" };
 
 export default async function LessonPage({ params }: PageProps<"/learn/[topic]">) {
   const { topic } = await params;

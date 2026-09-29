@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Logo } from "@/components/brand/Logo";
 import { ServerStatus } from "./ServerStatus";
 import { ThemeToggle } from "./ThemeToggle";
 import { cn } from "@/lib/utils";
@@ -19,9 +20,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-rule bg-background/85 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 sm:px-6">
-        <Link href="/" className="flex items-baseline gap-1.5" aria-label="OwnIt v0.1 home">
-          <span className="font-display text-2xl leading-none">OwnIt</span>
-          <span className="tabular text-[10px] text-muted-foreground">v0.1</span>
+        <Link href="/" aria-label="OwnIt home" className="rounded-md">
+          <Logo />
         </Link>
         <nav aria-label="Main" className="hidden items-center gap-1 sm:flex">
           {NAV.map((item) => {

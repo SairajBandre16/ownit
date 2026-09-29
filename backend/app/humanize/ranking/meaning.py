@@ -5,7 +5,7 @@ equal or share a WordNet synset (so a synonym swap doesn't count as lost meaning
 
 Candidates differ from their original only inside a few edits, so a candidate is not re-parsed:
 its unchanged tokens reuse the original's lemmas/POS and only new words are lemmatised
-(lemminflect) — see `CandidateTokens`.
+(lemminflect); see `CandidateTokens`.
 """
 
 from __future__ import annotations

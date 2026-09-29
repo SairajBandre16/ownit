@@ -1,4 +1,4 @@
-# OwnIt — Build Progress
+# OwnIt: Build Progress
 
 Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after each task.
 
@@ -28,10 +28,10 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
 
 - [x] Git repo initialised in `ownit/`.
 - [x] Backend folder structure, `requirements.txt`, `requirements-dev.txt`, venv with all deps.
-- [x] `scripts/download_resources.py` — spaCy `en_core_web_md`, NLTK (wordnet, omw-1.4, punkt, stopwords), optional LanguageTool zip. Ran successfully.
-- [x] `/health` — reports spaCy model, LM mode (`kenlm`/`fallback`) + `lm_ready`, LanguageTool reachability.
-- [x] `scripts/build_lm.py` — downloads WikiText-103 (parquet), normalises to 40M tokens, builds 5-gram KenLM when `lmplz` exists, always builds the numpy trigram fallback (`data/lm/trigram.npz`, 26 MB, 3.7M trigrams). Built locally.
-- [x] `ranking/fluency.py` — `FluencyScorer` protocol, `KenLMScorer`, `TrigramScorer` (stupid backoff), `fluency_norm`, `fluency_drop`.
+- [x] `scripts/download_resources.py`: spaCy `en_core_web_md`, NLTK (wordnet, omw-1.4, punkt, stopwords), optional LanguageTool zip. Ran successfully.
+- [x] `/health`: reports spaCy model, LM mode (`kenlm`/`fallback`) + `lm_ready`, LanguageTool reachability.
+- [x] `scripts/build_lm.py`: downloads WikiText-103 (parquet), normalises to 40M tokens, builds 5-gram KenLM when `lmplz` exists, always builds the numpy trigram fallback (`data/lm/trigram.npz`, 26 MB, 3.7M trigrams). Built locally.
+- [x] `ranking/fluency.py`: `FluencyScorer` protocol, `KenLMScorer`, `TrigramScorer` (stupid backoff), `fluency_norm`, `fluency_drop`.
 - [x] LanguageTool 6.6 client (`core/languagetool.py`) with LRU cache and graceful fallback when offline.
 - [x] Next.js 16 + Tailwind v4 + shadcn/ui (base-ui) scaffold; design tokens (paper/ink/rule, signal orange, semantic highlight + ownership colours, light/dark); fonts Instrument Serif / Inter / JetBrains Mono.
 - [x] Landing page skeleton: hero, mini demo, 5-step scroll story, "0 AI models · 0 external APIs" badge, FAQ.
@@ -39,10 +39,10 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
 - [x] Verified: backend pytest 5/5, ruff + mypy clean; frontend tsc + eslint clean; `GET /health` → `{"lm":"fallback","lm_ready":true,"languagetool":true}`; landing page served on :3000.
 
 ### P1 Analyze
-- [x] `core/segment.py` — paragraphs (blank-line blocks + heading lines), spaCy sentences with fragment re-joining ("Fig.", "et al."), canonical report sections (abstract … references) with numbered/markdown headings.
-- [x] `core/spans.py` — half-open span utils, `SpanIndex`, `apply_edits`, word-level `diff_hunks`.
-- [x] `core/protect.py` — quotes, citations (author-year + numeric), LaTeX/inline equations, numbers + units (from `si_units.json`), code spans/lines, Fig./Table/Eq. refs, URLs, abbreviations (caps + `eng_abbreviations.json`), named entities, YAKE keyphrases (noun phrases only) + repeated noun chunks, user keep-terms.
-- [x] `core/lexicon.py` — phrase lexicon matcher with `{lemma}` inflection placeholders, context-aware verb tags/subject number, case matching.
+- [x] `core/segment.py`: paragraphs (blank-line blocks + heading lines), spaCy sentences with fragment re-joining ("Fig.", "et al."), canonical report sections (abstract … references) with numbered/markdown headings.
+- [x] `core/spans.py`: half-open span utils, `SpanIndex`, `apply_edits`, word-level `diff_hunks`.
+- [x] `core/protect.py`: quotes, citations (author-year + numeric), LaTeX/inline equations, numbers + units (from `si_units.json`), code spans/lines, Fig./Table/Eq. refs, URLs, abbreviations (caps + `eng_abbreviations.json`), named entities, YAKE keyphrases (noun phrases only) + repeated noun chunks, user keep-terms.
+- [x] `core/lexicon.py`: phrase lexicon matcher with `{lemma}` inflection placeholders, context-aware verb tags/subject number, case matching.
 - [x] Resources (each 300+ entries): `wordy_phrases`, `ai_style_phrases`, `cliches`, `fillers`, `hedges`, `weak_verbs`, `transitions`, `eng_abbreviations`, `si_units`; plus `explanations.json` (reason/message templates).
 - [x] Analyzers: `clarity` (FK grade vs target, long sentences, nominalizations + WordNet verb suggestion, wordy phrases), `rhythm` (sentence-length SD, opener entropy, monotone runs, repeated openers), `vocabulary` (MTLD, near repeats, stock phrases, clichés), `voice` (passive with agent, Methodology exempt; hedges + stacked hedges; fillers; weak verbs; "There is … that"), `correctness` (LanguageTool, category-weighted). Tunable `analyze/bands.json`; weighted overall score; issue de-duplication.
 - [x] `POST /analyze` → score, subscores, per-metric details, issues, stats, sections, protected spans. Warm latency ≈ 0.3 s for a 150-word text.
@@ -52,7 +52,7 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
 
 ### P2 Humanize v1
 - [x] Engine core: sentences are rewritten as non-overlapping *edits* on the original text (exact offsets + a reason per edit); chaining = union of edits (`humanize/types.py`, `edits.py` with minimal word-aligned edits and punctuation/capitalisation tidy-up).
-- [x] Transforms: `phrase_simplify` (wordy/stock/filler/weak-verb lexicons, inflection, "for the purpose of measuring" → "to measure", a/an fixing), `synonym` (Lesk over top senses, sense-usage ranking, Zipf ≥ 3.5 and never rarer, reliable-vector filter, ≤15 %/sentence, once per lemma per paragraph; never swaps nouns — terminology stays exact), `transition_vary` (repeat within 5 sentences or density > 1/3 → same-group alternative or drop), `split_long` (> 28 words: independent-clause `cc` split, ", which …" → ". This …").
+- [x] Transforms: `phrase_simplify` (wordy/stock/filler/weak-verb lexicons, inflection, "for the purpose of measuring" → "to measure", a/an fixing), `synonym` (Lesk over top senses, sense-usage ranking, Zipf ≥ 3.5 and never rarer, reliable-vector filter, ≤15 %/sentence, once per lemma per paragraph; never swaps nouns: terminology stays exact), `transition_vary` (repeat within 5 sentences or density > 1/3 → same-group alternative or drop), `split_long` (> 28 words: independent-clause `cc` split, ", which …" → ". This …").
 - [x] Ranking (`ranking/`): fluency via the n-gram LM comparing the *kept* tokens in old vs new context (saturated at p ≥ 0.1, noise-thresholded; whole-sentence mode for big rewrites), meaning = mean(vector cosine, content-lemma F1 with WordNet synonyms, ignoring words of removed empty phrases), style fit (cleanliness, length, tone, plainness, voice), batched LanguageTool grammar gate (errors near edits only, two rounds). Hard gates: meaning < 0.80, new grammar errors, fluency drop > 15 %, protected spans. Intensity controls transforms and the acceptance margin.
 - [x] `POST /humanize` → text, changes (orig/new offsets, reason, confidence), protected spans, score before/after, stats.
 - [x] Tests: transform units (incl. must-not-fire), gate tests, 25-seed protected-span fuzz test (byte-identical), 10 golden fixtures (`tests/golden/golden_cases.json`), endpoint tests. Backend total: 152 passing.
@@ -71,7 +71,7 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
 - [x] **Acceptance:** eval with a profile built from the student paragraphs, intensity 4 → Voice Match 24.9 → 26.1 overall (AI drafts 17.2 → 19.4, 82 % of AI paragraphs closer; engineering +1.1; student +0.2), 0 new grammar errors, meaning_sim 0.991.
 - [x] Speed: string-based opener classes instead of re-parsing (intensity 4 at ~1.7 s / 1,000 words on the AI-draft document).
 - [x] Frontend: `/voice` page (1–3 samples, word counter, build/rebuild/delete, fingerprint summary, "compare a text" with Voice Match meter + differences), live "Your voice" panel in the Humanize step with before → after.
-- [x] Tests: backend 191 passing (P3: 39 new — every tense of passive→active, must-not-fire cases, clause/PP fronting, contractions by tone/profile, voice_fit, merges, fingerprint/compare/objective, style endpoints).
+- [x] Tests: backend 191 passing (P3: 39 new, covering every tense of passive→active, must-not-fire cases, clause/PP fronting, contractions by tone/profile, voice_fit, merges, fingerprint/compare/objective, style endpoints).
 
 ### P4 Walkthrough
 - [x] Backend modules written: `walkthrough/gist.py` (TextRank central sentence + main-clause compression + stock-phrase condensing), `walkthrough/glossary.py` (definitions from the document, "Full Name (ABBR)", abbreviation list, WordNet for multi-word/rare terms; otherwise None for the student to define), `walkthrough/simplify.py` (one humanize pass at intensity 5 with `prefer="simplest"`, mapped back per paragraph, FK grade before/after), `walkthrough/concept_map.py` (noun keyphrases, co-occurrence edges labelled with linking verbs, pure-Python PageRank sizing, seeded spring layout), `walkthrough/service.py`, `schemas/walkthrough.py`, `POST /walkthrough` registered in `main.py`.
@@ -130,7 +130,7 @@ Log of what has been built, phase by phase (see CLAUDE.md §12). Updated after e
 - [x] Committed as `7694ab6`. From here the user asked to keep going phase after phase (commit each) until told to stop.
 
 ### P7 Report Doctor
-- [x] `app/doctor/` — one module per §9.5 check, all issues `category="engineering"` with lesson slugs:
+- [x] `app/doctor/`: one module per §9.5 check, all issues `category="engineering"` with lesson slugs:
   - `units.py`: missing space ("12V" → "12 V"), wrong case ("5 KG" → "5 kg", "kw" → "kW"; ambiguous ones like "MW" are left alone), plural symbols ("2 hrs" → "2 h"), SI and non-SI units mixed for one quantity, Results/Discussion numbers with no unit (skips counts, ranges "120 to 410 Pa", years, figure numbers and dimensionless values such as COP or ratios). "45 in the test" is not inches.
   - `abbreviations.py`: used before "Full Name (ABBR)" (fix suggested from the later definition or the abbreviation list), defined twice (an Abstract definition may be repeated in the body), defined but never used; accepts "ABBR (Full Name)"; ignores common abbreviations, units, Roman numerals and tool names (MATLAB, LabVIEW, SolidWorks).
   - `figures.py`: first mentions must run 1, 2, 3; captions ("Figure 3: …", one per line) must be referred to; references to a missing caption; caption numbering gaps. With no captions at all (pasted text) only the order is checked.
@@ -201,3 +201,10 @@ Hugging Face now requires a paid plan for Docker (and Gradio) Spaces, and free a
 #### Next
 - Optional: an always-on free backend (Oracle Cloud Always Free VM + Docker + free HTTPS domain) so the site works without this PC.
 - Tooling note: in Git Bash on this machine, heredocs piped into Python turned `\b`/`\1` into control characters; edit regex lines with the editor, not shell heredocs.
+
+### Polish: fonts and house style (2026-09-29)
+- [x] New type system: Newsreader (optical-size serif) for headings and the editor text, Schibsted Grotesk for the UI, IBM Plex Mono for numbers and units. Replaces Inter / Instrument Serif / JetBrains Mono, the stock "AI app" set.
+- [x] No em dashes anywhere: UI copy, backend messages, docs, comments and eval reports rewritten with commas, colons, full stops or brackets. Regexes that detect em dashes in user input use the `\u2014` escape. `backend/tests/unit/test_no_em_dash.py` fails CI if one comes back (`frontend/AGENTS.md` is skipped: `next dev` rewrites it).
+- [x] Logo: an "O" that is half thin grey line (the AI draft) and half solid ink (your writing), with the signal-orange pen tip where you take over; wordmark "Own*It*" in Newsreader. Used in the header (`components/brand/Logo.tsx`) and as the favicon (`app/icon.svg`). The "v0.1" tag is gone; the default Next.js favicon and scaffold SVGs are removed.
+- [x] Fixed a hydration error: the theme toggle's aria-label depended on the client-only theme.
+- [x] Tests: backend 436, frontend 107; lint and types clean. Checked in the browser (landing, workspace, editor with analysis).

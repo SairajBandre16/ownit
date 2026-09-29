@@ -1,7 +1,7 @@
 import { DeckReview } from "@/components/deck/DeckReview";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 
-export const metadata = { title: "Revision Deck — OwnIt" };
+export const metadata = { title: "Revision Deck · OwnIt" };
 
 export default function DeckPage() {
   return (

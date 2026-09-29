@@ -204,7 +204,7 @@ function TermRow({
       <div className="flex flex-wrap items-baseline gap-x-2">
         <span className="font-medium">{term.term}</span>
         {def.text ? (
-          <span className="text-muted-foreground">— {def.text}</span>
+          <span className="text-muted-foreground">{def.text}</span>
         ) : (
           <span className="text-signal-ink">No definition found. Define it in your own words.</span>
         )}

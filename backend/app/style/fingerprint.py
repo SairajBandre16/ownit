@@ -55,7 +55,9 @@ def text_features(text: str) -> tuple[dict[str, float], dict[str, float], int]:
         "semicolons_per_sentence": raw.count(";") / n_sents,
         # colons/dashes between digits are ratios and ranges ("20:1", "10–20"), not style
         "colons_per_sentence": len(re.findall(r"(?<!\d):(?!\d)", raw)) / n_sents,
-        "dashes_per_sentence": len(re.findall(r"(?<!\d)\s[-–—]\s(?!\d)|(?<!\d)—(?!\d)", raw))
+        "dashes_per_sentence": len(
+            re.findall(r"(?<!\d)\s[-–\u2014]\s(?!\d)|(?<!\d)\u2014(?!\d)", raw)
+        )
         / n_sents,
         "parentheses_per_sentence": raw.count("(") / n_sents,
         "questions_per_sentence": raw.count("?") / n_sents,
