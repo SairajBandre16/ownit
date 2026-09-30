@@ -1,0 +1,60 @@
+{
+  "name": "ownit-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "OwnIt desktop app: runs the OwnIt frontend and local backend (via Docker) on your own machine.",
+  "author": "Sairaj",
+  "main": "src/main.js",
+  "scripts": {
+    "build:web": "node scripts/build-web.js",
+    "start": "npm run build:web && electron .",
+    "dist": "npm run build:web && electron-builder --publish=never",
+    "release": "npm run build:web && electron-builder --publish=always"
+  },
+  "dependencies": {
+    "electron-log": "^5.2.0",
+    "electron-updater": "^6.3.9"
+  },
+  "devDependencies": {
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.ownit.desktop",
+    "productName": "OwnIt",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      { "from": "resources/web", "to": "web" },
+      { "from": "docker-compose.desktop.yml", "to": "docker-compose.desktop.yml" }
+    ],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "SairajBandre16",
+        "repo": "ownit"
+      }
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.education"
+    },
+    "linux": {
+      "target": ["AppImage"],
+      "category": "Education"
+    }
+  }
+}

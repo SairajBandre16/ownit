@@ -1,0 +1,26 @@
+services:
+  backend:
+    image: ghcr.io/sairajbandre16/ownit-backend:latest
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      OWNIT_LANGUAGETOOL_URL: http://languagetool:8010
+      OWNIT_CORS_ORIGINS: http://localhost:3000,http://127.0.0.1:3000,http://localhost:4173,http://127.0.0.1:4173,app://.
+    volumes:
+      - ownit-lm:/app/data/lm
+    depends_on:
+      - languagetool
+
+  languagetool:
+    image: erikvl87/languagetool
+    restart: unless-stopped
+    ports:
+      - "8010:8010"
+    environment:
+      Java_Xms: 512m
+      Java_Xmx: 1g
+
+volumes:
+  ownit-lm:
+    name: ownit-lm

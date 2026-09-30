@@ -70,6 +70,14 @@ docker compose run --rm backend python scripts/build_lm.py
 
 The Docker image compiles KenLM, so `/health` reports `"lm": "kenlm"` once `data/lm/wiki5.binary` exists. Without it, the pure-Python trigram fallback is used (`"lm": "fallback"`).
 
+## Desktop app
+
+`desktop/` packages OwnIt as a downloadable app (Windows/macOS/Linux) that
+runs the whole backend locally through Docker instead of depending on the
+website or a tunnel to someone's PC. It auto-updates itself, and every push
+to `backend/` refreshes the backend image everyone's app pulls on next
+launch. See [`desktop/README.md`](desktop/README.md).
+
 ## Deploying (free)
 
 The website goes on **Vercel** (free, no card). The backend needs ~2.5 GB of memory (spaCy, the LM and LanguageTool), which free app hosts don't offer, so the free way is to **run it on your own PC and share it through a Cloudflare quick tunnel** (free, no account, no card).
