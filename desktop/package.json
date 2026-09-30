@@ -38,7 +38,8 @@
       {
         "provider": "github",
         "owner": "SairajBandre16",
-        "repo": "ownit"
+        "repo": "ownit",
+        "releaseType": "release"
       }
     ],
     "win": {
