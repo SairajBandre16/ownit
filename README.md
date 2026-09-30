@@ -2,6 +2,11 @@
 
 OwnIt turns an AI-written draft into a student's own work in five steps: **Humanize → Walkthrough → Make it yours → Prove it → Export**. Everything is rule-based and explainable: no AI models and no external APIs. The full build spec is in [`CLAUDE.md`](CLAUDE.md); build progress is in [`progress.md`](progress.md); ideas for later are in [`ROADMAP.md`](ROADMAP.md).
 
+## Try it
+
+- **Website**: [ownit-nine.vercel.app](https://ownit-nine.vercel.app). The backend runs on the maintainer's PC and is only reachable while shared (see [Deploying](#deploying-free)); if the **Server** dot in the top bar is not green, ask for a fresh share link or run OwnIt locally.
+- **Desktop app** (Windows/macOS/Linux): download the latest installer from [Releases](https://github.com/SairajBandre16/ownit/releases/latest). Runs its own backend locally through Docker, no share link needed. See [`desktop/README.md`](desktop/README.md).
+
 ## What's in it
 
 | Where | What |
@@ -74,9 +79,11 @@ The Docker image compiles KenLM, so `/health` reports `"lm": "kenlm"` once `data
 
 `desktop/` packages OwnIt as a downloadable app (Windows/macOS/Linux) that
 runs the whole backend locally through Docker instead of depending on the
-website or a tunnel to someone's PC. It auto-updates itself, and every push
-to `backend/` refreshes the backend image everyone's app pulls on next
-launch. See [`desktop/README.md`](desktop/README.md).
+website or a tunnel to someone's PC. Requires Docker Desktop installed and
+running. It auto-updates itself (checks [Releases](https://github.com/SairajBandre16/ownit/releases)
+on launch), and every push to `backend/` refreshes the backend image
+everyone's app pulls on next launch. Latest build: **v0.1.0**. See
+[`desktop/README.md`](desktop/README.md).
 
 ## Deploying (free)
 
