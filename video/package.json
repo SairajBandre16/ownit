@@ -1,0 +1,28 @@
+{
+  "name": "ownit-intro-video",
+  "private": true,
+  "version": "1.0.0",
+  "description": "OwnIt intro video (Remotion): motion graphics cut to a generated soundtrack.",
+  "scripts": {
+    "soundtrack": "python scripts/make_soundtrack.py",
+    "studio": "remotion studio",
+    "stills": "node scripts/stills.mjs 60 125 160 300 340 420 500 560 640 720 820 920 960 1090",
+    "render": "remotion render OwnItIntro out/ownit-intro.mp4 --codec h264 --crf 18 --concurrency 2 --audio-codec aac --audio-bitrate 256k --timeout 180000",
+    "render:web": "node scripts/encode_web.mjs",
+    "build": "npm run soundtrack && npm run render && npm run render:web",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.530",
+    "@remotion/cli": "4.0.530",
+    "@remotion/google-fonts": "4.0.530",
+    "@remotion/renderer": "4.0.530",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "remotion": "4.0.530"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.7",
+    "typescript": "5.9.3"
+  }
+}

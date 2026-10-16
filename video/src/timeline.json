@@ -1,0 +1,93 @@
+{
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "beatFrames": 18,
+  "bpm": 100,
+  "durationBeats": 61,
+  "scenes": [
+    { "id": "hook", "start": 0, "beats": 8, "chords": ["F", "G"] },
+    { "id": "brand", "start": 8, "beats": 4, "chords": ["Am"] },
+    { "id": "humanize", "start": 12, "beats": 8, "chords": ["F", "G"] },
+    { "id": "walkthrough", "start": 20, "beats": 6, "chords": ["Em"] },
+    { "id": "mine", "start": 26, "beats": 6, "chords": ["Am"] },
+    { "id": "viva", "start": 32, "beats": 6, "chords": ["F"] },
+    { "id": "doctor", "start": 38, "beats": 5, "chords": ["Dm"] },
+    { "id": "export", "start": 43, "beats": 6, "chords": ["F"] },
+    { "id": "badges", "start": 49, "beats": 6, "chords": ["G"] },
+    { "id": "end", "start": 55, "beats": 6, "chords": ["C"] }
+  ],
+  "cues": {
+    "hook": {
+      "text": [0, "swell"],
+      "mark1": [1, "pop"],
+      "mark2": [2, "pop"],
+      "mark3": [3, "pop"],
+      "headline1": [4, "thud"],
+      "headline2": [5.5, "thud"],
+      "riser": [5.5, "riser"],
+      "blackout": [7.5, null]
+    },
+    "brand": {
+      "logo": [0, "impact"],
+      "subline": [1.5, "tick"]
+    },
+    "humanize": {
+      "enter": [-0.5, "whoosh"],
+      "change1": [2, "swap"],
+      "change2": [3, "swap"],
+      "change3": [4, "swap"],
+      "accept": [5, "ding"],
+      "gauge": [5.5, "roll"],
+      "caption": [6.5, "tick"]
+    },
+    "walkthrough": {
+      "enter": [-0.5, "whoosh"],
+      "node1": [1, "pop"],
+      "node2": [1.5, "pop"],
+      "node3": [2, "pop"],
+      "node4": [2.5, "pop"],
+      "gotit": [4, "ding"]
+    },
+    "mine": {
+      "spot": [1, "tick"],
+      "prompt": [1.5, "pop"],
+      "typing": [2.5, "type"],
+      "heatmap": [4, "swell_short"]
+    },
+    "viva": {
+      "enter": [-0.5, "whoosh"],
+      "question": [0.75, "type_soft"],
+      "answer": [2, null],
+      "coverage": [2.75, "roll"],
+      "level": [4.5, "ding"]
+    },
+    "doctor": {
+      "row1": [0.5, "tick"],
+      "row2": [1.5, "tick"],
+      "row3": [2.5, "tick"]
+    },
+    "export": {
+      "gate1": [1, "pop"],
+      "gate2": [1.5, "pop"],
+      "gate3": [2, "pop"],
+      "unlock": [3, "unlock"],
+      "files": [3.5, "whoosh_small"]
+    },
+    "badges": {
+      "enter": [-0.5, "whoosh"],
+      "b1": [0, "stab"],
+      "b2": [1.5, "stab"],
+      "b3": [3, "stab"],
+      "b4": [4.5, "stab"],
+      "gap": [5.5, null]
+    },
+    "end": {
+      "logo": [0, "impact_big"],
+      "tagline1": [1, "bell"],
+      "tagline2": [1.5, "bell"],
+      "tagline3": [2, "bell_hi"],
+      "url": [3, "tick"]
+    }
+  }
+}
